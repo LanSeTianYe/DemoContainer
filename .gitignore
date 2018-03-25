@@ -1,3 +1,7 @@
 # Intellij Idea
 
 .idea/
+*.iml
+
+# compile file
+target/
