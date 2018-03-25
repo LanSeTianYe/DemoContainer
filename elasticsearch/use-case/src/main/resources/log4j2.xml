@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Properties>
+        <Property name="LOG_HOME">use-case/target/logs</Property>
+    </Properties>
+
+    <Appenders>
+
+        <Console name="Console">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+
+        <!--当日志文件大小超多2M的时候根据filePattern压缩到对应的文件-->
+        <RollingRandomAccessFile name="MyFile" fileName="${LOG_HOME}/log-info.log" filePattern="${LOG_HOME}/log-info-%d{MM-dd-yy-HH-mm-ss}-%i.log.gz">
+            <PatternLayout>
+                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="2MB"/>
+            </Policies>
+        </RollingRandomAccessFile>
+
+    </Appenders>
+
+    <Loggers>
+        <root level="ERROR">
+            <AppenderRef ref="Console"/>
+        </root>
+
+        <logger name="com.sun.xiaotian.esdemo.usecase" level="INFO" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="MyFile"/>
+        </logger>
+    </Loggers>
+
+</Configuration>
