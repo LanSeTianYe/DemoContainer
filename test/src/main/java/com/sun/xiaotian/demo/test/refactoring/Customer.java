@@ -1,7 +1,5 @@
 package com.sun.xiaotian.demo.test.refactoring;
 
-import com.sun.org.apache.regexp.internal.RE;
-
 import java.util.ArrayList;
 import java.util.List;
 
