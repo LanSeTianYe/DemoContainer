@@ -1,0 +1,74 @@
+{
+  "authorizer_info": {
+    "nick_name": "微信SDK Demo Special",
+    "head_img": "http://wx.qlogo.cn/mmopen/GPy",
+    "service_type_info": {
+      "id": 2
+    },
+    "verify_type_info": {
+      "id": 0
+    },
+    "user_name": "gh_eb5e3a772040",
+    "principal_name": "腾讯计算机系统有限公司",
+    "business_info": {
+      "open_store": 0,
+      "open_scan": 0,
+      "open_pay": 0,
+      "open_card": 0,
+      "open_shake": 0
+    },
+    "qrcode_url": "URL",
+    "signature": "时间的水缓缓流去",
+    "MiniProgramInfo": {
+      "network": {
+        "RequestDomain": [
+          "https://www.qq.com",
+          "https://www.qq.com"
+        ],
+        "WsRequestDomain": [
+          "wss://www.qq.com",
+          "wss://www.qq.com"
+        ],
+        "UploadDomain": [
+          "https://www.qq.com",
+          "https://www.qq.com"
+        ],
+        "DownloadDomain": [
+          "https://www.qq.com",
+          "https://www.qq.com"
+        ]
+      },
+      "categories": [
+        {
+          "first": "资讯",
+          "second": "文娱"
+        },
+        {
+          "first": "工具",
+          "second": "天气"
+        }
+      ],
+      "visit_status": 0
+    }
+  },
+  "authorization_info": {
+    "authorization_appid": "wxf8b4f85f3a794e77",
+    "func_info": [
+      {
+        "funcscope_category": {
+          "id": 17
+        }
+      },
+      {
+        "funcscope_category": {
+          "id": 18
+        }
+      },
+      {
+        "funcscope_category": {
+          "id": 19
+        }
+      }
+    ]
+  }
+}
