@@ -2,6 +2,7 @@ package com.sun.xiaotian.demo.test;
 
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -16,6 +17,9 @@ public class TestNull {
 
     public static void testNullList() {
         List<String> nullList = null;
+
+        Date date = new Date(0);
+        System.out.println(date);
 
         //NullPointerException
         try {
