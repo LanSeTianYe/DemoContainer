@@ -3,6 +3,7 @@ package com.sun.xiaotian.demo.test.guava;
 import com.google.common.base.Splitter;
 import com.google.common.collect.*;
 import com.google.common.primitives.ImmutableLongArray;
+import com.google.common.primitives.Ints;
 import org.apache.commons.collections4.multiset.HashMultiSet;
 
 import java.util.*;
@@ -16,6 +17,7 @@ public class CollectionDemo {
         testMaps();
         testImmutableCollections();
         testNewCollectionType();
+        testCollectionUtils();
     }
 
     private static void testLists() {
@@ -125,6 +127,29 @@ public class CollectionDemo {
         treeRangeSet.add(Range.closed(3, 7));
         treeRangeSet.add(Range.closedOpen(8, 9));
         System.out.println(treeRangeSet);
+    }
+
+    private static void testCollectionUtils() {
+        ArrayList<Integer> tempList = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            tempList.add(i);
+        }
+
+        Iterator<Integer> iterator = tempList.iterator();
+        System.out.println("Iterators.limit: " + Iterators.limit(iterator, 10));
+        System.out.println("Iterators.partition: " + Iterators.partition(iterator, 10));
+        System.out.println("Iterators.getLast: " + Iterators.getLast(iterator));
+        System.out.println("Iterators.getNext: " + Iterators.getNext(iterator, 0));
+
+        System.out.println(Lists.partition(tempList, 10));
+        System.out.println(Lists.reverse(tempList));
+        System.out.println(Lists.newArrayList(1,2,3,5));
+
+        Set<String> wordsWithPrimeLength = ImmutableSet.of("one", "two", "three", "six", "seven", "eight");
+        Set<String> primes = ImmutableSet.of("two", "three", "five", "seven");
+
+        Sets.SetView<String> intersection = Sets.intersection(primes, wordsWithPrimeLength);
+        System.out.println(intersection.immutableCopy());
     }
 
     static class T {}
