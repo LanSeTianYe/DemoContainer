@@ -14,7 +14,7 @@ public class LongEventMain {
         System.out.println("sequence:" + sequence + " " + event);
     }
 
-    private static void clearEventHandler(LongEvent event, long sequence, boolean endOfBatch) {
+    private static void clearEventHandler(LongEvent event, long sequence, boolean endOfBatch) throws InterruptedException {
         event.setValue(0);
         System.out.println("clear: " + event);
     }
@@ -37,7 +37,7 @@ public class LongEventMain {
         for (long l = 0; l < 10000; l++) {
             tempByteBuffer.putLong(0, l);
             ringBuffer.publishEvent(LongEventMain::translateOne, tempByteBuffer);
-            TimeUnit.SECONDS.sleep(1);
+            TimeUnit.MILLISECONDS.sleep(100);
         }
     }
 }
