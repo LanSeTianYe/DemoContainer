@@ -8,8 +8,14 @@
   <artifactId>redis</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <dependencies>
+  <repositories>
+    <repository>
+      <id>maven2</id>
+      <url>http://central.maven.org/maven2/</url>
+    </repository>
+  </repositories>
 
+  <dependencies>
     <dependency>
       <groupId>redis.clients</groupId>
       <artifactId>jedis</artifactId>
@@ -17,11 +23,16 @@
     </dependency>
 
     <dependency>
+      <groupId>org.redisson</groupId>
+      <artifactId>redisson</artifactId>
+      <version>3.6.5</version>
+    </dependency>
+
+    <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
       <version>24.0-jre</version>
     </dependency>
-
   </dependencies>
 
 </project>
