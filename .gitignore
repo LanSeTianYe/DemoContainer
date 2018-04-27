@@ -5,3 +5,6 @@
 
 # compile file
 target/
+
+
+logs/
