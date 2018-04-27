@@ -4,14 +4,12 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.text.DecimalFormat;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class TestMultiThreadArrayInsert {
+public class TestMultiThreadMapInsert {
     /**
      * 每次插入的数量
      */
@@ -23,8 +21,8 @@ public class TestMultiThreadArrayInsert {
     private static final int threadCount = 8;
 
 
-    private List<Integer> tempArr_sync_LinkedList = Collections.synchronizedList(new LinkedList<>());
-    private List<Integer> tempArr_NoSync_LinkedList = new LinkedList<>();
+    private Map<Integer, Integer> hashTable = new Hashtable<>();
+    private Map<Integer,Integer> hashMap = new HashMap<>();
 
     @Test
     public void add_synchronized() throws InterruptedException {
@@ -36,12 +34,12 @@ public class TestMultiThreadArrayInsert {
             //多线程
             long startTime1 = System.nanoTime();
             for (int i = 0; i < threadCount; i++) {
-                List<Integer> tempList = new LinkedList<>();
+                HashMap<Integer, Integer> tempHashMap = new HashMap<>();
                 executorService.submit(() -> {
                     for (int j = 0; j < count; j++) {
-                        tempList.add(j);
+                        tempHashMap.put(j, j);
                     }
-                    tempArr_sync_LinkedList.addAll(tempList);
+                    hashTable.putAll(tempHashMap);
                     countDownLatch.countDown();
                 });
             }
@@ -51,19 +49,19 @@ public class TestMultiThreadArrayInsert {
             //单线程
             long startTime2 = System.nanoTime();
             for (int i = 0; i < totalCount; i++) {
-                tempArr_NoSync_LinkedList.add(i);
+                hashMap.put(i, i);
             }
             long costTime2 = System.nanoTime() - startTime2;
 
 
-            Assert.assertEquals(tempArr_sync_LinkedList.size(), totalCount);
-            Assert.assertEquals(tempArr_NoSync_LinkedList.size(), totalCount);
+            Assert.assertEquals(hashTable.size(), count);
+            Assert.assertEquals(hashMap.size(), totalCount);
             System.out.println("totalCount: " + totalCount + " add_synchronized: " + costTime1 + " addNoSynchronized: " + costTime2 + " c1/c2: " + new DecimalFormat("0.00").format(costTime1 * 1.0 / costTime2));
 
             count = count + 100;
             totalCount = count * threadCount;
-            tempArr_NoSync_LinkedList.clear();
-            tempArr_sync_LinkedList.clear();
+            hashTable.clear();
+            hashMap.clear();
         }
     }
 }
