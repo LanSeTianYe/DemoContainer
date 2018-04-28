@@ -3,6 +3,10 @@ package com.sun.xiaotian.demo.storm;
 
 import org.apache.storm.Config;
 import org.apache.storm.LocalCluster;
+import org.apache.storm.StormSubmitter;
+import org.apache.storm.generated.AlreadyAliveException;
+import org.apache.storm.generated.AuthorizationException;
+import org.apache.storm.generated.InvalidTopologyException;
 import org.apache.storm.generated.StormTopology;
 import org.apache.storm.topology.TopologyBuilder;
 
@@ -10,21 +14,16 @@ import java.util.concurrent.TimeUnit;
 
 public class RunDemo {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, InvalidTopologyException, AuthorizationException, AlreadyAliveException {
         String topologyName = "test";
-
-        LocalCluster localCluster = new LocalCluster();
-        localCluster.submitTopology(topologyName, getConfig(), getStormTopology());
-        TimeUnit.SECONDS.sleep(100);
-        localCluster.killTopology(topologyName);
-        localCluster.shutdown();
+        StormSubmitter.submitTopology(topologyName, getConfig(), getStormTopology());
     }
 
 
     private static Config getConfig() {
         Config config = new Config();
-        config.setDebug(true);
         config.setNumWorkers(2);
+        config.setMaxSpoutPending(5000);
         return config;
     }
 
