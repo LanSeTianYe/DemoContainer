@@ -5,6 +5,7 @@ import org.apache.storm.Config;
 import org.apache.storm.LocalCluster;
 import org.apache.storm.generated.StormTopology;
 import org.apache.storm.topology.TopologyBuilder;
+import org.apache.storm.tuple.Fields;
 
 import java.util.concurrent.TimeUnit;
 
@@ -35,7 +36,7 @@ public class RunWornCount {
         builder.setBolt("split", new SplitWordBolt(), 3)
                 .shuffleGrouping("sentence");
         builder.setBolt("wordcount", new WordCountBolt(), 2)
-                .shuffleGrouping("split");
+                .shuffleGrouping("split", "SplitCountBolt");
         return builder.createTopology();
     }
 }
