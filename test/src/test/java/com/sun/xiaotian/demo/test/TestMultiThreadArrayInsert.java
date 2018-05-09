@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class TestMultiThreadArrayInsert {
     /**
@@ -22,6 +23,7 @@ public class TestMultiThreadArrayInsert {
      */
     private static final int threadCount = 8;
 
+    private ExecutorService executorService = Executors.newFixedThreadPool(threadCount);
 
     private List<Integer> tempArr_sync_LinkedList = Collections.synchronizedList(new LinkedList<>());
     private List<Integer> tempArr_NoSync_LinkedList = new LinkedList<>();
@@ -29,8 +31,8 @@ public class TestMultiThreadArrayInsert {
     @Test
     public void add_synchronized() throws InterruptedException {
         int totalCount = count * threadCount;
+
         while (totalCount < 270400) {
-            ExecutorService executorService = Executors.newFixedThreadPool(8);
             CountDownLatch countDownLatch = new CountDownLatch(threadCount);
 
             //多线程
@@ -42,6 +44,7 @@ public class TestMultiThreadArrayInsert {
                         tempList.add(j);
                     }
                     tempArr_sync_LinkedList.addAll(tempList);
+                    networkConnect();
                     countDownLatch.countDown();
                 });
             }
@@ -52,6 +55,7 @@ public class TestMultiThreadArrayInsert {
             long startTime2 = System.nanoTime();
             for (int i = 0; i < totalCount; i++) {
                 tempArr_NoSync_LinkedList.add(i);
+                networkConnect();
             }
             long costTime2 = System.nanoTime() - startTime2;
 
@@ -64,6 +68,14 @@ public class TestMultiThreadArrayInsert {
             totalCount = count * threadCount;
             tempArr_NoSync_LinkedList.clear();
             tempArr_sync_LinkedList.clear();
+        }
+    }
+
+    private void networkConnect() {
+        try {
+            TimeUnit.MILLISECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 }
