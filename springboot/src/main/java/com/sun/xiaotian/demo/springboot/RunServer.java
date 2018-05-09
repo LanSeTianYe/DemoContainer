@@ -6,11 +6,13 @@ import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
+@ServletComponentScan
 public class RunServer {
 
     public static void main(String[] args) {
@@ -30,7 +32,6 @@ public class RunServer {
         springApplication.setWebApplicationType(WebApplicationType.SERVLET);
 
         springApplication.run(args);
-//        System.exit(SpringApplication.exit(springApplication.run(args)));
     }
 
     @Bean
