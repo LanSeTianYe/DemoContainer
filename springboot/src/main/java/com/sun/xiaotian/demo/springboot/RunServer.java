@@ -10,9 +10,11 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 @SpringBootApplication
 @ServletComponentScan
+@EnableAsync
 public class RunServer {
 
     public static void main(String[] args) {
