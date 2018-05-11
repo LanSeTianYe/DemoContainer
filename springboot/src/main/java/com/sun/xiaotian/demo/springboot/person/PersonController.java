@@ -20,21 +20,26 @@ public class PersonController {
         this.personService = personService;
     }
 
-    @RequestMapping("/")
+    @RequestMapping("")
     public String getName() {
         return "index.html";
     }
 
-    @RequestMapping("/persons")
+    @RequestMapping("persons")
     public List<Person> getPersons() {
         return personService.getAll();
     }
 
-    @DeleteMapping("/{name}")
+    @DeleteMapping("{name}")
     public HttpResult delete(@PathVariable("name") String name) {
         if (name.equals("123")) {
             throw new IllegalArgumentException("name 不能为空!");
         }
         return new HttpResult(true, personService.deleteByName(name));
+    }
+
+    @RequestMapping("testMethodArgument")
+    public HttpResult testMethodArgument(Person person) {
+        return new HttpResult(true, person);
     }
 }

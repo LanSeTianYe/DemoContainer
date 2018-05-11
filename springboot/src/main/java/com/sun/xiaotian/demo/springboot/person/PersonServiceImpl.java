@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PersonServiceImpl implements PersonService {
@@ -42,5 +43,10 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public List<Person> addAll(List<Person> personList) {
         return personRepository.saveAll(personList);
+    }
+
+    @Override
+    public Optional<Person> findByPersonId(Long personId) {
+        return personRepository.findById(personId);
     }
 }

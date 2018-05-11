@@ -7,6 +7,8 @@ import java.io.Serializable;
 @Table(name = "person")
 public class Person implements Serializable {
 
+    public final static Person NULL = new Person();
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
