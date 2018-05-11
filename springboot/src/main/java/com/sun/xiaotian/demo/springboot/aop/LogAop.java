@@ -26,17 +26,16 @@ public class LogAop {
     @Before("logPointcut()")
     public void doBefore(JoinPoint joinPoint) {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-        try {
-            logger.info("【" + Thread.currentThread().getId() + "-接收新请求】" + request.getRequestURL().toString() + "【方法】"
-                    + joinPoint.getTarget().getClass().getName() + "." + joinPoint.getSignature().getName() + "()【参数】"
-                    + JSON.toJSONString(joinPoint.getArgs()));
-        } catch (Exception e) {
-            logger.error("【" + Thread.currentThread().getId() + "-异常信息】{}", e.getMessage());
-        }
+        logger.info(String.format("[[Thread-ID: %s]], (Request Type:Request URL) -> [%s : %s] , (Invoke Method) -> [%s.%s], Params -> [%s]",
+                Thread.currentThread().getId(),
+                request.getMethod().toUpperCase(), request.getRequestURL().toString(),
+                joinPoint.getTarget().getClass().getName(), joinPoint.getSignature().getName(),
+                JSON.toJSONString(joinPoint.getArgs())
+        ));
     }
 
     @AfterReturning(pointcut = "logPointcut()", returning = "result")
     public void doAfterReturning(Object result) {
-        logger.info("【" + Thread.currentThread().getId() + "-返回结果】{}", JSON.toJSONString(result));
+        logger.info(String.format("[Thread Id : %s, result: %s]", Thread.currentThread().getId(), JSON.toJSONString(result)));
     }
 }
