@@ -1,5 +1,6 @@
 package com.sun.xiaotian.demo.springboot.person;
 
+import com.sun.xiaotian.demo.springboot.common.HttpResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,10 +31,10 @@ public class PersonController {
     }
 
     @DeleteMapping("/{name}")
-    public List<Person> delete(@PathVariable("name") String name) {
-        if (name == null) {
+    public HttpResult delete(@PathVariable("name") String name) {
+        if (name.equals("123")) {
             throw new IllegalArgumentException("name 不能为空!");
         }
-        return personService.deleteByName(name);
+        return new HttpResult(true, personService.deleteByName(name));
     }
 }
