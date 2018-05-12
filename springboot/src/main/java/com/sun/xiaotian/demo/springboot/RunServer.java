@@ -1,5 +1,7 @@
 package com.sun.xiaotian.demo.springboot;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.boot.ExitCodeGenerator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
@@ -17,6 +19,8 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @EnableAsync
 public class RunServer {
 
+    private final static Logger logger = LogManager.getLogger(RunServer.class);
+
     public static void main(String[] args) {
 
         SpringApplication springApplication = new SpringApplicationBuilder()
@@ -24,9 +28,9 @@ public class RunServer {
                 .listeners(new ApplicationListener<ApplicationEvent>() {
                     @Override
                     public void onApplicationEvent(ApplicationEvent event) {
-                        System.out.println("触发事件: " + event);
+                        logger.debug(event.toString());
                         if (event instanceof ApplicationReadyEvent) {
-                            System.out.println("项目启动成功!");
+                            logger.info("项目启动成功");
                         }
                     }
                 })

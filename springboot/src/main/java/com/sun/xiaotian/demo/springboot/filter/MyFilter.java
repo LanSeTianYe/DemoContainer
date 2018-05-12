@@ -1,5 +1,8 @@
 package com.sun.xiaotian.demo.springboot.filter;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import java.io.IOException;
@@ -7,19 +10,22 @@ import java.io.IOException;
 
 @WebFilter
 public class MyFilter implements Filter {
+
+    private final static Logger logger = LogManager.getLogger(MyFilter.class);
+
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        System.out.println("init");
+        logger.info("Filter init");
     }
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        System.out.println("do filter");
+        logger.info("Filter do filter: " + servletRequest.getRemoteAddr());
         filterChain.doFilter(servletRequest, servletResponse);
     }
 
     @Override
     public void destroy() {
-        System.out.println("destroy");
+        logger.info("Filter destroy...");
     }
 }
