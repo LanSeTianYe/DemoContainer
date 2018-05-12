@@ -2,11 +2,11 @@ package com.sun.xiaotian.demo.springboot.aop;
 
 import com.alibaba.fastjson.JSON;
 import com.sun.xiaotian.demo.springboot.common.HttpResult;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -17,10 +17,11 @@ import javax.servlet.http.HttpServletRequest;
 @Component
 public class RequestLogAspect {
 
-    private static Logger logger = LoggerFactory.getLogger(RequestLogAspect.class);
+    private static final Logger logger = LogManager.getLogger(RequestLogAspect.class);
 
     @Pointcut("@annotation(org.springframework.web.bind.annotation.RequestMapping) || @annotation(org.springframework.web.bind.annotation.DeleteMapping)")
-    private void logPointcut() {}
+    private void logPointcut() {
+    }
 
     @Before("logPointcut()")
     public void before(JoinPoint joinPoint) {
