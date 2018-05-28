@@ -31,13 +31,13 @@ public class TextDataReader implements TopicDataReader {
             consumer.seekToEnd(consumer.assignment());
 
             while (true) {
-                ConsumerRecords<K, V> records = consumer.poll(10);
+                ConsumerRecords<K, V> records = consumer.poll(0);
                 for (ConsumerRecord<K, V> record : records) {
                     recordConsumer.accept(record);
                 }
 
                 try {
-                    TimeUnit.SECONDS.sleep(3);
+                    TimeUnit.MILLISECONDS.sleep(100);
                 } catch (InterruptedException e) {
                     logger.error(e.getMessage(), e);
                 }

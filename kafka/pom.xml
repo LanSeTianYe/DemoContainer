@@ -2,59 +2,59 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.sun.xiaotian.demo</groupId>
-    <artifactId>kafka</artifactId>
-    <version>1.0-SNAPSHOT</version>
+  <groupId>com.sun.xiaotian.demo</groupId>
+  <artifactId>kafka</artifactId>
+  <version>1.0-SNAPSHOT</version>
 
-    <!-- jar包仓库-->
-    <repositories>
+  <!-- jar包仓库-->
+  <repositories>
+    <repository>
+      <id>mvnrepository</id>
+      <url>http://repo1.maven.org/maven2/</url>
+    </repository>
 
-        <repository>
-            <id>mvnrepository</id>
-            <url>http://repo1.maven.org/maven2/</url>
-        </repository>
+    <repository>
+      <id>spring-snapshots</id>
+      <url>http://repo.spring.io/snapshot</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
 
-        <repository>
-            <id>spring-snapshots</id>
-            <url>http://repo.spring.io/snapshot</url>
-            <snapshots><enabled>true</enabled></snapshots>
-        </repository>
+    <repository>
+      <id>spring-milestones</id>
+      <url>http://repo.spring.io/milestone</url>
+    </repository>
+  </repositories>
 
-        <repository>
-            <id>spring-milestones</id>
-            <url>http://repo.spring.io/milestone</url>
-        </repository>
+  <dependencies>
 
-    </repositories>
+    <dependency>
+      <groupId>org.apache.kafka</groupId>
+      <artifactId>kafka-streams</artifactId>
+      <version>1.1.0</version>
+    </dependency>
 
+    <dependency>
+      <groupId>org.apache.kafka</groupId>
+      <artifactId>kafka-clients</artifactId>
+      <version>1.1.0</version>
+    </dependency>
 
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+      <version>1.7.7</version>
+    </dependency>
 
-    <dependencies>
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.16</version>
+    </dependency>
 
-        <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka-clients</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka-streams</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.7</version>
-        </dependency>
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.16</version>
-        </dependency>
-    </dependencies>
+  </dependencies>
 
 </project>

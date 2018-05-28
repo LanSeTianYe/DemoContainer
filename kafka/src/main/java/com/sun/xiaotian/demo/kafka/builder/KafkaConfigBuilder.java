@@ -11,7 +11,7 @@ public abstract class KafkaConfigBuilder {
     /**
      * 指定kafka集群中的任意一台机器，可以自动发现集群中的其他机器
      */
-    public static final String kafkaServer = "127.0.0.1:9093";
+    public static final String kafkaServer = "192.168.0.201:9092,192.168.0.202:9092,192.168.0.203:9092";
 
 
     public static Properties getProducerConfig() {

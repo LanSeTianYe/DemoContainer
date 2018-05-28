@@ -28,9 +28,9 @@ public class TextDataWriter implements TopicDataWriter {
             long currTime = System.currentTimeMillis();
 
             while (currTime - startTime < millSeconds) {
-                producer.send(new ProducerRecord<>(topic, String.valueOf(times), text));
                 try {
-                    TimeUnit.SECONDS.sleep(1);
+                    producer.send(new ProducerRecord<>(topic, String.valueOf(times), text));
+                    TimeUnit.MILLISECONDS.sleep(10);
                 } catch (InterruptedException e) {
                     logger.error(e.getMessage(), e);
                 }
