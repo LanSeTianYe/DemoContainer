@@ -1,23 +1,25 @@
 package com.sun.xiaotian.demo.springboot.person;
 
 import com.sun.xiaotian.demo.springboot.common.HttpResult;
+import com.sun.xiaotian.demo.springboot.hystrix.GetAllUserHystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("person/")
+@Scope("request")
 public class PersonController {
 
     private final PersonService personService;
+    private final GetAllUserHystrixCommand getAllUserHystrixCommand;
 
-    @Autowired
-    public PersonController(PersonService personService) {
+    public PersonController(PersonService personService, GetAllUserHystrixCommand getAllUserHystrixCommand) {
         this.personService = personService;
+        this.getAllUserHystrixCommand = getAllUserHystrixCommand;
     }
 
     @RequestMapping("")
@@ -26,8 +28,8 @@ public class PersonController {
     }
 
     @RequestMapping("persons")
-    public List<Person> getPersons() {
-        return personService.getAll();
+    public HttpResult getPersons() {
+        return new HttpResult(true, getAllUserHystrixCommand.execute());
     }
 
     @DeleteMapping("{name}")

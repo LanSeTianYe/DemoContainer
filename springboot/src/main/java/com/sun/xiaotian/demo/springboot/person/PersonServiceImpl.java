@@ -1,5 +1,6 @@
 package com.sun.xiaotian.demo.springboot.person;
 
+import com.sun.xiaotian.demo.springboot.hystrix.GetAllUserHystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,7 @@ public class PersonServiceImpl implements PersonService {
 
     private final PersonRepository personRepository;
 
-    @Autowired
+
     public PersonServiceImpl(PersonRepository personRepository) {
         this.personRepository = personRepository;
     }
