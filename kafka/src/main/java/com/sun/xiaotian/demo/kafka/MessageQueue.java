@@ -2,14 +2,19 @@ package com.sun.xiaotian.demo.kafka;
 
 
 import com.sun.xiaotian.demo.kafka.builder.KafkaConfigBuilder;
+import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
+import org.apache.kafka.common.PartitionInfo;
+import org.apache.kafka.common.TopicPartition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
@@ -23,7 +28,7 @@ public class MessageQueue {
 
     private final static Logger logger = LoggerFactory.getLogger(MessageQueue.class);
 
-    private AtomicLong atomicLong = new AtomicLong(1l);
+    private AtomicLong atomicLong = new AtomicLong(System.currentTimeMillis() / 1000);
 
     protected final String TOPIC_1 = "topic_2";
 
@@ -80,14 +85,14 @@ public class MessageQueue {
 
 
     protected void createConsumer() {
-        //kafka 可以保证当消费者组中的消费者数小于分区数的时候，一个分区的数据只会被对应的一个消费者消费
-        //kafka 怎么保证消费者重启之后，从上次消费的位置开始读取数据 ？ 把消费者的消费偏移蹲在Broker中。
-
         new Thread(() -> {
-            KafkaConsumer kafkaConsumer = new KafkaConsumer(KafkaConfigBuilder.getGroup1Consumer());
+            Properties consumer = KafkaConfigBuilder.getGroup1Consumer();
+            consumer.put(ConsumerConfig.CLIENT_ID_CONFIG, "client_0001");
+            KafkaConsumer kafkaConsumer = new KafkaConsumer(consumer);
             kafkaConsumer.subscribe(Pattern.compile(TOPIC_1));
             while (true) {
                 ConsumerRecords<String, String> poll = kafkaConsumer.poll(1);
+
                 poll.forEach((r) -> {
                     System.out.println("consumer1_" + "partition_" + r.partition() + "value_" + r.value());
                 });
@@ -100,7 +105,9 @@ public class MessageQueue {
         }).start();
 
         new Thread(() -> {
-            KafkaConsumer kafkaConsumer = new KafkaConsumer(KafkaConfigBuilder.getGroup1Consumer());
+            Properties consumer = KafkaConfigBuilder.getGroup1Consumer();
+            consumer.put(ConsumerConfig.CLIENT_ID_CONFIG, "client_0002");
+            KafkaConsumer kafkaConsumer = new KafkaConsumer(consumer);
             kafkaConsumer.subscribe(Pattern.compile(TOPIC_1));
             while (true) {
                 ConsumerRecords<String, String> poll = kafkaConsumer.poll(1);
@@ -114,9 +121,28 @@ public class MessageQueue {
                 }
             }
         }).start();
+
+        new Thread(() -> {
+            Properties consumer = KafkaConfigBuilder.getGroup1Consumer();
+            consumer.put(ConsumerConfig.CLIENT_ID_CONFIG, "client_0003");
+            KafkaConsumer kafkaConsumer = new KafkaConsumer(consumer);
+            kafkaConsumer.subscribe(Pattern.compile(TOPIC_1));
+            while (true) {
+                ConsumerRecords<String, String> poll = kafkaConsumer.poll(1);
+                poll.forEach((r) -> {
+                    System.out.println("consumer3_" + "partition_" + r.partition() + "value_" + r.value());
+                });
+                try {
+                    TimeUnit.SECONDS.sleep(5);
+                } catch (InterruptedException e) {
+                    logger.info(e.getMessage(), e);
+                }
+            }
+        }).start();
     }
 
-    public String getNumber(String who) {
-        return who + "_" + atomicLong.getAndIncrement();
+    private String getNumber(String who) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss sss");
+        return who + "_" + simpleDateFormat.format(new Date(atomicLong.getAndIncrement() * 1000));
     }
 }
