@@ -38,7 +38,7 @@ public class MessageQueue {
     public static void main(String[] args) {
         MessageQueue messageQueue = new MessageQueue();
         messageQueue.createProducer();
-        messageQueue.createConsumer();
+//        messageQueue.createConsumer();
     }
 
     protected void createProducer() {
@@ -49,11 +49,11 @@ public class MessageQueue {
                 String number = getNumber("p1");
                 Future<RecordMetadata> p1 = kafkaProducer.send(new ProducerRecord<>(TOPIC_1, partition_0, number, number));
                 try {
-                    p1.get();
-                    TimeUnit.SECONDS.sleep(5);
+//                    p1.get();
+                    TimeUnit.MILLISECONDS.sleep(50000);
                 } catch (InterruptedException e) {
                     logger.error(e.getMessage(), e);
-                } catch (ExecutionException e) {
+                } catch (Exception e) {
                     logger.error(e.getMessage(), e);
                 }
             }
@@ -67,10 +67,10 @@ public class MessageQueue {
                 Future<RecordMetadata> p2 = kafkaProducer.send(new ProducerRecord<>(TOPIC_1, partition_1, number, number));
                 try {
                     p2.get();
-                    TimeUnit.SECONDS.sleep(3);
+                    TimeUnit.MILLISECONDS.sleep(100);
                 } catch (InterruptedException e) {
                     logger.error(e.getMessage(), e);
-                } catch (ExecutionException e) {
+                } catch (Exception e) {
                     logger.error(e.getMessage(), e);
                 }
             }
@@ -143,6 +143,7 @@ public class MessageQueue {
 
     private String getNumber(String who) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss sss");
-        return who + "_" + simpleDateFormat.format(new Date(atomicLong.getAndIncrement() * 1000));
+        String format = simpleDateFormat.format(new Date(atomicLong.getAndIncrement() * 1000));
+        return who + "_" + format + format + format + format + format + format + format + format + format + format;
     }
 }

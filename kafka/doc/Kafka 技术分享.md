@@ -1,20 +1,28 @@
 时间：2018/5/24 10:30:52   
 
-参考：  
-
+参考：
+  
+1. [A Brief History of Kafka, LinkedIn’s Messaging Platform](https://insidebigdata.com/2016/04/28/a-brief-history-of-kafka-linkedins-messaging-platform/)
 1. [kafka官网](https://kafka.apache.org/)
 2. [kafka github 地址](https://github.com/apache/kafka)
 3. [kafka-manager](https://github.com/yahoo/kafka-manager)
 4. [Kafka深度解析](http://www.jasongj.com/2015/01/02/Kafka%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90/)
 5. [Apache BookKeeper](http://bookkeeper.apache.org/)
+6. [Kafka文件存储机制那些事](https://tech.meituan.com/kafka-fs-design-theory.html)
+7. [为什么Kafka那么快](https://mp.weixin.qq.com/s?__biz=MzIxMjAzMDA1MQ==&mid=2648945468&idx=1&sn=b622788361b384e152080b60e5ea69a7#rd)
+8. [消息队列及常见消息队列介绍](https://cloud.tencent.com/developer/article/1006035)
 
 ## 基础知识
+
+### Kafka的诞生
+
+2010年的时候，LinkedIn的工程团队需要重新设计LinkedIn的基础架构，为了适应不断增长的站点复杂度，把单一的应用架构迁移到面向微服务的架构。他们给不同流和队列数据开发了几种不同的自定义的数据管道。
 
 ### 简介 
 
 当前版本: 1.1.0。
 
-kafka是Linkedln开放的分布式消息系统，是Apache的一个子项目。从0.10版本开始，Kafka的标语已经从“一个高吞吐量、分布式的消息系统”改为“一个分布式的流平台”。
+kafka是Linkedln在2011年开放的分布式消息系统，是Apache的一个子项目。从0.10版本开始，Kafka的标语已经从“一个高吞吐量、分布式的消息系统”改为“一个分布式的流平台”。
 
 可以用来做：
 
@@ -121,7 +129,7 @@ Kafka可以作为分布式系统的一种外部提交日志。日志有助于在
 1. 下载地址 : [https://github.com/yahoo/kafka-manager](https://github.com/yahoo/kafka-manager)
 2. 用官方的方法安装会比较慢，安装好的压缩包 [下载地址](https://blog.wolfogre.com/posts/kafka-manager-download/)。
 3. 下载完成之后解压，先修改配置文件的zookeeper地址，然后进入 `bin` 目录，执行 `./kafka-manager`。
-4. 浏览器打开web页面，点击创建集群。（zookeeper地址要和kafka配置文件里面的路径一样）。 
+4. 浏览器打开web页面，点击创建集群。 
 
 ### zookeeper 可视化管理工具 
 
@@ -133,3 +141,13 @@ Kafka可以作为分布式系统的一种外部提交日志。日志有助于在
 * 查看kafka日志文件 
 
 		/home/software/kafka/kafka_2.11-1.1.0/bin/kafka-run-class.sh kafka.tools.DumpLogSegments --files /tmp/kafka-logs/topic-2p-2r-1/00000000000000000000.log  --print-data-log
+
+#### 遇到的问题
+
+* 文件打开数量过多(未解决)
+
+		# 查看文件最大打开数量
+		ulimit -a | grep "open files"
+		# 设置文件最大打开数量
+		ulimit -n 4096
+
