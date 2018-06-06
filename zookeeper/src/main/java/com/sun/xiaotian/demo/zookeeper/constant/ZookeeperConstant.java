@@ -1,7 +1,5 @@
 package com.sun.xiaotian.demo.zookeeper.constant;
 
-import java.nio.charset.Charset;
-
 /**
  * zookeeper 服务器连接信息
  */
