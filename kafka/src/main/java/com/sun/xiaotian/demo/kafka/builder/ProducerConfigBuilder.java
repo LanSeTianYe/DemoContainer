@@ -116,8 +116,8 @@ public class ProducerConfigBuilder {
      * 客户端连接最大空闲时间，超过将被关闭，默认值 540000，单位毫秒
      * @return
      */
-    public ProducerConfigBuilder withConnectionsMaxIdleTime(long ) {
-        this.properties.put("", "");
+    public ProducerConfigBuilder withConnectionsMaxIdleTime(long maxIdleTime) {
+        this.properties.put(ProducerConfig.CONNECTIONS_MAX_IDLE_MS_CONFIG, maxIdleTime);
         return this;
     }
 

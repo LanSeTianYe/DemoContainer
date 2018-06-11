@@ -1,0 +1,18 @@
+server:
+  port: 8888
+  address: 127.0.0.1
+
+spring:
+  boot:
+    admin:
+      client:
+        url: "http://localhost:8080"
+        instance:
+          name: "SpringAdminClient"
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
