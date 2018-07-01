@@ -6,7 +6,7 @@ spring:
   boot:
     admin:
       client:
-        url: "http://localhost:8080"
+        url: "http://www.sunfeilong.cn:8888"
         instance:
           name: "SpringAdminClient"
 

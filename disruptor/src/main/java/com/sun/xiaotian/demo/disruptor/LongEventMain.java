@@ -5,39 +5,43 @@ import com.lmax.disruptor.RingBuffer;
 import com.lmax.disruptor.dsl.Disruptor;
 import com.lmax.disruptor.dsl.ProducerType;
 
-import java.nio.ByteBuffer;
 import java.util.concurrent.TimeUnit;
 
 public class LongEventMain {
 
-    private static void handleEvent(LongEvent event, long sequence, boolean endOfBatch) {
-        System.out.println("sequence:" + sequence + " " + event);
-    }
+    private static final int bufferSize = 1 << 3;
 
-    private static void clearEventHandler(LongEvent event, long sequence, boolean endOfBatch) throws InterruptedException {
-        event.setValue(0);
-        System.out.println("clear: " + event);
-    }
+    private static final Disruptor<LongEvent> disruptor = new Disruptor<>(new LongEventFactory(), bufferSize, new LongEventThreadFactory(), ProducerType.MULTI, new BlockingWaitStrategy());
 
-    private static void translateOne(LongEvent event, long sequence, ByteBuffer buffer) {
-        event.setValue(buffer.getLong(0));
+    private static RingBuffer<LongEvent> ringBuffer;
+
+    private static final int producerCount = 8;
+
+    static {
+        disruptor.handleEventsWith(new LongEventHandler(), new LongEventHandler(), new LongEventHandler()).then(new LongEventCleanHandler());
+        disruptor.start();
+        ringBuffer = disruptor.getRingBuffer();
     }
 
     public static void main(String[] args) throws InterruptedException {
-        int bufferSize = 1024;
-        LongEventFactory logEventFactory = new LongEventFactory();
-        LongEventThreadFactory longEventThreadFactory = new LongEventThreadFactory();
+        initProducer();
+        TimeUnit.SECONDS.sleep(15);
+        System.exit(1);
+    }
 
-        Disruptor<LongEvent> disruptor = new Disruptor<>(logEventFactory, bufferSize, longEventThreadFactory, ProducerType.MULTI, new BlockingWaitStrategy());
-        disruptor.handleEventsWith(LongEventMain::handleEvent).then(LongEventMain::clearEventHandler);
-        disruptor.start();
-
-        RingBuffer<LongEvent> ringBuffer = disruptor.getRingBuffer();
-        ByteBuffer tempByteBuffer = ByteBuffer.allocate(8);
-        for (long l = 0; l < 10000; l++) {
-            tempByteBuffer.putLong(0, l);
-            ringBuffer.publishEvent(LongEventMain::translateOne, tempByteBuffer);
-            TimeUnit.MILLISECONDS.sleep(100);
+    private static void initProducer() {
+        for (int i = 0; i < producerCount; i++) {
+            new Thread(() -> {
+                for (long l = 0; l < 10000; l++) {
+                    long next = ringBuffer.next();
+                    try {
+                        LongEvent longEvent = ringBuffer.get(next);
+                        longEvent.setValue(l);
+                    } finally {
+                        ringBuffer.publish(next);
+                    }
+                }
+            }).start();
         }
     }
 }
