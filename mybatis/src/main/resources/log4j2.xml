@@ -4,7 +4,7 @@
 <!--monitorInterval：Log4j能够自动检测修改配置 文件和重新配置本身，设置间隔秒数-->
 <configuration status="WARN" monitorInterval="60">
     <Properties>
-        <Property name="log.dir" value="springboot/logs" />
+        <Property name="log.dir" value="mybatis/logs" />
         <Property name="max" value="20" />
         <Property name="age" value="30d" />
         <Property name="SizeBasedTriggeringPolicySize" value="1024MB" />
