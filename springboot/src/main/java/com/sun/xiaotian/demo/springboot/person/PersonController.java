@@ -1,18 +1,17 @@
 package com.sun.xiaotian.demo.springboot.person;
 
 import com.alibaba.fastjson.JSON;
-
 import com.sun.xiaotian.demo.springboot.common.HttpResult;
 import com.sun.xiaotian.demo.springboot.hystrix.GetAllUserHystrixCommand;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.context.annotation.Scope;
-import org.springframework.http.HttpRequest;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @RestController
@@ -47,5 +46,11 @@ public class PersonController {
     @RequestMapping("testMethodArgument")
     public HttpResult testMethodArgument(Person person) {
         return new HttpResult(true, person);
+    }
+
+    @RequestMapping("testHttpRequest")
+    public HttpResult testHttpRequest(HttpServletRequest request){
+        logger.info(JSON.toJSONString(request.getSession()));
+        return new HttpResult(true, JSON.toJSONString(request.getSession()));
     }
 }
