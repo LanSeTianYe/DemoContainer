@@ -15,7 +15,6 @@ import java.util.ArrayList;
 @Order(1)
 @Component
 public class TestCommandLineRunner implements CommandLineRunner {
-
     private final static Logger logger = LogManager.getLogger(TestCommandLineRunner.class);
 
     private final TestAsyncMethod testAsyncMethod;
@@ -28,10 +27,9 @@ public class TestCommandLineRunner implements CommandLineRunner {
         this.personService = personService;
     }
 
-
     @Override
     public void run(String... args) throws Exception {
-        logger.info("TestCommandLineRunner start");
+        logger.info("TestCommandLineRunner start ...");
         testAsyncMethod.run();
         ArrayList<Person> personList = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
@@ -40,6 +38,6 @@ public class TestCommandLineRunner implements CommandLineRunner {
             personList.add(person);
         }
         personService.addAll(personList);
-        logger.info("TestCommandLineRunner end");
+        logger.info("TestCommandLineRunner end ...");
     }
 }

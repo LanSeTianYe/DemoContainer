@@ -19,7 +19,7 @@ public class RequestLogAspect {
 
     private static final Logger logger = LogManager.getLogger(RequestLogAspect.class);
 
-    @Pointcut("@annotation(org.springframework.web.bind.annotation.RequestMapping) || @annotation(org.springframework.web.bind.annotation.DeleteMapping)")
+    @Pointcut("execution(public com.sun.xiaotian.demo.springboot.common.HttpResult com.sun.xiaotian.demo.springboot.*.*.*(..)) && @annotation(org.springframework.web.bind.annotation.RequestMapping)")
     private void logPointcut() {
     }
 

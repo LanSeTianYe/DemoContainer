@@ -1,6 +1,5 @@
 package com.sun.xiaotian.demo.springboot.hystrix;
 
-
 import com.netflix.hystrix.HystrixCommand;
 import com.netflix.hystrix.HystrixCommandGroupKey;
 import com.sun.xiaotian.demo.springboot.person.Person;
@@ -14,18 +13,17 @@ import org.springframework.stereotype.Component;
 import java.util.Collections;
 import java.util.List;
 
-
 @Component
 @Scope("prototype")
 public class GetAllUserHystrixCommand extends HystrixCommand<List<Person>>{
 
     private final static Logger logger = LogManager.getLogger(GetAllUserHystrixCommand.class);
 
-    @Autowired
-    private PersonRepository personRepository;
+    private final PersonRepository personRepository;
 
-    public GetAllUserHystrixCommand() {
+    public GetAllUserHystrixCommand(PersonRepository personRepository) {
         super(HystrixCommandGroupKey.Factory.asKey("TestConfig"));
+        this.personRepository = personRepository;
     }
 
     @Override

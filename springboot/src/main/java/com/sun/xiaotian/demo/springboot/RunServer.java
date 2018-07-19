@@ -9,8 +9,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.boot.web.servlet.ServletComponentScan;
-import org.springframework.context.ApplicationEvent;
-import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableAsync;
 
@@ -25,15 +23,13 @@ public class RunServer {
 
         SpringApplication springApplication = new SpringApplicationBuilder()
                 .sources(RunServer.class)
-                .listeners(new ApplicationListener<ApplicationEvent>() {
-                    @Override
-                    public void onApplicationEvent(ApplicationEvent event) {
-                        logger.debug(event.toString());
-                        if (event instanceof ApplicationReadyEvent) {
-                            logger.info("项目启动成功");
+                .listeners((event) -> {
+                            logger.debug(event.toString());
+                            if (event instanceof ApplicationReadyEvent) {
+                                logger.info("项目启动成功");
+                            }
                         }
-                    }
-                })
+                )
                 .build();
         springApplication.setWebApplicationType(WebApplicationType.SERVLET);
 
