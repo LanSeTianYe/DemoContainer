@@ -37,7 +37,7 @@ public class TestCommandLineRunner implements CommandLineRunner {
             person.setName("name" + i);
             personList.add(person);
         }
-        personService.addAll(personList);
+//        personService.addAll(personList);
         logger.info("TestCommandLineRunner end ...");
     }
 }
