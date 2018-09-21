@@ -1,4 +1,4 @@
-package com.sun.xiaotain.demo.springcloud.gateway.ratelimit;
+package com.sun.xiaotain.demo.springcloud.gateway.filter.ratelimit;
 
 public interface RateLimit<T> {
 

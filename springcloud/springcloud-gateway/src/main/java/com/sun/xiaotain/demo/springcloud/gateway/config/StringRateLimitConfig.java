@@ -1,7 +1,7 @@
 package com.sun.xiaotain.demo.springcloud.gateway.config;
 
-import com.sun.xiaotain.demo.springcloud.gateway.ratelimit.RateLimitConfig;
-import com.sun.xiaotain.demo.springcloud.gateway.ratelimit.StringRateLimit;
+import com.sun.xiaotain.demo.springcloud.gateway.filter.ratelimit.RateLimitConfig;
+import com.sun.xiaotain.demo.springcloud.gateway.filter.ratelimit.StringRateLimit;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

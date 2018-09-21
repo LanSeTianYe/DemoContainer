@@ -20,7 +20,8 @@ public class RouteConfig {
                 .route(predicate -> predicate.host("www.sunfeilong.*")
                         .filters(filter -> filter.addRequestHeader("source", "springcloud gateway"))
                         .uri(uri)
-                ).build();
+                )
+                .build();
 
     }
 
