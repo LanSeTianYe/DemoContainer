@@ -8,11 +8,11 @@ import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 @Component
-public class RateLimitGateWay implements GlobalFilter {
+public class RateLimitGateFilter implements GlobalFilter {
 
     private final RateLimit<String> rateLimit;
 
-    public RateLimitGateWay(RateLimit rateLimit) {
+    public RateLimitGateFilter(RateLimit rateLimit) {
         this.rateLimit = rateLimit;
     }
 
