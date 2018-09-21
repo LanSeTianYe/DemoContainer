@@ -3,15 +3,6 @@ spring:
     name: "Spring Cloud Gateway"
   jmx:
     enabled: false
-#  cloud:
-#    gateway:
-#      routes:
-#      - id: default_path
-#        uri: "http://www.sunfeilong.com:8080"
-#        order: 10000
-#        predicates:
-#          - Path=/**
-
 
 logging:
   level:
