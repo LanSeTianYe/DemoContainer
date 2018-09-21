@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.1.RELEASE</version>
+        <version>2.0.2.BUILD-SNAPSHOT</version>
     </parent>
 
     <groupId>com.sun.xiaotian.demo.springcloud</groupId>
@@ -19,6 +19,7 @@
         <module>springcloudconfig</module>
         <module>sc-register-center</module>
         <module>springcloud-context</module>
+        <module>springcloud-gateway</module>
     </modules>
 
     <dependencyManagement>
