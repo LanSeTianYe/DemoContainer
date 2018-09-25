@@ -15,7 +15,7 @@ public class StringRateLimit implements RateLimit<String> {
 
     @Override
     public boolean isOverLimit(String accessor) {
-        Queue<Date> accessQueue = accessInfoMap.get(accessor);
+        Queue<Date> accessQueue = accessInfoMap.getOrDefault(accessor, new ArrayDeque<>());
         increaseOne(accessor);
         if (accessQueue.size() <= rateLimitConfig.getAllowTimes()) {
             return false;

@@ -3,6 +3,33 @@ spring:
     name: "Spring Cloud Gateway"
   jmx:
     enabled: false
+  cloud:
+    gateway:
+      routes:
+      - id: myRoute
+        uri: lb://service
+        predicates:
+        - Path=/service/**
+      - id: forward_route
+        uri: forward:///common/error
+        predicates:
+        - Path=/error/**
+        filters:
+        - AddResponseHeader=X-Response-Foo, Bar
+      - id: requestratelimiter_route
+        uri: http://www.sunfeilong.com
+        predicates:
+        - Path=/redis/**
+        filters:
+        - name: RequestRateLimiter
+          args:
+            redis-rate-limiter.replenishRate: 1
+            redis-rate-limiter.burstCapacity: 1
+            key-resolver: "#{@keyResolver}"
+  redis:
+    host: 192.168.0.201
+    port: 6379
+    database: 0
 
 logging:
   level:
