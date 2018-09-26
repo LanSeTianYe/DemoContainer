@@ -8,10 +8,22 @@ server:
 
 
 eureka:
+  instance:
+    # 发送续约信息的时间间隔
+    lease-renewal-interval-in-seconds: 10
+    # 多长时间没有发送续约信息，从注册中心删除
+    lease-expiration-duration-in-seconds: 20
   client:
+    # 注册服务
     register-with-eureka: true
+    # 获取服务
+    fetch-registry: true
+    # 多长时间获取一次新的服务提供者列表
+    registry-fetch-interval-seconds: 30
     service-url:
       defaultZone: http://localhost:9000/eureka/,http://localhost:9001/eureka/
+
+
 
 logging:
   level:
