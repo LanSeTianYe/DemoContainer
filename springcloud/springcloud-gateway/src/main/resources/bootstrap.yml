@@ -19,12 +19,12 @@ spring:
       - id: requestratelimiter_route
         uri: http://www.sunfeilong.com
         predicates:
-        - Path=/redis/**
+        - Query=redis
         filters:
         - name: RequestRateLimiter
           args:
             redis-rate-limiter.replenishRate: 1
-            redis-rate-limiter.burstCapacity: 1
+            redis-rate-limiter.burstCapacity: 2
             key-resolver: "#{@keyResolver}"
   redis:
     host: 192.168.0.201
@@ -34,5 +34,9 @@ spring:
 logging:
   level:
     ROOT: debug
+
+switch:
+  param:
+    check: false # 参数校验过滤器开关
 
 

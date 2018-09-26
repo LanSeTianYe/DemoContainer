@@ -1,5 +1,6 @@
 package com.sun.xiaotain.demo.springcloud.gateway.filter;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.annotation.Order;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @Component
 @Order(-4)
+@ConditionalOnProperty(name = "switch.param.check", havingValue = "true")
 public class ParamCheckFilter implements GlobalFilter {
 
     @Override
