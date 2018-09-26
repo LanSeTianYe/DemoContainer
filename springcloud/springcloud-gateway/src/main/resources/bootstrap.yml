@@ -33,10 +33,11 @@ spring:
 
 logging:
   level:
-    ROOT: debug
+    ROOT: info
 
 switch:
   param:
     check: false # 参数校验过滤器开关
+
 
 

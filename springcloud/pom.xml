@@ -21,6 +21,9 @@
         <module>springcloud-register-center</module>
         <module>springcloud-context</module>
         <module>springcloud-gateway</module>
+        <module>springcloud-eureka-server</module>
+        <module>springcloud-eureka-client</module>
+        <module>springcloud-eureka-center</module>
     </modules>
 
     <dependencyManagement>
@@ -45,4 +48,5 @@
             </snapshots>
         </repository>
     </repositories>
+
 </project>

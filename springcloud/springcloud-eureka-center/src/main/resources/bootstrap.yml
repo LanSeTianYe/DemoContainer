@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: eureka-center
+
+---
+spring:
+  profiles: 9000
+
+server:
+  port: 9000
+
+eureka:
+  instance:
+    hostname: localhost
+    # 节点多长时间没有心跳，从注册列表删除
+    lease-expiration-duration-in-seconds: 30
+    # 心跳间隔
+    lease-renewal-interval-in-seconds: 10
+  client:
+    # 是否注册到注册中心
+    register-with-eureka: true
+    # 是否检索服务
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:9001/eureka/
+
+---
+spring:
+  profiles: 9001
+
+server:
+  port: 9001
+
+eureka:
+  instance:
+    hostname: localhost
+    # 节点多长时间没有心跳，从注册列表删除
+    lease-expiration-duration-in-seconds: 30
+    # 心跳间隔
+    lease-renewal-interval-in-seconds: 10
+  client:
+    # 是否注册到注册中心
+    register-with-eureka: true
+    # 是否检索服务
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:9000/eureka/

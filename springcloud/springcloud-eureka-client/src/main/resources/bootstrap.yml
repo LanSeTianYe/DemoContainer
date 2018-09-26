@@ -1,0 +1,18 @@
+
+spring:
+  application:
+    name: eureka-client
+
+server:
+  port: 9020
+
+
+eureka:
+  client:
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:9000/eureka/,http://localhost:9001/eureka/
+
+logging:
+  level:
+    root : debug
