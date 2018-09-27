@@ -1,7 +1,10 @@
 spring:
   application:
     name: eureka-center
-
+eureka:
+  server:
+    # 关闭注册中心的自我保护机制，防止关闭的实例不能被注册中心清理
+    enable-self-preservation: false
 ---
 spring:
   profiles: 9000
@@ -11,11 +14,36 @@ server:
 
 eureka:
   instance:
+    # 主机名，不配置时根据操作系统主机名获取
     hostname: localhost
     # 节点多长时间没有心跳，从注册列表删除
     lease-expiration-duration-in-seconds: 30
     # 心跳间隔
     lease-renewal-interval-in-seconds: 10
+    # 元数据map
+    metadata-map:
+      # 区域
+      zone: shanghai
+    # 实例Id，默认值 ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id}:${server.port}}
+    instance-id: ${spring.application.name}:${random.int}}
+    # path 相对路径可以更改，但需要但需要保证 path 可用
+    # health-check-url-path: /info
+    # status-page-url-path: /health
+    # url 绝对路径
+    # health-check-url:
+    # status-page-url:
+    # 是否优先使用IP地址作为主机标识
+    prefer-ip-address: false
+    # 非安全通信端口号
+    non-secure-port: 80
+    # 安全通信端口号
+    secure-port: 443
+    # 是否启用非安全的通信端口号
+    non-secure-port-enabled: true
+    # 是否启用安全通信端口号
+    secure-port-enabled: false
+    # 服务名，默认取值 spring.application.name
+    # appname:
   client:
     # 是否注册到注册中心
     register-with-eureka: true
