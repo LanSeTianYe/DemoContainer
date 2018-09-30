@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    config:
+      uri: http://localhost:9030
+      name: ConfigClient
+      profile: dev
+      # 分支名
+      label: test
+      # 服务端提供的用户名
+      username: user
+      # 服务端提供的密码
+      password: 7a7c85ff-b90c-4700-9393-5ea3927b3289

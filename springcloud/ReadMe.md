@@ -14,3 +14,10 @@ Spring Cloud 项目Demo
 * springcloud-eureka-client: `[9020 - 9030)`
 
 	服务消费者，从注册中心获取服务列表，根据负载均衡策略调用服务接口。也可以是服务提供者。
+* springcloud-config-server: `[9030 - 9040)`
+
+	配置中心，负责向不同项目分发配置信息。
+
+* springcloud-config-client: `[9040 - 9050)`
+
+	实际项目，从配置中心读取配置信息。

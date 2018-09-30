@@ -1,0 +1,21 @@
+server:
+  port: 9030
+
+spring:
+  application:
+    name: config-server
+  security:
+    user:
+      name: user
+      password: 7a7c85ff-b90c-4700-9393-5ea3927b3289
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/sunfeilong/config-repo
+
+logging:
+  level:
+    root: info
+
+
