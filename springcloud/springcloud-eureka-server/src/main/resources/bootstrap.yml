@@ -6,6 +6,9 @@ server:
   port: 9010
 
 eureka:
+  instance:
+    instance-id: ${spring.application.name}:${random.int}
+    prefer-ip-address: false
   client:
     register-with-eureka: true
     service-url:

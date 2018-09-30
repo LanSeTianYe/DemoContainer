@@ -1,12 +1,29 @@
 spring:
+  application:
+    name: config-client
   cloud:
     config:
-      uri: http://localhost:9030
       name: ConfigClient
       profile: dev
       # 分支名
       label: test
-      # 服务端提供的用户名
+      # 服务端提供的用户名/密码
       username: user
-      # 服务端提供的密码
       password: 7a7c85ff-b90c-4700-9393-5ea3927b3289
+
+      discovery:
+        enabled: true
+        service-id: config-server
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${random.int}
+    prefer-ip-address: false
+  client:
+    service-url:
+      defaultZone: http://localhost:9000/eureka/,http://localhost:9001/eureka/
+    fetch-registry: true
+
+logging:
+  level:
+    root: debug

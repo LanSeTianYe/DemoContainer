@@ -2,10 +2,10 @@ package com.sun.xiaotian.demo.config.client;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
-@RestController
+@EnableDiscoveryClient
 public class RunConfigClient {
 
     public static void main(String[] args) {

@@ -25,7 +25,7 @@ eureka:
       # 区域
       zone: shanghai
     # 实例Id，默认值 ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id}:${server.port}}
-    instance-id: ${spring.application.name}:${random.int}}
+    instance-id: ${spring.application.name}:${random.int}
     # path 相对路径可以更改，但需要但需要保证 path 可用
     # health-check-url-path: /info
     # status-page-url-path: /health
@@ -62,6 +62,8 @@ server:
 eureka:
   instance:
     hostname: localhost
+    instance-id: ${spring.application.name}:${random.int}
+    prefer-ip-address: false
     # 节点多长时间没有心跳，从注册列表删除
     lease-expiration-duration-in-seconds: 30
     # 心跳间隔
