@@ -15,6 +15,11 @@ spring:
         service-id: config-server
       # 启动项目前检测配置中心是否可用，如果不可用则立即报错
       fail-fast: true
+  rabbitmq:
+    host: 192.168.0.201
+    port: 5672
+    username: guest
+    password: guest
 
 # 暴露所有端口
 management:
@@ -34,3 +39,15 @@ eureka:
 logging:
   level:
     root: info
+
+---
+spring:
+  profiles: 9040
+server:
+  port: 9040
+
+---
+spring:
+  profiles: 9041
+server:
+  port: 9041

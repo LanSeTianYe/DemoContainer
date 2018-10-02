@@ -21,3 +21,7 @@ Spring Cloud 项目Demo
 * springcloud-config-client: `[9040 - 9050)`
 
 	实际项目，从配置中心读取配置信息。
+
+* springcloud-bus: `[9050 - 9060)`
+
+	实际项目，从配置中心读取配置信息。

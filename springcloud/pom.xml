@@ -17,15 +17,14 @@
 
 
     <modules>
-        <module>springcloud-config</module>
         <module>springcloud-context</module>
         <module>springcloud-gateway</module>
+
         <module>springcloud-eureka-server</module>
         <module>springcloud-eureka-client</module>
         <module>springcloud-eureka-center</module>
 
         <module>springcloud-config-server</module>
-        <module>springcloud-config-repo</module>
         <module>springcloud-config-client</module>
     </modules>
 

@@ -1,6 +1,5 @@
 server:
   port: 9030
-
 eureka:
   instance:
     instance-id: ${spring.application.name}:${random.int}
@@ -29,8 +28,19 @@ spring:
         # 属性覆盖，制定的内容会覆盖配置文件的内容
         overrides:
           name: xiaotain
-          frome: luoyang
+          from: luoyang
+  rabbitmq:
+    port: 5672
+    host: 192.168.0.201
+    username: guest
+    password: guest
 
+# 暴露所有端口
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 logging:
   level:
-    root: debug
+    root: info
