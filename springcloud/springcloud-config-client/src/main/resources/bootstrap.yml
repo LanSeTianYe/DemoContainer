@@ -10,11 +10,17 @@ spring:
       # 服务端提供的用户名/密码
       username: user
       password: 7a7c85ff-b90c-4700-9393-5ea3927b3289
-
       discovery:
         enabled: true
         service-id: config-server
+      # 启动项目前检测配置中心是否可用，如果不可用则立即报错
+      fail-fast: true
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 eureka:
   instance:
     instance-id: ${spring.application.name}:${random.int}
@@ -26,4 +32,4 @@ eureka:
 
 logging:
   level:
-    root: debug
+    root: info

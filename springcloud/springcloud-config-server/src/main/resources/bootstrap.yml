@@ -10,8 +10,10 @@ eureka:
       defaultZone: http://localhost:9000/eureka/,http://localhost:9001/eureka/
 
 spring:
+  # 配置服务的名字，注册到注册中心
   application:
     name: config-server
+  # 安全相关
   security:
     user:
       name: user
@@ -20,7 +22,14 @@ spring:
     config:
       server:
         git:
+          # Git 仓库地址
           uri: https://github.com/sunfeilong/config-repo
+          # 搜索路径
+          # search-paths: {application}
+        # 属性覆盖，制定的内容会覆盖配置文件的内容
+        overrides:
+          name: xiaotain
+          frome: luoyang
 
 logging:
   level:
