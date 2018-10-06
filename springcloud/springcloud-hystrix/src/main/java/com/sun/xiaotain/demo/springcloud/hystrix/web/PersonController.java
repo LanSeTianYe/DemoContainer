@@ -2,26 +2,34 @@ package com.sun.xiaotain.demo.springcloud.hystrix.web;
 
 import com.sun.xiaotain.demo.springcloud.hystrix.model.Person;
 import com.sun.xiaotain.demo.springcloud.hystrix.service.PersonService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("person")
+@RequestMapping("person/annotation")
 public class PersonController {
 
     private final PersonService personService;
 
-    public PersonController(PersonService personService) {
+    public PersonController(@Qualifier("PersonServiceImplOfAnnotation") PersonService personService) {
         this.personService = personService;
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     public Person get(@PathVariable("id") int id) {
         return personService.getById(id);
+    }
+
+    @PutMapping("{id}")
+    public Person get(@PathVariable("id") int id, String name) {
+        return personService.updatePerson(id, name);
+    }
+
+    @PostMapping("refresh")
+    public void refresh() {
+        personService.refreshList();
     }
 
     @GetMapping("one")

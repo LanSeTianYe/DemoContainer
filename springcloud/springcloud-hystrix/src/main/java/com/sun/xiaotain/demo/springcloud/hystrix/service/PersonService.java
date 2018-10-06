@@ -16,4 +16,8 @@ public interface PersonService {
     Person getOneRandomException();
 
     List<Person> getAll();
+
+    Person updatePerson(int id, String name);
+
+    void refreshList();
 }
