@@ -17,7 +17,11 @@ spring:
     user:
       name: user
       password: 7a7c85ff-b90c-4700-9393-5ea3927b3289
+  # 开启调用栈追踪, 访问 /trace 接口
   cloud:
+    bus:
+      trace:
+        enabled: true
     config:
       server:
         git:

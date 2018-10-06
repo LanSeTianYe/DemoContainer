@@ -1,0 +1,6 @@
+server:
+  port: 9060
+
+logging:
+  level:
+    root: debug

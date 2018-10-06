@@ -26,6 +26,7 @@
 
         <module>springcloud-config-server</module>
         <module>springcloud-config-client</module>
+        <module>springcloud-hystrix</module>
     </modules>
 
     <dependencyManagement>
