@@ -1,6 +1,36 @@
-server:
-  port: 9060
+spring:
+  profiles:
+    active: 9060
+  application:
+    name: hystrix
 
 logging:
   level:
-    root: debug
+    root: info
+
+# 暴露熔断指标数据统计接口
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${random.int}
+    prefer-ip-address: false
+  client:
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:9000/eureka/,http://localhost:9001/eureka/
+---
+spring:
+  profiles: 9060
+server:
+  port: 9060
+
+---
+spring:
+  profiles: 9061
+server:
+  port: 9061

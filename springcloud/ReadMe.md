@@ -24,8 +24,16 @@ Spring Cloud 项目Demo
 
 * springcloud-bus: `[9050 - 9060)`
 
-	实际项目，从配置中心读取配置信息。
+	消息总线，协调为服务组件之间通信。
 
-* springcloud-bus: `[9060 - 9070)`
+* springcloud-hystrix: `[9060 - 9070)`
 
-	实际项目，从配置中心读取配置信息。
+	熔断器Demo。
+
+* springcloud-hystrix-dashboard: `[9070 - 9080)`
+
+	熔断器统计信息图形面板。[地址](http://localhost:9070/hystrix)
+
+* springcloud-hystrix-turbine: `[9080 - 9090)`
+
+	熔断器信息聚合器，聚合熔断器统计信息。[http://localhost:9080/turbine.stream](http://localhost:9080/turbine.stream)

@@ -7,9 +7,9 @@ import org.springframework.cloud.client.SpringCloudApplication;
 
 @SpringCloudApplication
 @ServletComponentScan
-public class RunHystrixDemo {
+public class RunHystrixServer {
 
     public static void main(String[] args) {
-        SpringApplication.run(RunHystrixDemo.class, args);
+        SpringApplication.run(RunHystrixServer.class, args);
     }
 }

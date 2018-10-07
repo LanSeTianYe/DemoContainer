@@ -1,0 +1,6 @@
+server:
+  port: 9070
+
+spring:
+  application:
+    name: hystrix-dashboard

@@ -1,0 +1,25 @@
+server:
+  port: 9080
+management:
+  endpoints:
+    web:
+      exposure:
+        exclude: "*"
+spring:
+  application:
+    name: hystrix-turbine
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${random.int}
+    prefer-ip-address: false
+  client:
+    service-url:
+      defaultZone: http://localhost:9000/eureka/,http://localhost:9001/eureka/
+    fetch-registry: true
+
+turbine:
+  app-config: hystrix
+  cluster-name-expression: "'default'"
+  combine-host-port: true
+
