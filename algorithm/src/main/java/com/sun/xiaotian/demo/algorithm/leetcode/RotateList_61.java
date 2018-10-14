@@ -1,6 +1,7 @@
 package com.sun.xiaotian.demo.algorithm.leetcode;
 
 /**
+ * <a href="https://leetcode.com/problems/rotate-list/"></>
  * 思路：
  * 1.先计算列表的总长度，根据指定的k计算出新的首节点的位置。
  * 2.把原有的列表构造成一个环。
