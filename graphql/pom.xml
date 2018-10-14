@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.sun.xiaotian.demo.graphql</groupId>
-    <artifactId>graphql-test</artifactId>
+    <artifactId>graphql</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
