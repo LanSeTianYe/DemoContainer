@@ -9,15 +9,18 @@ import graphql.schema.idl.SchemaGenerator;
 import graphql.schema.idl.SchemaParser;
 import graphql.schema.idl.TypeDefinitionRegistry;
 
+import java.io.File;
+
 import static graphql.schema.idl.RuntimeWiring.newRuntimeWiring;
 
 public class HelloWorld {
 
     public static void main(String[] args) {
-        String schema = "type Query{hello: String}";
 
         SchemaParser schemaParser = new SchemaParser();
-        TypeDefinitionRegistry typeDefinitionRegistry = schemaParser.parse(schema);
+
+        File schemaFile = new File("./graphql/src/main/resources/schema.graphqls");
+        TypeDefinitionRegistry typeDefinitionRegistry = schemaParser.parse(schemaFile);
 
         RuntimeWiring runtimeWiring = newRuntimeWiring()
                 .type("Query", builder -> builder.dataFetcher("hello", new StaticDataFetcher("world")))
@@ -27,6 +30,7 @@ public class HelloWorld {
         GraphQLSchema graphQLSchema = schemaGenerator.makeExecutableSchema(typeDefinitionRegistry, runtimeWiring);
 
         GraphQL build = GraphQL.newGraphQL(graphQLSchema).build();
+
         ExecutionResult executionResult = build.execute("{hello}");
 
         System.out.println(executionResult.getData().toString());
