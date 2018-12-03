@@ -53,7 +53,7 @@ public class BatchGenerateImage {
                     Thumbnails
                             .of(file)
                             .outputFormat("jpg")
-                            .size(imageSize.width, imageSize.height)
+                            .forceSize(imageSize.width, imageSize.height)
                             .toOutputStream(fileOutputStream);
                     fileOutputStream.close();
                 }

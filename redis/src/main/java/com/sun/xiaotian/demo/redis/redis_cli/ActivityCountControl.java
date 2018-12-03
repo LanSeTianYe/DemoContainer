@@ -12,7 +12,7 @@ import java.util.Map;
  */
 public class ActivityCountControl {
 
-    private static final JedisPool jedisPool = new JedisPool("127.0.0.1", 6379);
+    private static final JedisPool jedisPool = new JedisPool("192.168.0.201", 6379);
 
     private static final String activityKeyPrefix = "activity_";
 
