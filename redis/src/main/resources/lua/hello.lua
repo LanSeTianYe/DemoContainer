@@ -15,5 +15,7 @@ for i, v in ipairs(ARGV) do
     args = args .. split_char .. "[ " .. i .. " ] = " .. v
     split_char = ";"
 end
+redis.log(redis.LOG_NOTICE, keys)
+redis.log(redis.LOG_NOTICE, args)
 
 return { keys, args }

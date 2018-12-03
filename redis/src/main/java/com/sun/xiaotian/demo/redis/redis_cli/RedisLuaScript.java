@@ -8,7 +8,6 @@ import javax.xml.bind.DatatypeConverter;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Base64;
 
 public class RedisLuaScript {
 
@@ -36,6 +35,8 @@ public class RedisLuaScript {
 
     private static String SHA1(byte[] script) throws NoSuchAlgorithmException {
         MessageDigest sha_1 = MessageDigest.getInstance("SHA-1");
-        return DatatypeConverter.printHexBinary(sha_1.digest(script)).toLowerCase();
+        String result = DatatypeConverter.printHexBinary(sha_1.digest(script)).toLowerCase();
+        System.out.println(result);
+        return result;
     }
 }
