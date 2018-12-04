@@ -14,8 +14,10 @@ public class RedisLuaScript {
     private static final JedisPool jedisPool = new JedisPool("192.168.0.201", 6379);
 
     public static void main(String[] args) throws IOException, NoSuchAlgorithmException {
-        executeHello();
+//        executeHello();
+        useGeo();
     }
+
 
     private static void executeHello() throws IOException, NoSuchAlgorithmException {
         try (Jedis jedis = jedisPool.getResource()) {
@@ -29,6 +31,14 @@ public class RedisLuaScript {
                 response = jedis.eval(new String(script), 2, "name", "age", "1", "2");
                 System.out.println("run script");
             }
+            System.out.println(response);
+        }
+    }
+
+    private static void useGeo() throws IOException, NoSuchAlgorithmException {
+        try (Jedis jedis = jedisPool.getResource()) {
+            byte[] script = FileReadUtil.readFromResource("use_geo.lua");
+            Object response = jedis.eval(new String(script));
             System.out.println(response);
         }
     }
