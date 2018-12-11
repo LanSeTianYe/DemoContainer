@@ -1,13 +1,11 @@
 package com.sun.xiaotain.designpattern.core.proxy;
 
-import sun.reflect.Reflection;
-
 public class DynamicProxyClient {
 
     public static void main(String[] args) {
-        ProxyObjectFactory<DoSomething> proxyObjectFactory = new ProxyObjectFactory<>();
-        DoSomething doSomething = proxyObjectFactory.getProxyObject(new Human());
-        doSomething.doSomething();
+        Human human = new Human();
+        ShowInfo doSomething = ProxyObjectFactory.getProxyObject(human);
+        doSomething.showInfo("XiaoTian", 25);
         System.out.println(doSomething.toString());
     }
 }

@@ -1,11 +1,10 @@
 package com.sun.xiaotain.designpattern.core.proxy;
 
-public class Human implements DoSomething {
+public class Human implements ShowInfo {
 
     @Override
-    public String doSomething() {
-        String helloWorld = "Hello World!";
-        System.out.println(helloWorld);
-        return helloWorld;
+    public String showInfo(String name, int age) {
+        //do nothing
+        return null;
     }
 }
