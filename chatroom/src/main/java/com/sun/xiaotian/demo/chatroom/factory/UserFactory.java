@@ -1,4 +1,4 @@
-package com.sun.xiaotian.demo.chatroom.builder;
+package com.sun.xiaotian.demo.chatroom.factory;
 
 import com.sun.xiaotian.demo.chatroom.user.UserInfo;
 import com.sun.xiaotian.demo.chatroom.util.NameGenerateUtil;
