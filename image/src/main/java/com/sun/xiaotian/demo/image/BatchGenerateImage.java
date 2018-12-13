@@ -27,6 +27,8 @@ public class BatchGenerateImage {
         imagesSize.add(new ImageSize(800, 450));
         imagesSize.add(new ImageSize(960, 540));
         imagesSize.add(new ImageSize(960, 334));
+        imagesSize.add(new ImageSize(354, 222));
+        imagesSize.add(new ImageSize(1080, 606));
         if (!fileDestinationDirectory.exists()) {
             if (!fileDestinationDirectory.mkdir()) {
                 throw new IllegalStateException("创建文件夹失败");
@@ -63,5 +65,13 @@ public class BatchGenerateImage {
         });
     }
 
-    static class ImageSize { private final int width;private final int height;ImageSize(int width, int height) { this.width = width;this.height = height; }}
+    static class ImageSize {
+        private final int width;
+        private final int height;
+
+        ImageSize(int width, int height) {
+            this.width = width;
+            this.height = height;
+        }
+    }
 }

@@ -15,5 +15,4 @@ public class TestInteger {
         System.out.println(c == d);
         System.out.println(e == f);
     }
-
 }
