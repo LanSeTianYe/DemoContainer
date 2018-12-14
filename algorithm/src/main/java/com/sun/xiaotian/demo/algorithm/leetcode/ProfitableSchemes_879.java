@@ -35,7 +35,7 @@ public class ProfitableSchemes_879 {
     public int profitableSchemes(int G, int P, int[] group, int[] profit) {
         Result result = new Result();
         calculateProfit(G, P, group, profit, 0, 0, 0, result);
-        return result.get();
+        return ((int) (result.get() % 1000_000_007L ));
     }
 
 
@@ -54,13 +54,13 @@ public class ProfitableSchemes_879 {
     }
 
     private class Result {
-        private int number = 0;
+        private long number = 0;
 
         private void add() {
             number = number + 1;
         }
 
-        private int get() {
+        private long get() {
             return number;
         }
     }
