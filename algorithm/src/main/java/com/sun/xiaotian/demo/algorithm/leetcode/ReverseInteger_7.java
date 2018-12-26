@@ -2,7 +2,7 @@ package com.sun.xiaotian.demo.algorithm.leetcode;
 
 /**
  * https://leetcode.com/problems/reverse-integer/
- * 反转整数：需要注意证书范围
+ * 反转整数：需要注意整数范围
  */
 public class ReverseInteger_7 {
 
