@@ -34,7 +34,9 @@ public class User {
             Naming.bind("rmi://192.168.1.22:8888/userInfoService2", uuidInterface2);
         }
 
+        //remote object 远程对象，方法调用会直接调用服务端方法
         UUIDInterface uuidInterface1 = (UUIDInterface) Naming.lookup("rmi://192.168.1.22:8888/userInfoService1");
+        //non remote object 非远程对象，方法调用不会直接调用服务端方法
         UUIDInterface uuidInterface2 = (UUIDInterface) Naming.lookup("rmi://192.168.1.22:8888/userInfoService2");
         for (
                 int i = 0;
@@ -43,7 +45,5 @@ public class User {
             System.out.println(uuidInterface2.get());
             System.out.println();
         }
-        Naming.rebind("rmi://192.168.1.22:8888/userInfoService1", uuidInterface1);
-        Naming.rebind("rmi://192.168.1.22:8888/userInfoService2", uuidInterface2);
     }
 }
