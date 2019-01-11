@@ -20,19 +20,19 @@ public class SubStringWithConcatenationOfAllWords_30 {
         int wordLength = words[0].length();
         int templateLength = words.length * wordLength;
 
-        Map<String, Integer> wordNumberMap = new HashMap<>();
+        Map<String, Integer> wordNumberMap = initWordMap(words);
+        Map<String, Integer> wordNumberCopy = null;
         for (int i = 0; i <= s.length() - templateLength; i++) {
             boolean contains = true;
-            initWordMap(words, wordNumberMap);
+            wordNumberCopy = new HashMap<>(wordNumberMap);
             for (int j = 0; j < words.length; j++) {
-                int beginIndex = i + (j * wordLength);
-                String substring = s.substring(beginIndex, beginIndex + wordLength);
-                Integer number = wordNumberMap.get(substring);
+                String substring = s.substring(i + (j * wordLength), i + (j * wordLength) + wordLength);
+                Integer number = wordNumberCopy.get(substring);
                 if (null == number || number <= 0) {
                     contains = false;
                     break;
                 } else {
-                    wordNumberMap.put(substring, number - 1);
+                    wordNumberCopy.put(substring, number - 1);
                 }
             }
             if (contains) {
@@ -42,18 +42,19 @@ public class SubStringWithConcatenationOfAllWords_30 {
         return result;
     }
 
-    private void initWordMap(String[] words, Map<String, Integer> wordMap) {
-        wordMap.clear();
+    private Map<String, Integer> initWordMap(String[] words) {
+        Map<String, Integer> result = new HashMap<>();
         for (String word : words) {
-            wordMap.put(word, wordMap.getOrDefault(word, 0) + 1);
+            result.put(word, result.getOrDefault(word, 0) + 1);
         }
+        return result;
     }
 
     public static void main(String[] args) {
         SubStringWithConcatenationOfAllWords_30 subStr = new SubStringWithConcatenationOfAllWords_30();
         System.out.println(subStr.findSubstring("barfoothefoobarman", new String[]{"foo", "bar"}));
         System.out.println(subStr.findSubstring("wordgoodgoodgoodbestword", new String[]{"word", "good", "best", "word"}));
-        System.out.println(subStr.findSubstring("wordgoodgoodgoodbestword", new String[]{"word", "good", "best", "good"}));
+        System.out.println(subStr.findSubstring("wordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestwordwordgoodgoodgoodbestword", new String[]{"word", "word", "word", "word", "word", "good", "best", "good"}));
     }
 }
 
