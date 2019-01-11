@@ -7,6 +7,7 @@ import java.util.Map;
 
 /**
  * <a href="https://leetcode.com/problems/substring-with-concatenation-of-all-words/"> Substring with Concatenation of All Words<a/>
+ * 思路：用Map记录每个单词出现的次数，然后从字符串开始截取每个窗口，判断每个窗口切分出来的字符串是否和给定的单词出现的次数相同。
  */
 
 public class SubStringWithConcatenationOfAllWords_30 {
