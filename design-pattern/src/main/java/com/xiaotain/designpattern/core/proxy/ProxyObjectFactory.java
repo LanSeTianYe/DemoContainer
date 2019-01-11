@@ -1,4 +1,4 @@
-package com.sun.xiaotain.designpattern.core.proxy;
+package com.xiaotain.designpattern.core.proxy;
 
 import java.lang.reflect.*;
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package com.sun.xiaotain.designpattern.core.proxy;
+package com.xiaotain.designpattern.core.proxy;
 
 public interface ShowInfo {
 

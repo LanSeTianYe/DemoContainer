@@ -1,4 +1,4 @@
-package com.sun.xiaotain.designpattern.core.decorator;
+package com.xiaotain.designpattern.core.decorator;
 
 public abstract class AfterDecorator extends Decorator {
 
