@@ -1,4 +1,4 @@
-package com.sun.xiaotian.demo.redis.util;
+package com.xiaotian.demo.redis.util;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;

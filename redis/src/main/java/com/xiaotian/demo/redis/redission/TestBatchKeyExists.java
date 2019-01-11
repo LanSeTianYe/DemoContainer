@@ -1,4 +1,4 @@
-package com.sun.xiaotian.demo.redis.redission;
+package com.xiaotian.demo.redis.redission;
 
 import org.redisson.Redisson;
 import org.redisson.api.BatchResult;

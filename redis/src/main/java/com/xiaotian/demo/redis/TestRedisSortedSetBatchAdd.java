@@ -1,4 +1,4 @@
-package com.sun.xiaotian.demo.redis;
+package com.xiaotian.demo.redis;
 
 import redis.clients.jedis.Jedis;
 

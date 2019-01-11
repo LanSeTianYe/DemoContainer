@@ -1,4 +1,4 @@
-package com.sun.xiaotian.demo.redis.redis_cli;
+package com.xiaotian.demo.redis.redis_cli;
 
 
 import org.apache.logging.log4j.LogManager;

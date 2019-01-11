@@ -1,4 +1,4 @@
-package com.sun.xiaotian.demo.redis;
+package com.xiaotian.demo.redis;
 
 import redis.clients.jedis.*;
 
@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class TestJedis {
 
-    private static final Jedis jedis = new Jedis("127.0.0.1", 6379);
+    private static final Jedis jedis = new Jedis("192.168.0.201", 6379);
 
     public static void main(String[] args) throws InterruptedException {
         testPing();

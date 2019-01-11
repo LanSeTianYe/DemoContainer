@@ -1,6 +1,6 @@
-package com.sun.xiaotian.demo.redis.redis_cli;
+package com.xiaotian.demo.redis.redis_cli;
 
-import com.sun.xiaotian.demo.redis.util.FileReadUtil;
+import com.xiaotian.demo.redis.util.FileReadUtil;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
