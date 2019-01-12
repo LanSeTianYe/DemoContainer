@@ -18,7 +18,7 @@ public class UDPServer {
             while (true) {
                 String message = String.valueOf(number);
                 System.out.println(String.format("send: %s", message));
-                //发送到 92.168.0.1~92.168.0.255 的所有机器
+                //发送到 192.168.0.1~192.168.0.255 的所有机器
                 DatagramPacket datagramPacket = new DatagramPacket(message.getBytes(), message.length(), new InetSocketAddress("192.168.0.255", 10000));
                 datagramSocket.send(datagramPacket);
                 number++;
