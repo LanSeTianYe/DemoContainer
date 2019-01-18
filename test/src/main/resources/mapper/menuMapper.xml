@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.sun.xiaotian.demo.test.mybaits.mapper.MenuMapper">
+<mapper namespace="com.xiaotian.demo.test.mybaits.mapper.MenuMapper">
     <select id="selectCount" resultType="java.lang.Integer">
         select count(*) from wx_menu
     </select>
