@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * <a href="https://leetcode.com/problems/degree-of-an-array/">degree-of-an-array</>
+ * <a href="https://leetcode.com/problems/degree-of-an-array/">degree-of-an-array</a>
  */
 public class DegreeOfAnArray_697 {
 
