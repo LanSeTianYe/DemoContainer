@@ -1,4 +1,4 @@
-package com.sun.xiaotian.demo.algorithm.leetcode;
+package com.xiaotian.demo.algorithm.leetcode;
 
 import java.util.HashMap;
 import java.util.Map;
