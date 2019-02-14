@@ -8,7 +8,7 @@ package com.xiaotian.demo.algorithm.leetcode;
 public class LargestSumOfAverages_813 {
 
     public double largestSumOfAverages(int[] A, int K) {
-
+        return 0.0;
     }
 
     public static void main(String[] args) {
