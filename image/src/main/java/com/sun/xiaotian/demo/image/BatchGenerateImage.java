@@ -22,12 +22,16 @@ public class BatchGenerateImage {
 
     //初始化
     static {
-        imagesSize.add(new ImageSize(1000, 560));
         imagesSize.add(new ImageSize(240, 180));
+        imagesSize.add(new ImageSize(354, 222));
+        imagesSize.add(new ImageSize(582, 166));
+        imagesSize.add(new ImageSize(640, 360));
         imagesSize.add(new ImageSize(800, 450));
+        imagesSize.add(new ImageSize(900, 500));
         imagesSize.add(new ImageSize(960, 540));
         imagesSize.add(new ImageSize(960, 334));
-        imagesSize.add(new ImageSize(354, 222));
+        imagesSize.add(new ImageSize(960, 274));
+        imagesSize.add(new ImageSize(1000, 560));
         imagesSize.add(new ImageSize(1080, 606));
         if (!fileDestinationDirectory.exists()) {
             if (!fileDestinationDirectory.mkdir()) {
