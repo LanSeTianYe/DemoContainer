@@ -28,7 +28,22 @@ public class HttpClient {
                     .handler(new HttpAggregatorInitializer(true));
 
             ChannelFuture connectFuture = bootstrap.connect().sync();
-            connectFuture.channel().closeFuture().sync();
+            connectFuture.addListener((future) -> {
+                if (future.isSuccess()) {
+                    System.out.println("connect success ...");
+                } else {
+                    future.cause().printStackTrace();
+                }
+            });
+
+            ChannelFuture closeFuture = connectFuture.channel().closeFuture().sync();
+            closeFuture.addListener((future) -> {
+                if (future.isSuccess()) {
+                    System.out.println("close success ...");
+                } else {
+                    future.cause().printStackTrace();
+                }
+            });
         } finally {
             loopGroup.shutdownGracefully();
         }

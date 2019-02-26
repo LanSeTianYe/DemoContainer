@@ -36,7 +36,21 @@ public class HttpServer {
                     .childHandler(new HttpAggregatorInitializer(false));
 
             ChannelFuture bindFuture = serverBootstrap.bind().sync();
-            bindFuture.channel().closeFuture().sync();
+            bindFuture.addListener((future) -> {
+                if (future.isSuccess()) {
+                    System.out.println("bind success ...");
+                } else {
+                    future.cause().printStackTrace();
+                }
+            });
+            ChannelFuture closeFuture = bindFuture.channel().closeFuture().sync();
+            closeFuture.addListener((future) -> {
+                if (future.isSuccess()) {
+                    System.out.println("close success ...");
+                } else {
+                    future.cause().printStackTrace();
+                }
+            });
         } catch (Exception e) {
             group1.shutdownGracefully();
             group2.shutdownGracefully();
