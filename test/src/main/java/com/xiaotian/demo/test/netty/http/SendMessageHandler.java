@@ -13,18 +13,21 @@ public class SendMessageHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        HttpResponse httpResponse = (HttpResponse) msg;
+        FullHttpResponse httpResponse = (FullHttpResponse) msg;
         System.out.println(JSON.toJSON(httpResponse));
+        System.out.println(httpResponse.headers().toString());
+        System.out.println(httpResponse.content().toString());
+        System.out.println(httpResponse.decoderResult().toString());
     }
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        ByteBuf message = Unpooled.copiedBuffer("Hello", StandardCharsets.UTF_8);
+        ByteBuf byteBuf = Unpooled.copiedBuffer("Hello", StandardCharsets.UTF_8);
         FullHttpRequest request = new DefaultFullHttpRequest(
-                HttpVersion.HTTP_1_0,
+                HttpVersion.HTTP_1_1,
                 HttpMethod.GET,
-                "/123",
-                message);
+                "/",
+                byteBuf);
         ctx.writeAndFlush(request);
     }
 }
