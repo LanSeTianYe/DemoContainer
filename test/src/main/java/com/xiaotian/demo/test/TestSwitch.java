@@ -2,6 +2,8 @@ package com.xiaotian.demo.test;
 
 public class TestSwitch {
 
+    enum Status {ACTIVE, DISABLE}
+
     public static void main(String[] args) {
         TestSwitch testSwitch = new TestSwitch();
 
@@ -16,6 +18,8 @@ public class TestSwitch {
         testSwitch.useEnum(Status.DISABLE);
 
         testSwitch.noDefault(1);
+
+        testSwitch.whileAndSwitch();
     }
 
     public void useString(String sex) {
@@ -66,5 +70,18 @@ public class TestSwitch {
         }
     }
 
-    enum Status {ACTIVE, DISABLE}
+    public void whileAndSwitch() {
+        int code = 1;
+        while (code < 2) {
+            switch (code) {
+                case 1:
+                    code++;
+                    continue;
+            }
+            if (code == 2) {
+                System.out.println(2);
+            }
+        }
+    }
 }
+
