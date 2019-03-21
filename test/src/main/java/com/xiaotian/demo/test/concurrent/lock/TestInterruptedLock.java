@@ -6,7 +6,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class TestInterruptedLock {
 
-    enum MethodExecStatus {START, END, END_RELEASE_LOCK, END_NOT_GET_LOCK}
+    enum MethodExecStatus {START, END_RELEASE_LOCK, END_NOT_GET_LOCK}
 
     enum LockStatus {GET, RELEASE}
 
@@ -55,7 +55,7 @@ public class TestInterruptedLock {
     }
 
     private void print_UseInterruptiblyLock(int sleepSeconds) {
-        String methodName = getMethodName();
+        String methodName = getMethodName(getMethodStackDeep());
         printMethodExecStatus(MethodExecStatus.START, methodName);
         try {
             //获取锁，获取过程中可以响应中断操作
@@ -69,7 +69,7 @@ public class TestInterruptedLock {
     }
 
     private void print_UseTryLock(int sleepSeconds) {
-        String methodName = getMethodName();
+        String methodName = getMethodName(getMethodStackDeep());
         printMethodExecStatus(MethodExecStatus.START, methodName);
         //尝试获取，获取不到立即返回false
         if (lock.tryLock()) {
@@ -80,7 +80,7 @@ public class TestInterruptedLock {
     }
 
     private void print_UseLock(int sleepSeconds) {
-        String methodName = getMethodName();
+        String methodName = getMethodName(getMethodStackDeep());
         printMethodExecStatus(MethodExecStatus.START, methodName);
         //一直等待直到获取到锁
         lock.lock();
@@ -118,8 +118,14 @@ public class TestInterruptedLock {
         System.out.println(String.format("[%s]--[%s] %s", methodName, getThreadName(), e.getMessage()));
     }
 
-    private String getMethodName() {
-        return Thread.currentThread().getStackTrace()[2].getMethodName();
+    private int getMethodStackDeep() {
+        return Thread.currentThread().getStackTrace().length - 2;
+    }
+
+    private String getMethodName(int deep) {
+        StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
+        //倒数deep个 正数 stackTrace.length - deep + 1 个，数组下标减一
+        return stackTrace[(stackTrace.length - deep + 1) - 1].getMethodName();
     }
 
     private String getThreadName() {
