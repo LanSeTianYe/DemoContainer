@@ -10,9 +10,7 @@ public class QuickSort {
         QuickSort quickSort = new QuickSort();
         for (int i = 0; i < 10000; i++) {
             int[] array = ArrayUtil.generateByLength(i);
-//            ArrayUtil.printArray(array);
             quickSort.quickSort(array);
-//            ArrayUtil.printArray(array);
             if (!ArrayUtil.isAsc(array)) {
                 throw new IllegalStateException("array is not sorted!");
             }
@@ -34,7 +32,7 @@ public class QuickSort {
 
     private int partition(int[] numbers, int start, int end) {
         int selectValue = numbers[(start + end) / 2];
-        int[] copyOfNumbers = Arrays.copyOfRange(numbers, start, end);
+        int[] copyOfNumbers = Arrays.copyOfRange(numbers, start, end + 1);
         for (int number : copyOfNumbers) {
             if (number > selectValue) {
                 numbers[end--] = number;
