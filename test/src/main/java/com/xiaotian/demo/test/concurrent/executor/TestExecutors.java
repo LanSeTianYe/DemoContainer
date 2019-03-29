@@ -48,12 +48,15 @@ class ShutdownThread extends Thread {
                 executorService.shutdown();
             }
         }
-        while (!executorService.isShutdown()) {
+        while (true) {
             try {
-                TimeUnit.SECONDS.sleep(1);
+                if (!executorService.awaitTermination(100, TimeUnit.MILLISECONDS)) {
+                    continue;
+                }
             } catch (InterruptedException e) {
                 //do nothing
             }
+            break;
         }
         System.out.println("Executor Service has Terminated : " + executorService.isTerminated());
     }
