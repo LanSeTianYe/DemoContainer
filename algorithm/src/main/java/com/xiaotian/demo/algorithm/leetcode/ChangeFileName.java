@@ -12,7 +12,7 @@ public class ChangeFileName {
 
         for (File file : files) {
             String oldFileName = file.getName();
-            if (oldFileName.startsWith("A")) {
+            if (oldFileName.startsWith("A_")) {
                 continue;
             } else {
                 String[] nameAndSuffix = oldFileName.split("\\.");
