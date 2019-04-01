@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
-public class LRUCache_UseLinkedList_146 {
+public class A_146_LRUCacheUseLinkedList {
 
     private final int capacity;
 
@@ -12,7 +12,7 @@ public class LRUCache_UseLinkedList_146 {
 
     private final Map<Integer, Node> keyNodeMap = new HashMap<>();
 
-    public LRUCache_UseLinkedList_146(int capacity) {
+    public A_146_LRUCacheUseLinkedList(int capacity) {
 
         this.capacity = capacity;
     }
@@ -53,7 +53,7 @@ public class LRUCache_UseLinkedList_146 {
 
 
     public static void main(String[] args) {
-        LRUCache_UseLinkedList_146 cache = new LRUCache_UseLinkedList_146(2);
+        A_146_LRUCacheUseLinkedList cache = new A_146_LRUCacheUseLinkedList(2);
         cache.put(1, 1);
         cache.put(2, 2);
         System.out.println(cache.get(1));

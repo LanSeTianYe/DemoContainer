@@ -1,7 +1,8 @@
 package com.xiaotian.demo.algorithm.leetcode;
 
-import java.io.File;
-import java.nio.file.Paths;
+import java.io.*;
+import java.nio.file.*;
+import java.util.List;
 
 public class ChangeFileName {
 
@@ -10,20 +11,37 @@ public class ChangeFileName {
         File[] files = parent.listFiles();
 
         for (File file : files) {
-            String fileName = file.getName();
-            if (fileName.startsWith("A")) {
+            String oldFileName = file.getName();
+            if (oldFileName.startsWith("A")) {
                 continue;
             } else {
-                String[] split = fileName.split("\\.");
-                if (split[0].equalsIgnoreCase("ChangeFileName")) {
+                String[] nameAndSuffix = oldFileName.split("\\.");
+                if (nameAndSuffix[0].equalsIgnoreCase("ChangeFileName")) {
                     continue;
                 }
-                String[] nameAndNumber = split[0].split("_");
+                String[] nameAndNumber = nameAndSuffix[0].split("_");
                 String newFileName = "A_" + nameAndNumber[1] + "_" + nameAndNumber[0];
                 System.out.println(newFileName);
-
-//                file.renameTo(new File(parent.getAbsolutePath() + File.separator + newFileName + "." + split[1]));
+                replaceFileName(parent, file, nameAndSuffix[0], newFileName);
             }
         }
+    }
+
+    private static void replaceFileName(File parent,File file, String oldFileName, String newFileName) {
+        try {
+            List<String> strings = Files.readAllLines(file.toPath());
+            for (int i = 0; i < strings.size(); i++) {
+                if (strings.get(i).contains(oldFileName)) {
+                    strings.set(i, strings.get(i).replaceAll(oldFileName, newFileName));
+                }
+            }
+            String newFile = parent.getAbsolutePath() + File.separator + newFileName + ".java";
+            Files.write(Paths.get(newFile), strings, StandardOpenOption.CREATE_NEW, StandardOpenOption.WRITE);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }
