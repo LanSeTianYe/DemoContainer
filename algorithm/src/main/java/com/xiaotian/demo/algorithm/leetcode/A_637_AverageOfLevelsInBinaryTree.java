@@ -30,7 +30,7 @@ public class A_637_AverageOfLevelsInBinaryTree {
     private double averageOfLevel(int levelNodeCount, Queue<TreeNode> nodes) {
         long sum = 0;
         for (int i = 0; i < levelNodeCount; i++) {
-            TreeNode node = nodes.poll();
+            TreeNode node = nodes.remove();
             sum = sum + node.val;
             if (node.left != null) {
                 nodes.offer(node.left);
