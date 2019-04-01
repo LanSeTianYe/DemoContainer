@@ -3,7 +3,7 @@ package com.xiaotian.demo.algorithm.leetcode;
 /**
  * <a href="https://leetcode.com/problems/add-binary/">Add Binary</a>
  */
-public class AddBinary_67 {
+public class A_67_AddBinary {
 
     public String addBinary(String a, String b) {
         if (a.length() < b.length()) {
@@ -44,7 +44,7 @@ public class AddBinary_67 {
     }
 
     public static void main(String[] args) {
-        AddBinary_67 addBinary_67 = new AddBinary_67();
+        A_67_AddBinary addBinary_67 = new A_67_AddBinary();
         System.out.println(addBinary_67.addBinary("111", "00"));
         System.out.println(addBinary_67.addBinary("111", "1"));
         System.out.println(addBinary_67.addBinary("1", "111"));
