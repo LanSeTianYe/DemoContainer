@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 
 public class KeyboardRow_500Test {
 
-    private KeyboardRow_500 keyboardRow_500 = new KeyboardRow_500();
+    private A_500_KeyboardRow keyboardRow_500 = new A_500_KeyboardRow();
 
     @Test
     public void test() {

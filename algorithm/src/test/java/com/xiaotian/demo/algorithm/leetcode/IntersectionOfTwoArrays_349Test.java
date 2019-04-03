@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 
 public class IntersectionOfTwoArrays_349Test {
 
-    private IntersectionOfTwoArrays_349 intersectionOfTwoArrays_349 = new IntersectionOfTwoArrays_349();
+    private A_349_IntersectionOfTwoArrays intersectionOfTwoArrays_349 = new A_349_IntersectionOfTwoArrays();
 
     @Test
     public void intersection() throws Exception {

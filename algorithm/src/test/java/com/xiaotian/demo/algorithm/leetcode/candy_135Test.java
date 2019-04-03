@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 
 public class candy_135Test {
 
-    Candy_135 candy_135 = new Candy_135();
+    A_135_Candy candy_135 = new A_135_Candy();
 
     @Test
     public void testCandy() {
