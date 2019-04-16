@@ -1,4 +1,4 @@
-package com.sun.xiaotian.demo.kafka.connect.file;
+package com.xiaotian.demo.kafka.connect.file;
 
 import org.apache.kafka.common.config.ConfigDef;
 import org.apache.kafka.connect.connector.Task;

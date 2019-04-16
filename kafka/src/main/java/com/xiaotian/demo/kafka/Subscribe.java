@@ -1,19 +1,13 @@
-package com.sun.xiaotian.demo.kafka;
+package com.xiaotian.demo.kafka;
 
 
-import com.sun.xiaotian.demo.kafka.builder.KafkaConfigBuilder;
+import com.xiaotian.demo.kafka.builder.KafkaConfigBuilder;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
-import org.apache.kafka.clients.producer.KafkaProducer;
-import org.apache.kafka.clients.producer.ProducerRecord;
-import org.apache.kafka.clients.producer.RecordMetadata;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicLong;
 import java.util.regex.Pattern;
 
 /**

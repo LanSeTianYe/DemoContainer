@@ -1,9 +1,9 @@
-package com.sun.xiaotian.demo.kafka.stream;
+package com.xiaotian.demo.kafka.stream;
 
-import com.sun.xiaotian.demo.kafka.stream.util.DataQuery;
-import com.sun.xiaotian.demo.kafka.stream.util.KeyValueStoreDataQuery;
-import com.sun.xiaotian.demo.kafka.stream.util.TextDataReader;
-import com.sun.xiaotian.demo.kafka.stream.util.TextDataWriter;
+import com.xiaotian.demo.kafka.stream.util.DataQuery;
+import com.xiaotian.demo.kafka.stream.util.KeyValueStoreDataQuery;
+import com.xiaotian.demo.kafka.stream.util.TextDataReader;
+import com.xiaotian.demo.kafka.stream.util.TextDataWriter;
 import org.apache.kafka.common.config.TopicConfig;
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.*;

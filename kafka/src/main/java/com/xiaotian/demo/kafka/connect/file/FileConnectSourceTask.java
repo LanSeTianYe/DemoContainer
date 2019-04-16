@@ -1,4 +1,4 @@
-package com.sun.xiaotian.demo.kafka.connect.file;
+package com.xiaotian.demo.kafka.connect.file;
 
 import org.apache.kafka.connect.data.Schema;
 import org.apache.kafka.connect.source.SourceRecord;

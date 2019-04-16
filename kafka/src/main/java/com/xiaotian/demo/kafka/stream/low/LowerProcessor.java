@@ -1,4 +1,4 @@
-package com.sun.xiaotian.demo.kafka.stream.low;
+package com.xiaotian.demo.kafka.stream.low;
 
 import org.apache.kafka.streams.KeyValue;
 import org.apache.kafka.streams.processor.Processor;

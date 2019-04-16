@@ -1,4 +1,4 @@
-package com.sun.xiaotian.demo.kafka.constant;
+package com.xiaotian.demo.kafka.constant;
 
 
 public interface KafkaConfigConstant {

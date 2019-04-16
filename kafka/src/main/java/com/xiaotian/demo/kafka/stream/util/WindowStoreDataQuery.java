@@ -1,4 +1,4 @@
-package com.sun.xiaotian.demo.kafka.stream.util;
+package com.xiaotian.demo.kafka.stream.util;
 
 import org.apache.kafka.streams.KafkaStreams;
 import org.apache.kafka.streams.state.QueryableStoreTypes;

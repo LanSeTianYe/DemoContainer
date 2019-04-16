@@ -1,4 +1,4 @@
-package com.sun.xiaotian.demo.kafka.builder;
+package com.xiaotian.demo.kafka.builder;
 
 import org.apache.kafka.clients.CommonClientConfigs;
 import org.apache.kafka.clients.consumer.ConsumerConfig;

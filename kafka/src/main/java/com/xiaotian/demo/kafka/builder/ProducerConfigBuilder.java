@@ -1,7 +1,7 @@
-package com.sun.xiaotian.demo.kafka.builder;
+package com.xiaotian.demo.kafka.builder;
 
 
-import com.sun.xiaotian.demo.kafka.constant.KafkaConfigConstant;
+import com.xiaotian.demo.kafka.constant.KafkaConfigConstant;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.Serializer;
 

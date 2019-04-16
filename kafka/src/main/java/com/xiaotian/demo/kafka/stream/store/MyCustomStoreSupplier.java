@@ -1,4 +1,4 @@
-package com.sun.xiaotian.demo.kafka.stream.store;
+package com.xiaotian.demo.kafka.stream.store;
 
 import org.apache.kafka.streams.processor.StateStore;
 import org.apache.kafka.streams.state.StoreSupplier;

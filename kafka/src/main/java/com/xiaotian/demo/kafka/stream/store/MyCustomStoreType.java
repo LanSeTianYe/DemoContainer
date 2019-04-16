@@ -1,10 +1,8 @@
-package com.sun.xiaotian.demo.kafka.stream.store;
+package com.xiaotian.demo.kafka.stream.store;
 
 import org.apache.kafka.streams.processor.StateStore;
 import org.apache.kafka.streams.state.QueryableStoreType;
 import org.apache.kafka.streams.state.internals.StateStoreProvider;
-
-import java.util.List;
 
 public class MyCustomStoreType<K,V> implements QueryableStoreType<MyReadableCustomStore<K,V>> {
 

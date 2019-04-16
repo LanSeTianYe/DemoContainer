@@ -1,6 +1,6 @@
-package com.sun.xiaotian.demo.kafka.stream.util;
+package com.xiaotian.demo.kafka.stream.util;
 
-import com.sun.xiaotian.demo.kafka.builder.KafkaConfigBuilder;
+import com.xiaotian.demo.kafka.builder.KafkaConfigBuilder;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.slf4j.Logger;
