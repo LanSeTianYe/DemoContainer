@@ -1,4 +1,4 @@
-package com.yunyang.share.kafka.constant;
+package com.xiaotian.demo.kafka.constant;
 
 /**
  * @author sunfeilong   (sunfl@cloud-young.com)

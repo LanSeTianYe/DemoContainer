@@ -1,7 +1,7 @@
-package com.yunyang.share.kafka.offset;
+package com.xiaotian.demo.kafka.offset;
 
-import com.yunyang.share.kafka.messagequeue.Consumer;
-import com.yunyang.share.kafka.messagequeue.Producer;
+import com.xiaotian.demo.kafka.messagequeue.Consumer;
+import com.xiaotian.demo.kafka.messagequeue.Producer;
 
 /**
  * @author sunfeilong   (sunfl@cloud-young.com)

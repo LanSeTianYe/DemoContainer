@@ -1,6 +1,6 @@
-package com.yunyang.share.kafka.pub_sub;
+package com.xiaotian.demo.kafka.pub_sub;
 
-import com.yunyang.share.kafka.messagequeue.Consumer;
+import com.xiaotian.demo.kafka.messagequeue.Consumer;
 
 /**
  * @author sunfeilong   (sunfl@cloud-young.com)

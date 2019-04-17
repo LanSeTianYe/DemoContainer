@@ -1,12 +1,11 @@
-package com.yunyang.share.kafka.messagequeue;
+package com.xiaotian.demo.kafka.messagequeue;
 
-import com.yunyang.share.kafka.factory.ConfigFactory;
+import com.xiaotian.demo.kafka.factory.ConfigFactory;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.TopicPartition;
 import org.apache.kafka.common.serialization.Deserializer;
-import org.apache.kafka.common.serialization.LongSerializer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

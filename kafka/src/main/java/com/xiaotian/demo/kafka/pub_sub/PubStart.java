@@ -1,7 +1,7 @@
-package com.yunyang.share.kafka.pub_sub;
+package com.xiaotian.demo.kafka.pub_sub;
 
-import com.yunyang.share.kafka.AdminClientDemo;
-import com.yunyang.share.kafka.messagequeue.Producer;
+import com.xiaotian.demo.kafka.messagequeue.Producer;
+import com.xiaotian.demo.kafka.AdminClientDemo;
 
 import java.util.concurrent.TimeUnit;
 

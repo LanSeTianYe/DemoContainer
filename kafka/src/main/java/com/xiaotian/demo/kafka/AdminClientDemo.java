@@ -1,12 +1,11 @@
-package com.yunyang.share.kafka;
+package com.xiaotian.demo.kafka;
 
-import com.yunyang.share.kafka.factory.ConfigFactory;
+import com.xiaotian.demo.kafka.factory.ConfigFactory;
 import org.apache.kafka.clients.admin.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Collections;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**

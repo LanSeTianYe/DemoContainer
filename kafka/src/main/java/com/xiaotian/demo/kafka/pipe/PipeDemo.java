@@ -1,20 +1,15 @@
-package com.yunyang.share.kafka.pipe;
+package com.xiaotian.demo.kafka.pipe;
 
-import com.yunyang.share.kafka.AdminClientDemo;
-import com.yunyang.share.kafka.factory.ConfigFactory;
-import com.yunyang.share.kafka.messagequeue.Consumer;
-import com.yunyang.share.kafka.messagequeue.Producer;
-import org.apache.kafka.clients.consumer.ConsumerConfig;
-import org.apache.kafka.common.Cluster;
+import com.xiaotian.demo.kafka.messagequeue.Producer;
+import com.xiaotian.demo.kafka.AdminClientDemo;
+import com.xiaotian.demo.kafka.factory.ConfigFactory;
+import com.xiaotian.demo.kafka.messagequeue.Consumer;
 import org.apache.kafka.common.serialization.Serdes;
-import org.apache.kafka.common.serialization.StringSerializer;
 import org.apache.kafka.streams.KafkaStreams;
 import org.apache.kafka.streams.StreamsBuilder;
-import org.apache.kafka.streams.StreamsConfig;
 import org.apache.kafka.streams.Topology;
 import org.apache.kafka.streams.kstream.KStream;
 import org.apache.kafka.streams.kstream.Produced;
-import org.apache.kafka.streams.processor.internals.DefaultStreamPartitioner;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

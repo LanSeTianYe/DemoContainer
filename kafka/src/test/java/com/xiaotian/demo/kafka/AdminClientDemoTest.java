@@ -1,4 +1,4 @@
-package com.yunyang.share.kafka;
+package com.xiaotian.demo.kafka;
 
 import org.junit.Test;
 

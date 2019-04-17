@@ -1,17 +1,14 @@
-package com.yunyang.share.kafka.messagequeue;
+package com.xiaotian.demo.kafka.messagequeue;
 
-import com.alibaba.fastjson.JSON;
-import com.yunyang.share.kafka.factory.ConfigFactory;
-import com.yunyang.share.kafka.util.DateFormatUtil;
+import com.xiaotian.demo.kafka.factory.ConfigFactory;
+import com.xiaotian.demo.kafka.util.DateFormatUtil;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
-import org.apache.kafka.common.protocol.types.Field;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Date;
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;

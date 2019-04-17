@@ -1,9 +1,9 @@
-package com.yunyang.share.kafka.stream;
+package com.xiaotian.demo.kafka.stream;
 
-import com.yunyang.share.kafka.AdminClientDemo;
-import com.yunyang.share.kafka.factory.ConfigFactory;
-import com.yunyang.share.kafka.messagequeue.Consumer;
-import com.yunyang.share.kafka.messagequeue.Producer;
+import com.xiaotian.demo.kafka.messagequeue.Consumer;
+import com.xiaotian.demo.kafka.messagequeue.Producer;
+import com.xiaotian.demo.kafka.AdminClientDemo;
+import com.xiaotian.demo.kafka.factory.ConfigFactory;
 import org.apache.kafka.common.serialization.IntegerDeserializer;
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.common.serialization.StringDeserializer;

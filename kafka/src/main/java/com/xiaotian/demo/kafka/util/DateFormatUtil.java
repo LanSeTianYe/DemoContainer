@@ -1,4 +1,4 @@
-package com.yunyang.share.kafka.util;
+package com.xiaotian.demo.kafka.util;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
