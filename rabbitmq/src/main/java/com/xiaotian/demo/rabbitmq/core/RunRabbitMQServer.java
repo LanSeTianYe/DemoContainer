@@ -1,4 +1,4 @@
-package com.sun.xiaotian.demo.rabbitmq.core;
+package com.xiaotian.demo.rabbitmq.core;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

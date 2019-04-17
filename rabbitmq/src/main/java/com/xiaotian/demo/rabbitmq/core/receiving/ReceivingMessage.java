@@ -1,4 +1,4 @@
-package com.sun.xiaotian.demo.rabbitmq.core.receiving;
+package com.xiaotian.demo.rabbitmq.core.receiving;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
