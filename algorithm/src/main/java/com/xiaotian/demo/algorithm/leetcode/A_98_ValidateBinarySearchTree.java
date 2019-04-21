@@ -17,17 +17,6 @@ public class A_98_ValidateBinarySearchTree {
             return false;
         }
 
-        boolean leftIsValid = true;
-        boolean rightIsValid = true;
-
-        if (null != root.left) {
-            leftIsValid = isValidBst(root.left, min, Math.min(max, root.val));
-        }
-
-        if (null != root.right) {
-            rightIsValid = isValidBst(root.right, Math.max(min, root.val), max);
-        }
-
-        return leftIsValid && rightIsValid;
+        return isValidBst(root.left, min, Math.min(max, root.val)) && isValidBst(root.right, Math.max(min, root.val), max);
     }
 }
