@@ -11,6 +11,11 @@ public class TestBit {
         System.out.println(String.format("%32s", Integer.toBinaryString(-2)));
         System.out.println(String.format("%32s", Integer.toBinaryString(-3)));
         System.out.println(String.format("%32s", Integer.toBinaryString(Integer.MIN_VALUE)));
+
+
+        if(1 == 1 & 2 ==2){
+            System.out.println(true);
+        }
     }
 
 }
