@@ -48,16 +48,7 @@ public class A_148_SortList {
     }
 
     private ListNode merge(ListNode leftHead, ListNode rightHead) {
-        ListNode head;
-        //merge
-        if (leftHead.val < rightHead.val) {
-            head = leftHead;
-            leftHead = leftHead.next;
-        } else {
-            head = rightHead;
-            rightHead = rightHead.next;
-        }
-
+        ListNode head = new ListNode(-1);
         ListNode currNode = head;
 
         while (null != leftHead && rightHead != null) {
@@ -77,6 +68,6 @@ public class A_148_SortList {
         if (null != rightHead) {
             currNode.next = rightHead;
         }
-        return head;
+        return head.next;
     }
 }
