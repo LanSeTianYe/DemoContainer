@@ -1,4 +1,4 @@
-package com.xiaotian.demo.algorithm;
+package com.xiaotian.demo.algorithm.leetcode;
 
 public class A_371_Sum_Of_Two_Integers {
 

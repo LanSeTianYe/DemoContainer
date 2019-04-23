@@ -1,6 +1,5 @@
 package com.xiaotian.demo.algorithm.leetcode;
 
-import com.xiaotian.demo.algorithm.A_371_Sum_Of_Two_Integers;
 import org.junit.BeforeClass;
 import org.junit.Test;
 

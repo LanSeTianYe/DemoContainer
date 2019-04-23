@@ -1,5 +1,7 @@
 package com.xiaotian.demo.algorithm.leetcode;
 
+import com.xiaotian.demo.algorithm.leetcode.common.ListNode;
+
 /**
  * <a href="https://leetcode.com/problems/rotate-list/"></>
  * 思路：
@@ -79,15 +81,6 @@ public class A_61_RotateList {
                 System.out.println("" + tempHead.val);
             }
 
-        }
-    }
-
-    static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
         }
     }
 }
