@@ -5,46 +5,27 @@ import com.xiaotian.demo.algorithm.leetcode.common.ListNode;
 public class A_148_SortList {
 
     public ListNode sortList(ListNode head) {
-        if (null == head) {
-            return null;
-        }
-
-        return sortList(head, getLength(head));
-    }
-
-    private int getLength(ListNode head) {
-        int length = 0;
-        ListNode temp = head;
-        while (null != temp) {
-            length++;
-            temp = temp.next;
-        }
-        return length;
-    }
-
-    private ListNode sortList(ListNode head, int length) {
-        if (length == 1) {
-            head.next = null;
+        if (head == null || head.next == null) {
             return head;
         }
 
-        int leftLength = length / 2;
-        ListNode rightHead = sortList(cutAndGetHead(head, leftLength), length - leftLength);
-        ListNode leftHead = sortList(head, leftLength);
+        ListNode rightHead = sortList(cutAndGetRightHead(head));
+        ListNode leftHead = sortList(head);
 
         return merge(leftHead, rightHead);
     }
 
-    private ListNode cutAndGetHead(ListNode head, int length) {
-        ListNode rightHead;
-        int index = 1;
-        while (index < length) {
-            head = head.next;
-            index++;
+    private ListNode cutAndGetRightHead(ListNode head) {
+        ListNode newHead;
+        ListNode slow = head;
+        ListNode fast = head.next;
+        while (fast.next != null && null != fast.next.next) {
+            fast = fast.next.next;
+            slow = slow.next;
         }
-        rightHead = head.next;
-        head.next = null;
-        return rightHead;
+        newHead = slow.next;
+        slow.next = null;
+        return newHead;
     }
 
     private ListNode merge(ListNode leftHead, ListNode rightHead) {
