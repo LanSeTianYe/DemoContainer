@@ -1,10 +1,10 @@
-package com.xiaotian.demo.algorithm;
+package com.xiaotian.demo.algorithm.util;
 
 import java.util.Random;
 
 public class ArrayUtil {
 
-    private static final Random random = new Random(System.currentTimeMillis());
+    private static final Random random = new Random(37);
 
     public static int[] generateByLength(int length) {
         int[] result;

@@ -1,48 +1,51 @@
 package com.xiaotian.demo.algorithm.other;
 
-import com.xiaotian.demo.algorithm.ArrayUtil;
-
-import java.util.Arrays;
-
 public class QuickSort {
-
-    public static void main(String[] args) {
-        QuickSort quickSort = new QuickSort();
-        for (int i = 0; i < 10000; i++) {
-            int[] array = ArrayUtil.generateByLength(i);
-            quickSort.quickSort(array);
-            if (!ArrayUtil.isAsc(array)) {
-                throw new IllegalStateException("array is not sorted!");
-            }
-        }
-
-    }
 
     public void quickSort(int[] numbers) {
         quickSort(numbers, 0, numbers.length - 1);
     }
 
-    private void quickSort(int[] numbers, int start, int end) {
-        if (start < end) {
-            int partition = partition(numbers, start, end);
-            quickSort(numbers, start, partition);
-            quickSort(numbers, partition + 1, end);
+    private void quickSort(int[] numbers, int left, int right) {
+        if (left >= right) {
+            return;
         }
-    }
 
-    private int partition(int[] numbers, int start, int end) {
-        int selectValue = numbers[(start + end) / 2];
-        int[] copyOfNumbers = Arrays.copyOfRange(numbers, start, end + 1);
-        for (int number : copyOfNumbers) {
-            if (number > selectValue) {
-                numbers[end--] = number;
-            } else if (number < selectValue) {
-                numbers[start++] = number;
+        int selectValue = selectPointValue(numbers, left, right);
+
+        int start = left;
+        int end = right;
+        for (; ; ) {
+            while (numbers[++start] < selectValue) ;
+            while (numbers[--end] > selectValue) ;
+            if (start < end) {
+                swap(numbers, start, end);
+            } else {
+                break;
             }
         }
-        while (start <= end) {
-            numbers[end--] = selectValue;
+        
+        quickSort(numbers, left, start - 1);
+        quickSort(numbers, end + 1, right);
+    }
+
+    private int selectPointValue(int[] numbers, int left, int right) {
+        int center = (left + right) / 2;
+        if (numbers[left] > numbers[center]) {
+            swap(numbers, left, center);
         }
-        return start;
+        if (numbers[center] > numbers[right]) {
+            swap(numbers, right, center);
+        }
+        if (numbers[left] > numbers[center]) {
+            swap(numbers, left, center);
+        }
+        return numbers[center];
+    }
+
+    private void swap(int[] numbers, int i, int j) {
+        int temp = numbers[i];
+        numbers[i] = numbers[j];
+        numbers[j] = temp;
     }
 }
