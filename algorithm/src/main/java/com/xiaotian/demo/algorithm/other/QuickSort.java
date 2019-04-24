@@ -24,7 +24,7 @@ public class QuickSort {
                 break;
             }
         }
-        
+
         quickSort(numbers, left, start - 1);
         quickSort(numbers, end + 1, right);
     }
