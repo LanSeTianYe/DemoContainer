@@ -1,7 +1,6 @@
 package com.xiaotian.demo.algorithm.leetcode;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.BitSet;
 
 public class A_210_CourseScheduleII {
 
@@ -14,57 +13,36 @@ public class A_210_CourseScheduleII {
             return result;
         }
 
-        //build prerequisite matrix and prerequisite course count
-        boolean[][] prerequisitesMatrix = new boolean[numCourses][numCourses];
-        int[] dependenceCourseCount = new int[numCourses];
-        for (int[] prerequisite : prerequisites) {
-            int course = prerequisite[0];
-            int dependenceCourse = prerequisite[1];
-            if (!prerequisitesMatrix[course][dependenceCourse] && course != dependenceCourse) {
-                prerequisitesMatrix[course][dependenceCourse] = true;
-                dependenceCourseCount[course]++;
-            }
-        }
+        BitSet[] courseDependence = new BitSet[numCourses];
+        BitSet remainCourse = new BitSet();
 
-
-        int remainCourseCount = numCourses;
-        Set<Integer> remainCourse = new HashSet<>();
         for (int i = 0; i < numCourses; i++) {
-            remainCourse.add(i);
+            remainCourse.set(i);
+            courseDependence[i] = new BitSet();
         }
 
-        int nextCourse = getNextCourse(dependenceCourseCount, remainCourse);
-        while (nextCourse >= 0 && remainCourseCount > 0) {
-            result[numCourses - remainCourseCount] = nextCourse;
-            removeDependency(nextCourse, prerequisitesMatrix, dependenceCourseCount);
-            remainCourse.remove(nextCourse);
-            remainCourseCount--;
-            nextCourse = getNextCourse(dependenceCourseCount, remainCourse);
-        }
+        for (int[] prerequisite : prerequisites)
+            courseDependence[prerequisite[0]].set(prerequisite[1]);
 
-        return remainCourseCount > 0 ? new int[]{} : result;
+        int nextCourse = getNextCourse(remainCourse, courseDependence);
+        int index = 0;
+        while (nextCourse >= 0) {
+            result[index++] = nextCourse;
+            remainCourse.set(nextCourse, false);
+            nextCourse = getNextCourse(remainCourse, courseDependence);
+        }
+        return remainCourse.cardinality() > 0 ? new int[]{} : result;
     }
 
-    private int getNextCourse(int[] dependenceCourseCount, Set<Integer> remainCourse) {
-        for (Integer course : remainCourse) {
-            if (dependenceCourseCount[course] == 0) {
-                return course;
+    private int getNextCourse(BitSet remainCourse, BitSet[] courseDependence) {
+        int nextIndex = remainCourse.nextSetBit(0);
+        while (nextIndex >= 0) {
+            courseDependence[nextIndex].and(remainCourse);
+            if (courseDependence[nextIndex].cardinality() == 0) {
+                return nextIndex;
             }
+            nextIndex = remainCourse.nextSetBit(nextIndex + 1);
         }
         return -1;
-    }
-
-    private void removeDependency(int courseNumber,
-                                  boolean[][] prerequisitesMatrix,
-                                  int[] dependenceCourseCount
-    ) {
-
-        for (int i = 0; i < prerequisitesMatrix.length; i++) {
-            if (prerequisitesMatrix[i][courseNumber]) {
-                prerequisitesMatrix[i][courseNumber] = false;
-                dependenceCourseCount[i]--;
-            }
-        }
-        dependenceCourseCount[courseNumber]--;
     }
 }
