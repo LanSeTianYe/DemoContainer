@@ -20,8 +20,7 @@ public class A_210_CourseScheduleII {
         List<List<Integer>> dependency = new ArrayList<>();
 
         boolean[] hasTakes = new boolean[numCourses];
-        boolean[] inStacks = new boolean[numCourses];
-        int[] index = {0};
+        boolean[] taking = new boolean[numCourses];
 
         for (int i = 0; i < numCourses; i++)
             dependency.add(new ArrayList<>());
@@ -30,24 +29,23 @@ public class A_210_CourseScheduleII {
             dependency.get(prerequisite[0]).add(prerequisite[1]);
 
         for (int i = 0; i < numCourses; i++) {
-            if (!take(i, dependency, hasTakes, inStacks, result)) return new int[]{};
+            if (!take(i, dependency, hasTakes, taking, result)) return new int[]{};
         }
         return result;
     }
 
-    private boolean take(int index, List<List<Integer>> dependency, boolean[] hasTake, boolean[] inStack, int[] result) {
+    private boolean take(int index, List<List<Integer>> dependency, boolean[] hasTake, boolean[] taking, int[] result) {
         if (hasTake[index]) return true;
-        if (inStack[index]) return false;
+        if (taking[index]) return false;
 
-        inStack[index] = true;
+        taking[index] = true;
         for (Integer subIndex : dependency.get(index)) {
-            boolean take = take(subIndex, dependency, hasTake, inStack, result);
-            if (!take) {
+            if (!take(subIndex, dependency, hasTake, taking, result)) {
                 return false;
             }
         }
         result[courseIndex++] = index;
-        inStack[index] = false;
+        taking[index] = false;
         hasTake[index] = true;
         return true;
     }
