@@ -20,5 +20,6 @@ public class A_494_Target_SumTest {
         assertEquals(0, a_494_target_sum.findTargetSumWays(new int[]{1}, 2));
         assertEquals(2, a_494_target_sum.findTargetSumWays(new int[]{1, 0}, 1));
         assertEquals(5, a_494_target_sum.findTargetSumWays(new int[]{1, 1, 1, 1, 1}, 3));
+        assertEquals(256, a_494_target_sum.findTargetSumWays(new int[]{0, 0, 0, 0, 0, 0, 0, 0, 1}, 1));
     }
 }
