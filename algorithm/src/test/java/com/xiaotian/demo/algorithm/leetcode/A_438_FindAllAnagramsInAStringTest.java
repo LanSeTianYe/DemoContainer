@@ -42,5 +42,11 @@ public class A_438_FindAllAnagramsInAStringTest {
 
         result = a_438_findAllAnagramsInAString.findAnagrams("abab", "ab").toArray(new Integer[0]);
         assertArrayEquals(new Integer[]{0, 1, 2}, result);
+
+        result = a_438_findAllAnagramsInAString.findAnagrams("abaadasdsadasdjkhasddashjldasuipqwndasdahsjkdasdjbadbah" +
+                "jdasdasjdhldjhasldasdjhasldashdjaldhaldjhasldashdaudyqwueyqawueyhasdbadnmbadkabdahjsgckzhgxdas" +
+                "ludhaslduhasdbasjkdahsldjhasldashdljashdlasjdhalsjdhaslduiydlasdnjkdasdasdsadasdasdadadasdasds" +
+                "adasdasdsadsadasdasdashuib", "ab").toArray(new Integer[0]);
+        assertArrayEquals(new Integer[]{0, 1, 49, 52, 123, 128, 132, 162}, result);
     }
 }

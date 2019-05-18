@@ -11,33 +11,34 @@ public class A_438_FindAllAnagramsInAString {
             return result;
         }
 
-        int[] target = new int[26];
-        for (int i = 0; i < target.length; i++) {
-            target[i] = Integer.MIN_VALUE;
+        int[] charCountInP = new int[26];
+        // Integer.MIN_VALUE represent that the char is not appear in p
+        for (int i = 0; i < charCountInP.length; i++) {
+            charCountInP[i] = Integer.MIN_VALUE;
         }
         for (char c : p.toCharArray()) {
-            target[c - 'a'] = Math.max(0, target[c - 'a']) + 1;
+            charCountInP[c - 'a'] = Math.max(0, charCountInP[c - 'a']) + 1;
         }
 
         int sameNumber = 0;
-        int addCharIndex = 0;
-        int removeCharIndex = 0;
+        int addCharIndex;
+        int removeCharIndex;
         char[] sArr = s.toCharArray();
         for (int i = 0; i < sArr.length; i++) {
             addCharIndex = sArr[i] - 'a';
             if (i >= p.length()) {
                 removeCharIndex = sArr[i - p.length()] - 'a';
-                if (target[removeCharIndex] != Integer.MIN_VALUE) {
-                    target[removeCharIndex]++;
-                    if (target[removeCharIndex] > 0) {
+                if (charCountInP[removeCharIndex] != Integer.MIN_VALUE) {
+                    charCountInP[removeCharIndex]++;
+                    if (charCountInP[removeCharIndex] > 0) {
                         sameNumber--;
                     }
                 }
             }
-            if (target[addCharIndex] != Integer.MIN_VALUE) {
-                target[addCharIndex]--;
+            if (charCountInP[addCharIndex] != Integer.MIN_VALUE) {
+                charCountInP[addCharIndex]--;
             }
-            if (target[addCharIndex] >= 0) {
+            if (charCountInP[addCharIndex] >= 0) {
                 sameNumber++;
             }
             if (sameNumber == p.length()) {
