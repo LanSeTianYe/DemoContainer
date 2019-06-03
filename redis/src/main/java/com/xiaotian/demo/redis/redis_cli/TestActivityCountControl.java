@@ -11,6 +11,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 
@@ -83,6 +84,7 @@ public class TestActivityCountControl {
             userList.forEach(user -> {
                 futureList.add(CompletableFuture.runAsync(() -> {
                     logger.info(String.format("thread: %s, %s participateActivity ... start", Thread.currentThread().getId(), user.toString()));
+                    Condition condition = listLock.newCondition();
                     listLock.lock();
                     try {
                         boolean success = activityCountControl.participateActivity(activity.name);
@@ -109,6 +111,8 @@ public class TestActivityCountControl {
      * 活动
      */
     static class Activity implements Serializable {
+
+        private static final long serialVersionUID = 8140261320785925730L;
 
         private final String name;
         private final int count;

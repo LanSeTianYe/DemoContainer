@@ -31,11 +31,11 @@ public class TestInterruptedLock {
         testInterruptedLock.printBlankLine();
 
         thread1 = new Thread(() -> testInterruptedLock.print_UseTryLock(3));
-        thread1.setName("thread-1");
+        thread1.setName("thread-3");
         thread1.start();
         TimeUnit.SECONDS.sleep(1);
         thread2 = new Thread(() -> testInterruptedLock.print_UseTryLock(1));
-        thread2.setName("thread-2");
+        thread2.setName("thread-4");
         thread2.start();
 
         thread2.interrupt();
@@ -43,12 +43,12 @@ public class TestInterruptedLock {
         testInterruptedLock.printBlankLine();
 
         thread1 = new Thread(() -> testInterruptedLock.print_UseLock(3));
-        thread1.setName("thread-1");
+        thread1.setName("thread-5");
         thread1.start();
         TimeUnit.SECONDS.sleep(1);
 
         thread2 = new Thread(() -> testInterruptedLock.print_UseLock(1));
-        thread2.setName("thread-2");
+        thread2.setName("thread-6");
         thread2.start();
         thread2.interrupt();
         TimeUnit.SECONDS.sleep(4);
