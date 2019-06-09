@@ -34,10 +34,10 @@ public class Producer {
             while (true) {
                 try {
                     String value = getValue();
-                    Future<RecordMetadata> sendResult = producer.send(new ProducerRecord<>(topic, partition, "", value));
-                    RecordMetadata recordMetadata = sendResult.get();
-                    TimeUnit.MILLISECONDS.sleep(1003);
-                    logger.info(String.format("threadId: %s, topic: %s, partition: %s, offset: %s, value: %s", Thread.currentThread().getId(), recordMetadata.topic(), recordMetadata.partition(), recordMetadata.offset(), value));
+                    logger.info(String.format("threadId: %s, topic: %s, partition: %s, value: %s", Thread.currentThread().getId(), topic, partition, value));
+                    Future<RecordMetadata> sendResult = producer.send(new ProducerRecord<>(topic, partition, "213", value));
+//                    RecordMetadata recordMetadata = sendResult.get();
+//                    TimeUnit.MILLISECONDS.sleep(1003);
                 } catch (Exception e) {
                     logger.error(e.getMessage(), e);
                 }

@@ -13,8 +13,8 @@ public class SubStart {
         String topicName = "test_sub_pub";
 
         Consumer consumer = new Consumer();
-        String group1 = "pub_sub_group_1";
-        String group2 = "pub_sub_group_2";
+        String group1 = "pub_sub_group_7";
+        String group2 = "pub_sub_group_8";
 
         consumer.consumerFromLatest(group1, topicName);
 

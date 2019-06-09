@@ -6,6 +6,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Collections;
+import java.util.Set;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -34,6 +36,23 @@ public class AdminClientDemo {
             topics.all().whenComplete(this::handelException);
         }
         return startNumber == count.get();
+    }
+
+    public boolean existsTopic(String name) {
+        try (AdminClient adminClient = AdminClient.create(ConfigFactory.getAdminClientConfig())) {
+            ListTopicsResult topics = adminClient.listTopics();
+            try {
+                Set<String> topicNames = topics.names().get();
+                for (String topicName : topicNames) {
+                    if (topicName.equalsIgnoreCase(name)) {
+                        return true;
+                    }
+                }
+            } catch (InterruptedException | ExecutionException e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
     }
 
     /**
