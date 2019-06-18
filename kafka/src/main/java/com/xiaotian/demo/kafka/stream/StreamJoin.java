@@ -35,9 +35,16 @@ public class StreamJoin {
         String join_result = "join-result";
 
         AdminClientDemo adminClientDemo = new AdminClientDemo();
-        adminClientDemo.deleteTopic(a_stream);
-        adminClientDemo.deleteTopic(b_stream);
-        adminClientDemo.deleteTopic(join_result);
+        if (adminClientDemo.existsTopic(a_stream)) {
+            adminClientDemo.deleteTopic(a_stream);
+        }
+        if (adminClientDemo.existsTopic(b_stream)) {
+            adminClientDemo.deleteTopic(b_stream);
+        }
+        if (adminClientDemo.existsTopic(join_result)) {
+            adminClientDemo.deleteTopic(join_result);
+        }
+
         TimeUnit.SECONDS.sleep(3);
 
         adminClientDemo.createTopic(a_stream, 3, Short.valueOf("3"));
