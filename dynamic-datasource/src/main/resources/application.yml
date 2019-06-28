@@ -1,0 +1,16 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/test1
+    username: root
+    password: "000000"
+#    test1:
+#      url: jdbc:mysql://120.133.27.180:3306/cashloan_test1
+#      username: root
+#      password: "000000"
+#    test2:
+#      url: jdbc:mysql://120.133.27.180:3306/cashloan_test2
+#      username: root
+#      password: "000000"
