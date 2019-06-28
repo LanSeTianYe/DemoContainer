@@ -1,0 +1,28 @@
+server:
+  port: 8080
+
+logging:
+  level:
+    root: info
+    com:
+      zaxxer:
+        hikari: debug
+  path: logs/
+  file:
+    max-history: 10
+    max-size: 10MB
+
+spring:
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+  datasource:
+    test1:
+      name: test1
+      url: jdbc:mysql://localhost:3306/test1?serverTimezone=UTC
+      username: root
+      password: "000000"
+    test2:
+      name: test2
+      url: jdbc:mysql://localhost:3306/test2?serverTimezone=UTC
+      username: root
+      password: "000000"
