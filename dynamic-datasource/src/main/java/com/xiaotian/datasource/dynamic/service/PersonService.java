@@ -8,4 +8,5 @@ public interface PersonService {
 
     List<Person> getAll();
 
+    void insertUser(Person person);
 }

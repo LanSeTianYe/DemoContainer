@@ -1,12 +1,11 @@
 package com.xiaotian.datasource.dynamic.controller;
 
-
+import com.xiaotian.datasource.dynamic.commoon.Result;
 import com.xiaotian.datasource.dynamic.entity.Person;
 import com.xiaotian.datasource.dynamic.service.PersonService;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @RestController
 public class PersonController {
@@ -17,8 +16,19 @@ public class PersonController {
         this.personService = personService;
     }
 
-    @RequestMapping("persons")
-    public List<Person> persons(String datasource) {
-        return personService.getAll();
+    @RequestMapping("/persons")
+    public Result persons() {
+        return Result.ofData(personService.getAll());
+    }
+
+    @RequestMapping("/person/add")
+    public Result addPerson(String personName) {
+        if (StringUtils.isEmpty(personName)) {
+            throw new RuntimeException("add person, person name is null");
+        }
+        Person person = new Person();
+        person.setName(personName);
+        personService.insertUser(person);
+        return Result.ofData("添加成功");
     }
 }
