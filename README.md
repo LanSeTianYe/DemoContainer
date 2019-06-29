@@ -12,6 +12,8 @@
   
 * distribute-lock: 分布式锁实现。
 
+* [dynamic-datasource](./dynamic-datasource/ReadMe.md) 
+
 * elasticsearch:elasticsearch 使用。
 
 * kafka: kafka 使用。
