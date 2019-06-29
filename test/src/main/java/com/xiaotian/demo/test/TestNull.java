@@ -1,6 +1,5 @@
 package com.xiaotian.demo.test;
 
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -8,7 +7,6 @@ import java.util.List;
 /**
  * 测试空的对象相关代码
  */
-
 public class TestNull {
 
     public static void main(String[] args) {
@@ -21,7 +19,7 @@ public class TestNull {
         Date date = new Date(0);
         System.out.println(date);
 
-        //NullPointerException
+        // NullPointerException
         try {
             for (String s : nullList) {
                 System.out.println(s);
@@ -31,7 +29,7 @@ public class TestNull {
         }
 
         try {
-            //NullPointerException
+            // NullPointerException
             nullList.forEach(System.out::println);
         } catch (Exception e) {
             e.printStackTrace();
@@ -45,6 +43,4 @@ public class TestNull {
             e.printStackTrace();
         }
     }
-
-
 }

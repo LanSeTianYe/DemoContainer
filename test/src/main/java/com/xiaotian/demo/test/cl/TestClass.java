@@ -20,7 +20,6 @@ public class TestClass extends ArrayList implements List, Cloneable, Serializabl
         consoleConsumer.accept("父类: ");
         parentClass.forEach(consoleConsumer);
 
-
         consoleConsumer.accept("");
         consoleConsumer.accept("实现的接口: ");
         getInterfaces(testClass).forEach(consoleConsumer);
@@ -29,7 +28,7 @@ public class TestClass extends ArrayList implements List, Cloneable, Serializabl
     private static List<Class> getParentClass(Object object) {
         List<Class> results = new ArrayList<>();
         Class<?> superclass = object.getClass().getSuperclass();
-        while (null != superclass){
+        while (null != superclass) {
             results.add(superclass);
             superclass = superclass.getSuperclass();
         }
