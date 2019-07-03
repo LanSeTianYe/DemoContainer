@@ -3,7 +3,7 @@ package com.xiaotian.demo.test.jvm;
 public class TestIntInit {
 
     public static void main(String[] args) {
-        //只输出23
+        // 只输出23
         System.out.println(TestInt.age);
     }
 }

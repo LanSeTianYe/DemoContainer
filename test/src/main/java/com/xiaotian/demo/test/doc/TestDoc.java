@@ -22,11 +22,11 @@ public class TestDoc<T> {
          */
         APPLE,
         /**
-         * 香蕉
+         * 橘子
          */
         ORANGE,
         /**
-         * 橘子
+         * 香蕉
          */
         BANANA,
         ;

@@ -8,9 +8,11 @@
 
 * chartroom:聊天室Demo。
 
-	[chartroom](./chatroom/ReadMe.md)
+	[chartroom](./chatroom/README.md)
   
 * distribute-lock: 分布式锁实现。
+
+* [dynamic-datasource](./dynamic-datasource/README.md) 
 
 * elasticsearch:elasticsearch 使用。
 
