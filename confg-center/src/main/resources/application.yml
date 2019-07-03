@@ -1,0 +1,5 @@
+spring:
+  profiles:
+    active: conf1,conf2
+
+name: name
