@@ -1,19 +1,14 @@
 package com.xiaotian.demo.component.center.mail;
 
+import com.xiaotian.demo.component.center.BaseTest;
 import com.xiaotian.demo.component.center.enums.EmailPlatformTypeEnum;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-
-@SpringBootTest
-@RunWith(SpringRunner.class)
-public class MailSendCenterTest {
+public class MailSendCenterTest extends BaseTest {
 
     @Autowired
     private MailSendCenter mailSendCenter;
@@ -24,14 +19,14 @@ public class MailSendCenterTest {
     @Test
     public void send() throws InterruptedException {
         while (true) {
-            EmailPlatformTypeEnum platformTypeEnum;
+            EmailPlatformTypeEnum platformType;
             if (random.nextBoolean()) {
-                platformTypeEnum = EmailPlatformTypeEnum.YAHOO;
+                platformType = EmailPlatformTypeEnum.YAHOO;
             } else {
-                platformTypeEnum = EmailPlatformTypeEnum.GOOGLE;
+                platformType = EmailPlatformTypeEnum.GOOGLE;
             }
             TimeUnit.SECONDS.sleep(2);
-            mailSendCenter.send(platformTypeEnum.name(), "test@email.com", "hello");
+            mailSendCenter.send(platformType, "test@email.com", "hello");
         }
     }
 }

@@ -3,7 +3,7 @@ package com.xiaotian.demo.component.center.base;
 /**
  * 组件的Key
  */
-public interface ComponentKey {
+public interface ComponentKey<K> {
 
     /**
      * 组件实现该接口，获取组件的key。
@@ -11,5 +11,5 @@ public interface ComponentKey {
      *
      * @return 组件的Key
      */
-    String getKey();
+    K getKey();
 }

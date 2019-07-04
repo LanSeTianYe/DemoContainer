@@ -6,7 +6,7 @@ import com.xiaotian.demo.component.center.enums.EmailPlatformTypeEnum;
 /**
  * 抽象的发送邮件组件
  */
-public abstract class AbstractSendMailComponent implements ComponentKey {
+public abstract class AbstractSendMailComponent implements ComponentKey<EmailPlatformTypeEnum> {
 
     private final EmailPlatformTypeEnum platformTypeEnum;
 
@@ -17,7 +17,7 @@ public abstract class AbstractSendMailComponent implements ComponentKey {
     public abstract void sendMailTo(String email, String context);
 
     @Override
-    public String getKey() {
-        return platformTypeEnum.name().toLowerCase();
+    public EmailPlatformTypeEnum getKey() {
+        return platformTypeEnum;
     }
 }

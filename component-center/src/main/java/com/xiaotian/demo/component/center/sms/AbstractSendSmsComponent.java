@@ -6,7 +6,7 @@ import com.xiaotian.demo.component.center.enums.SmsPlatformTypeEnum;
 /**
  * 抽象的发送消息组件
  */
-public abstract class AbstractSendSmsComponent implements ComponentKey {
+public abstract class AbstractSendSmsComponent implements ComponentKey<SmsPlatformTypeEnum> {
 
     private final SmsPlatformTypeEnum smsPlatformTypeEnum;
 
@@ -17,7 +17,7 @@ public abstract class AbstractSendSmsComponent implements ComponentKey {
     protected abstract void sendSMSTo(String phone, String context);
 
     @Override
-    public String getKey() {
-        return smsPlatformTypeEnum.name().toLowerCase();
+    public SmsPlatformTypeEnum getKey() {
+        return smsPlatformTypeEnum;
     }
 }

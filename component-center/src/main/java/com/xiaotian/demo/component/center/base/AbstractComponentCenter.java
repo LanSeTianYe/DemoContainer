@@ -9,12 +9,9 @@ import java.util.List;
 import java.util.Map;
 
 @Slf4j
-public abstract class AbstractComponentCenter<T extends ComponentKey> {
+public abstract class AbstractComponentCenter<K, T extends ComponentKey<K>> {
 
-    private final List<T> componentList;
-
-    private Map<String, T> componentMap;
-
+    private Map<Object, T> componentMap;
 
     /**
      * 抽象组件中心
@@ -22,7 +19,6 @@ public abstract class AbstractComponentCenter<T extends ComponentKey> {
      * @param componentList 组件列表
      */
     protected AbstractComponentCenter(List<T> componentList) {
-        this.componentList = componentList;
         if (CollectionUtils.isEmpty(componentList)) {
             log.warn("not component find for {}", this.getClass().getCanonicalName());
         } else {
@@ -39,7 +35,7 @@ public abstract class AbstractComponentCenter<T extends ComponentKey> {
      * @param componentKey 组件的Key
      * @return key 对应的组件，不存在返回空
      */
-    public T getComponent(String componentKey) {
-        return componentMap.get(componentKey.toLowerCase());
+    public T getComponent(K componentKey) {
+        return componentMap.get(componentKey);
     }
 }
