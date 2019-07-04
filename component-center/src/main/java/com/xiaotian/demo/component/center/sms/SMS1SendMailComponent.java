@@ -18,6 +18,6 @@ public class SMS1SendMailComponent extends AbstractSendSmsComponent {
 
     @Override
     protected void sendSMSTo(String phone, String context) {
-        log.info("component:{}, send sms: {}, to: {}", getClass().getCanonicalName(), context, phone);
+        log.info("component:{}, send sms: {}, to: {}", getClass().getSimpleName(), context, phone);
     }
 }

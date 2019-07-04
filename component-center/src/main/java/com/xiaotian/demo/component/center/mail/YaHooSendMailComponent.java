@@ -18,6 +18,6 @@ public class YaHooSendMailComponent extends AbstractSendMailComponent {
 
     @Override
     public void sendMailTo(String email, String context) {
-        log.info("component:{}, send mail: {}, to: {}", getClass().getCanonicalName(), context, email);
+        log.info("component:{}, send mail: {}, to: {}", getClass().getSimpleName(), context, email);
     }
 }

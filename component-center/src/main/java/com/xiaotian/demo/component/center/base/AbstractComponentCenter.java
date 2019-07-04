@@ -20,7 +20,7 @@ public abstract class AbstractComponentCenter<K, T extends ComponentKey<K>> {
      */
     protected AbstractComponentCenter(List<T> componentList) {
         if (CollectionUtils.isEmpty(componentList)) {
-            log.warn("not component find for {}", this.getClass().getCanonicalName());
+            log.warn("not component find for {}", this.getClass().getSimpleName());
         } else {
             this.componentMap = new HashMap<>();
             for (T t : componentList) {
