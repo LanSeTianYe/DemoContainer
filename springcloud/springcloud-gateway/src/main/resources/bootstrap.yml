@@ -1,3 +1,6 @@
+server:
+  port: 9050
+
 spring:
   application:
     name: "Spring Cloud Gateway"
@@ -38,6 +41,5 @@ logging:
 switch:
   param:
     check: false # 参数校验过滤器开关
-
 
 
