@@ -9,6 +9,6 @@ import java.util.List;
 @Mapper
 public interface CityMapper {
 
-    @Select("SELECT id, name, state, country FROM city WHERE state = #{state}")
+    @Select("SELECT id, name, state, country, date_time as dateTime FROM city WHERE state = #{state}")
     List<City> findByState(String state);
 }

@@ -1,6 +1,7 @@
 package com.sun.xiaotain.demo.mybatis.model;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 public class City implements Serializable {
 
@@ -10,6 +11,7 @@ public class City implements Serializable {
     private String name;
     private String state;
     private String country;
+    private LocalDateTime dateTime;
 
     public Long getId() {
         return id;
@@ -43,6 +45,14 @@ public class City implements Serializable {
         this.country = country;
     }
 
+    public LocalDateTime getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
+    }
+
     @Override
     public String toString() {
         return "City{" +
@@ -50,6 +60,7 @@ public class City implements Serializable {
                 ", name='" + name + '\'' +
                 ", state='" + state + '\'' +
                 ", country='" + country + '\'' +
+                ", dateTime=" + dateTime +
                 '}';
     }
 }
