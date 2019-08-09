@@ -1,25 +1,14 @@
 package com.xiaotian.demo.test.okhttp;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import com.egls.cashloan.tools.CharsetTool;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
 
-import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
-/**
- * HTTP 请求工具类
- *
- * @author sunfeilong   (sunfeilong@eglsgame.com)
- * @version V1.0
- * @date 2019/7/29 20:30
- */
 @Slf4j
 public class HttpTool {
 
@@ -55,13 +44,6 @@ public class HttpTool {
             .readTimeout(REQUEST_TIMEOUT_SECONDS, TimeUnit.SECONDS)
             .build();
 
-    public static String get(String url, JSONObject params) {
-        return get(HttpUrlTool.buildUrl(url, params));
-    }
-
-    public static String get(String url, Map<String, String> params) {
-        return get(HttpUrlTool.buildUrl(url, params));
-    }
 
     /**
      * get 请求
@@ -79,7 +61,7 @@ public class HttpTool {
             response = CLIENT.newCall(request).execute();
             if (!response.isSuccessful()) {
                 log.error("HttpTool_get response is unsuccessful, response:{}", response.toString());
-                throw new RequestNotSuccessException(String.format("HttpTool_get response is unsuccessful , response code : %s, response info: %s", response.code(), response.toString()));
+                throw new RuntimeException(String.format("HttpTool_get response is unsuccessful , response code : %s, response info: %s", response.code(), response.toString()));
             }
             ResponseBody responseBody = response.body();
             Objects.requireNonNull(responseBody);
@@ -88,7 +70,7 @@ public class HttpTool {
         } catch (Exception e) {
             String message = String.format("HttpTool_get send request to %s exception!", urlWithParams);
             log.error(message, e);
-            throw new RequestNotSuccessException(message, e);
+            throw new RuntimeException(message, e);
         }
     }
 
@@ -98,25 +80,6 @@ public class HttpTool {
 
     public static String postUseJsonData(String url, String data) {
         return post(url, RequestBody.create(MediaType.parse("application/json; charset=UTF-8"), data.getBytes(StandardCharsets.UTF_8)));
-    }
-
-    public static String postUseFormData(String url, final JSONObject data) throws UnsupportedEncodingException {
-        return postUseFormData(url, HttpUrlTool.buildParamString(data));
-    }
-
-    public static String postUseFormData(String url, final Map<?, ?> data) throws UnsupportedEncodingException {
-        return postUseFormData(url, HttpUrlTool.buildParamString(data));
-    }
-
-    /**
-     * 与get请求一样的,但是将参数放在body中,并且进行URL encode
-     */
-    public static String postUseFormData(String url, final String data) throws UnsupportedEncodingException {
-        return post(url, RequestBody.create(MediaType.parse("application/x-www-form-urlencoded; charset=UTF-8"), URLEncoder.encode(data, CharsetTool.ENCODING_UTF_8)));
-    }
-
-    public static String postUseBinaryData(String url, final byte[] data) {
-        return post(url, RequestBody.create(MediaType.parse("application/octet-stream"), data));
     }
 
     /**
@@ -136,7 +99,7 @@ public class HttpTool {
             response = CLIENT.newCall(request).execute();
             if (!response.isSuccessful()) {
                 log.error("HttpTool_post response is unsuccessful, response:{}", response.toString());
-                throw new RequestNotSuccessException(String.format("HttpTool_post response is unsuccessful , response code : %s, response info: %s", response.code(), response.toString()));
+                throw new RuntimeException(String.format("HttpTool_post response is unsuccessful , response code : %s, response info: %s", response.code(), response.toString()));
             }
             ResponseBody responseBody = response.body();
             Objects.requireNonNull(responseBody);
@@ -145,7 +108,7 @@ public class HttpTool {
         } catch (Exception e) {
             String message = String.format("HttpTool_post send request to url: [%s] exception. request body: [%s]", url, requestBody);
             log.error(message, e);
-            throw new RequestNotSuccessException(message, e);
+            throw new RuntimeException(message, e);
         }
     }
 }
