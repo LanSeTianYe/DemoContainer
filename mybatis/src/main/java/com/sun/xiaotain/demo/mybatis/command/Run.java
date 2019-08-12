@@ -22,6 +22,9 @@ public class Run implements CommandLineRunner {
     public void run(String... args) throws Exception {
         while (true) {
             List<City> cityByStatus = cityService.getCityByStatus("1");
+            City city = cityService.byId(1);
+
+            System.out.println(city);
             cityByStatus.get(0).getDateTime().plus(100, ChronoUnit.DAYS);
             TimeUnit.SECONDS.sleep(2);
         }

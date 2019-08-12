@@ -23,7 +23,6 @@ public class CityMapperTest {
 
     @Test
     public void findByState() throws Exception {
-        logger.info(cityMapper.findByState("CA"));
         logger.info(cityService.getCityByStatus("CA"));
     }
 }

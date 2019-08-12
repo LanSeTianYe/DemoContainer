@@ -1,14 +1,14 @@
 package com.sun.xiaotain.demo.mybatis.mapper;
 
 import com.sun.xiaotain.demo.mybatis.model.City;
+import com.sun.xiaotain.demo.mybatis.model.CityExample;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Param;
 
-import java.util.List;
-
+/**
+ * CityMapper继承基类
+ */
 @Mapper
-public interface CityMapper {
-
-    @Select("SELECT id, name, state, country, date_time as dateTime FROM city WHERE state = #{state}")
-    List<City> findByState(String state);
+public interface CityMapper extends MyBatisBaseMapper<City, Integer, CityExample> {
+    City selectById(@Param("id") Integer id);
 }

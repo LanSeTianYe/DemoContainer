@@ -6,5 +6,7 @@ import java.util.List;
 
 
 public interface CityService {
-    public List<City> getCityByStatus(String status);
+    List<City> getCityByStatus(String status);
+
+    City byId(Integer id);
 }

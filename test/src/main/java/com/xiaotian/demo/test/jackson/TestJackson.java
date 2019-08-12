@@ -5,6 +5,7 @@ import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import lombok.Data;
 
 import java.io.IOException;
+import java.util.Map;
 
 public class TestJackson {
 
@@ -19,8 +20,8 @@ public class TestJackson {
         person._UnSafe = "_UnSafe";
         System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(person));
 
-        Person person1 = mapper.readValue("<Person><name></name><age>24</age><sex>2</sex><ative>true</ative><_UnSafe>_UnSafe</_UnSafe></Person>", Person.class);
-        System.out.println(person1);
+        Map person1 = mapper.readValue("<Person><name></name><age>24</age><sex>2</sex><ative>true</ative><_UnSafe>_UnSafe</_UnSafe></Person>", Map.class);
+        System.out.println(person1.toString());
     }
 
     @Data
