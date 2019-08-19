@@ -2,12 +2,10 @@ package com.xiaotian.demo.mock.http.controller;
 
 import com.xiaotian.demo.mock.http.vo.PersonVo;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,6 +45,17 @@ public class PersonController {
     @RequestMapping(value = "/getPersonByName_Post", method = {RequestMethod.POST})
     @ResponseBody
     public PersonVo getPersonByName_Post(@RequestBody(required = false) PersonVo person) {
+        PersonVo personVo = new PersonVo();
+        if (null != person) {
+            personVo.setName(null == person.getName() ? "" : person.getName());
+            personVo.setAge(person.getAge());
+        }
+        return personVo;
+    }
+
+    @RequestMapping(value = "/getPersonByName_From", method = {RequestMethod.POST})
+    @ResponseBody
+    public PersonVo getPersonByName_From(@ModelAttribute PersonVo person, HttpServletRequest request) {
         PersonVo personVo = new PersonVo();
         if (null != person) {
             personVo.setName(null == person.getName() ? "" : person.getName());
