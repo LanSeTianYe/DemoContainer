@@ -29,6 +29,7 @@ spring:
           uri: https://github.com/sunfeilong/config-repo
           # 搜索路径
           # search-paths: {application}
+          refresh-rate: 50
         # 属性覆盖，制定的内容会覆盖配置文件的内容
         overrides:
           name: xiaotain

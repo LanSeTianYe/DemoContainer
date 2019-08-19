@@ -23,5 +23,4 @@ public class OkHttpTest {
 
         System.out.println(response.body().string());
     }
-
 }

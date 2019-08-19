@@ -4,7 +4,7 @@ spring:
 eureka:
   server:
     # 关闭注册中心的自我保护机制，防止关闭的实例不能被注册中心清理
-    enable-self-preservation: false
+    enable-self-preservation: true
 ---
 spring:
   profiles: 9000
@@ -43,7 +43,7 @@ eureka:
     # 是否启用安全通信端口号
     secure-port-enabled: false
     # 服务名，默认取值 spring.application.name
-    # appname:
+    # appname: ${spring.application.name}:${server.port}
   client:
     # 是否注册到注册中心
     register-with-eureka: true
