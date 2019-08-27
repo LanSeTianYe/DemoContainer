@@ -15,7 +15,9 @@ public class RedisLuaScript {
 
     public static void main(String[] args) throws IOException, NoSuchAlgorithmException {
 //        executeHello();
-        useGeo();
+//        useGeo();
+        unLock("test");
+//        lock("test", 50L);
     }
 
 
@@ -39,6 +41,22 @@ public class RedisLuaScript {
         try (Jedis jedis = jedisPool.getResource()) {
             byte[] script = FileReadUtil.readFromResource("use_geo.lua");
             Object response = jedis.eval(new String(script));
+            System.out.println(response);
+        }
+    }
+
+    private static void lock(String key, Long expireTime) throws IOException {
+        try (Jedis jedis = jedisPool.getResource()) {
+            byte[] script = FileReadUtil.readFromResource("lock.lua");
+            Object response = jedis.eval(new String(script), 1, key, String.valueOf(expireTime), "lock_id");
+            System.out.println(response);
+        }
+    }
+
+    private static void unLock(String key) throws IOException {
+        try (Jedis jedis = jedisPool.getResource()) {
+            byte[] script = FileReadUtil.readFromResource("unlock.lua");
+            Object response = jedis.eval(new String(script), 1, key, "10006");
             System.out.println(response);
         }
     }
