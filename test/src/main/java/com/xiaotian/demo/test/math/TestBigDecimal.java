@@ -1,33 +1,38 @@
 package com.xiaotian.demo.test.math;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
+import java.util.Arrays;
+import java.util.Objects;
 
 public class TestBigDecimal {
 
     public static void main(String[] args) {
+        BigDecimal a = BigDecimal.valueOf(1.1D);
+        BigDecimal b = BigDecimal.valueOf(1.5D);
+        testDoubleToBigDecimal();
+        add(a, b);
+    }
 
-        {
-            BigDecimal a = BigDecimal.valueOf(0.1212D);
-            BigDecimal b = new BigDecimal("1.2121");
-            BigDecimal c = new BigDecimal("2");
-            BigDecimal d = new BigDecimal("5");
-
-
-            System.out.println(a.add(b));
-            System.out.println(a.subtract(b));
-            System.out.println(a.multiply(b));
-            System.out.println(a.divide(c, 3, RoundingMode.FLOOR));
-            System.out.println(a.divide(c, 3, RoundingMode.CEILING));
-
-            System.out.println(a.negate());
-            System.out.println(a.negate().plus());
-
-            System.out.println(a.max(b));
-            System.out.println(d.remainder(c));
-            System.out.println(c.remainder(d));
-            //精度
-            System.out.println(a.ulp());
+    public void scale(BigDecimal... value) {
+        if (!Objects.isNull(value)) {
+            Arrays.stream(value).map(v -> v.setScale(4, BigDecimal.ROUND_HALF_UP));
         }
+    }
+
+    private static void add(BigDecimal a, BigDecimal b) {
+
+        BigDecimal scale = a.add(b).setScale(3, BigDecimal.ROUND_HALF_UP);
+        System.out.println(scale);
+    }
+
+    private static void testDoubleToBigDecimal() {
+        double money = 11.11D;
+        System.out.println(money);
+        //直接使用构造函数会出现精度问题
+        //11.1099999999999994315658113919198513031005859375
+        System.out.println(new BigDecimal(money));
+        //使用 BigDecimal.valueOf 构造不会出现精度问题
+        //11.11
+        System.out.println(BigDecimal.valueOf(money));
     }
 }
