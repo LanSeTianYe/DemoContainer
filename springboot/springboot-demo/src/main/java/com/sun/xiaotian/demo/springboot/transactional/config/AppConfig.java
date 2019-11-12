@@ -1,7 +1,7 @@
-package com.sun.xiaotian.demo.springboot.demo.config;
+package com.sun.xiaotian.demo.springboot.transactional.config;
 
-import com.sun.xiaotian.demo.springboot.demo.interpecter.MyIntercepter;
-import com.sun.xiaotian.demo.springboot.demo.resolver.PersonParameterHandlerMethodArgumentResolver;
+import com.sun.xiaotian.demo.springboot.transactional.interpecter.MyIntercepter;
+import com.sun.xiaotian.demo.springboot.transactional.resolver.PersonParameterHandlerMethodArgumentResolver;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;

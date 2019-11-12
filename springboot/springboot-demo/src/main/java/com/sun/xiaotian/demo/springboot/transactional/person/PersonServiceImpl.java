@@ -1,4 +1,4 @@
-package com.sun.xiaotian.demo.springboot.demo.person;
+package com.sun.xiaotian.demo.springboot.transactional.person;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;

@@ -1,8 +1,8 @@
-package com.sun.xiaotian.demo.springboot.demo.aop;
+package com.sun.xiaotian.demo.springboot.transactional.aop;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.sun.xiaotian.demo.springboot.demo.common.HttpResult;
+import com.sun.xiaotian.demo.springboot.transactional.common.HttpResult;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
@@ -20,7 +20,7 @@ public class RequestLogAspect {
 
     private static final Logger logger = LogManager.getLogger(RequestLogAspect.class);
 
-    @Pointcut("execution(public com.sun.xiaotian.demo.springboot.demo.common.HttpResult com.sun.xiaotian.demo.springboot.*.*.*(..)) && @annotation(org.springframework.web.bind.annotation.RequestMapping)")
+    @Pointcut("execution(public com.sun.xiaotian.demo.springboot.transactional.common.HttpResult com.sun.xiaotian.demo.springboot.*.*.*(..)) && @annotation(org.springframework.web.bind.annotation.RequestMapping)")
     private void logPointcut() {
     }
 

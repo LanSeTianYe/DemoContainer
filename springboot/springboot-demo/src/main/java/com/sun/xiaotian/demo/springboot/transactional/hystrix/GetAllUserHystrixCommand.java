@@ -1,9 +1,9 @@
-package com.sun.xiaotian.demo.springboot.demo.hystrix;
+package com.sun.xiaotian.demo.springboot.transactional.hystrix;
 
 import com.netflix.hystrix.HystrixCommand;
 import com.netflix.hystrix.HystrixCommandGroupKey;
-import com.sun.xiaotian.demo.springboot.demo.person.Person;
-import com.sun.xiaotian.demo.springboot.demo.person.PersonRepository;
+import com.sun.xiaotian.demo.springboot.transactional.person.Person;
+import com.sun.xiaotian.demo.springboot.transactional.person.PersonRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.context.annotation.Scope;

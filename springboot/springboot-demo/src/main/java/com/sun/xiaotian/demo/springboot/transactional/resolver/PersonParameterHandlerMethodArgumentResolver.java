@@ -1,8 +1,7 @@
-package com.sun.xiaotian.demo.springboot.demo.resolver;
+package com.sun.xiaotian.demo.springboot.transactional.resolver;
 
-import com.sun.xiaotian.demo.springboot.demo.person.Person;
-import com.sun.xiaotian.demo.springboot.demo.person.PersonService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.sun.xiaotian.demo.springboot.transactional.person.Person;
+import com.sun.xiaotian.demo.springboot.transactional.person.PersonService;
 import org.springframework.core.MethodParameter;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;

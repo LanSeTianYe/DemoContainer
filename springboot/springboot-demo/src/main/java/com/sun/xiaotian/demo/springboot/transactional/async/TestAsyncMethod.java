@@ -1,4 +1,4 @@
-package com.sun.xiaotian.demo.springboot.demo.async;
+package com.sun.xiaotian.demo.springboot.transactional.async;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
