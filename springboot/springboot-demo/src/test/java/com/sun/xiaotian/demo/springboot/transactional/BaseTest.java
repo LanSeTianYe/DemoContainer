@@ -1,4 +1,4 @@
-package com.sun.xiaotian.demo.springboot.demo;
+package com.sun.xiaotian.demo.springboot.transactional;
 
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

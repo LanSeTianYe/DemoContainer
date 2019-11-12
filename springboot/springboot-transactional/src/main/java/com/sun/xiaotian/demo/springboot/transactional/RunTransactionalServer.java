@@ -1,4 +1,4 @@
-package com.sun.xiaotian.demo.springboot.demo;
+package com.sun.xiaotian.demo.springboot.transactional;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,14 +15,14 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @SpringBootApplication(scanBasePackages = "{com.sun.xiaotian.demo.springboot.demo.*}")
 @ServletComponentScan
 @EnableAsync
-public class RunServer {
+public class RunTransactionalServer {
 
-    private final static Logger logger = LogManager.getLogger(RunServer.class);
+    private final static Logger logger = LogManager.getLogger(RunTransactionalServer.class);
 
     public static void main(String[] args) {
 
         SpringApplication springApplication = new SpringApplicationBuilder()
-                .sources(RunServer.class)
+                .sources(RunTransactionalServer.class)
                 .listeners((event) -> {
                             logger.debug(event.toString());
                             if (event instanceof ApplicationReadyEvent) {
