@@ -11,6 +11,11 @@ public class TestBigDecimal {
         BigDecimal b = BigDecimal.valueOf(1.5D);
         testDoubleToBigDecimal();
         add(a, b);
+
+        BigDecimal b10 = new BigDecimal("10.00");
+        BigDecimal b3 = new BigDecimal("3.00");
+
+        System.out.println(b10.divide(b3, 2, BigDecimal.ROUND_HALF_UP));
     }
 
     public void scale(BigDecimal... value) {
