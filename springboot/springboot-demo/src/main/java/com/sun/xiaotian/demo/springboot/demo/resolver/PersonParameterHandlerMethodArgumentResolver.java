@@ -18,7 +18,6 @@ public class PersonParameterHandlerMethodArgumentResolver implements HandlerMeth
 
     private final PersonService personService;
 
-    @Autowired
     public PersonParameterHandlerMethodArgumentResolver(PersonService personService) {
         this.personService = personService;
     }
