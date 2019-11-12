@@ -29,4 +29,9 @@ public class CityServiceImpl implements CityService {
     public City byId(Integer id) {
         return cityMapper.selectById(id);
     }
+
+    @Override
+    public void add(City city) {
+        cityMapper.insert(city);
+    }
 }

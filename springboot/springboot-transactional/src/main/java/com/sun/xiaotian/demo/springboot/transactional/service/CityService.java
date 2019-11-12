@@ -9,4 +9,6 @@ public interface CityService {
     List<City> getCityByStatus(String status);
 
     City byId(Integer id);
+
+    void add(City city);
 }

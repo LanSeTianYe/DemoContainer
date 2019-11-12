@@ -1,6 +1,5 @@
 package com.sun.xiaotain.demo.mybatis.mapper;
 
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.io.Serializable;
