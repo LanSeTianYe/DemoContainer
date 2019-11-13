@@ -45,6 +45,22 @@ public class CityBiz {
         addSecondCity();
     }
 
+
+    public void useThisInvokeTransactionMethod() {
+        addAndThrowException();
+    }
+
+    @Transactional
+    public void addAndThrowException() {
+        City city = new City();
+        city.setName("city3");
+        city.setCountry("country3");
+        city.setState("3");
+        city.setDateTime(LocalDateTime.now());
+        cityService.add(city);
+        throw new IllegalArgumentException("参数非法");
+    }
+
     private void addFirstCity() {
         City city = new City();
         city.setName("city1");

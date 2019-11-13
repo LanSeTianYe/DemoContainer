@@ -30,6 +30,11 @@ public class CityController {
 
     @GetMapping("/city/exceptionInAfter")
     public void exceptionInAfter() {
-        cityBiz.addUserAndExceptionInMiddle();
+        cityBiz.addUserAndExceptionAfter();
+    }
+
+    @GetMapping("/city/useThisInvokeTransactionMethod")
+    public void useThisInvokeTransactionMethod() {
+        cityBiz.useThisInvokeTransactionMethod();
     }
 }
