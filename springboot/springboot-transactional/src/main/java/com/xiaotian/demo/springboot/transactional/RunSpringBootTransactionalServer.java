@@ -15,14 +15,14 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @SpringBootApplication
 @MapperScan(basePackages = "com.xiaotian.demo.springboot.transactional.mapper")
 @EnableTransactionManagement
-public class RunTransactionalServer {
+public class RunSpringBootTransactionalServer {
 
-    private final static Logger logger = LogManager.getLogger(RunTransactionalServer.class);
+    private final static Logger logger = LogManager.getLogger(RunSpringBootTransactionalServer.class);
 
     public static void main(String[] args) {
 
         SpringApplication springApplication = new SpringApplicationBuilder()
-                .sources(RunTransactionalServer.class)
+                .sources(RunSpringBootTransactionalServer.class)
                 .listeners((event) -> {
                             logger.debug(event.toString());
                             if (event instanceof ApplicationReadyEvent) {

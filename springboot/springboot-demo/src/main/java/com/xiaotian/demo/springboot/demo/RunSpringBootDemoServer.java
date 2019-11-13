@@ -12,17 +12,17 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableAsync;
 
-@SpringBootApplication(scanBasePackages = "{com.sun.xiaotian.demo.springboot.demo.*}")
+@SpringBootApplication
 @ServletComponentScan
 @EnableAsync
-public class RunServer {
+public class RunSpringBootDemoServer {
 
-    private final static Logger logger = LogManager.getLogger(RunServer.class);
+    private final static Logger logger = LogManager.getLogger(RunSpringBootDemoServer.class);
 
     public static void main(String[] args) {
 
         SpringApplication springApplication = new SpringApplicationBuilder()
-                .sources(RunServer.class)
+                .sources(RunSpringBootDemoServer.class)
                 .listeners((event) -> {
                             logger.debug(event.toString());
                             if (event instanceof ApplicationReadyEvent) {
