@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.sun.xiaotian.demo.springboot.transactional.mapper.CityMapper">
-    <resultMap id="BaseResultMap" type="com.sun.xiaotian.demo.springboot.transactional.model.City">
+<mapper namespace="com.xiaotian.demo.springboot.transactional.mapper.CityMapper">
+    <resultMap id="BaseResultMap" type="com.xiaotian.demo.springboot.transactional.model.City">
         <id column="id" jdbcType="INTEGER" property="id"/>
         <result column="name" jdbcType="VARCHAR" property="name"/>
         <result column="state" jdbcType="VARCHAR" property="state"/>
@@ -71,7 +71,7 @@
     <sql id="Base_Column_List">
     id, `name`, `state`, country, date_time
   </sql>
-    <select id="selectByExample" parameterType="com.sun.xiaotian.demo.springboot.transactional.model.CityExample"
+    <select id="selectByExample" parameterType="com.xiaotian.demo.springboot.transactional.model.CityExample"
             resultMap="BaseResultMap">
         select
         <if test="distinct">
@@ -104,19 +104,19 @@
     delete from city
     where id = #{id,jdbcType=INTEGER}
   </delete>
-    <delete id="deleteByExample" parameterType="com.sun.xiaotian.demo.springboot.transactional.model.CityExample">
+    <delete id="deleteByExample" parameterType="com.xiaotian.demo.springboot.transactional.model.CityExample">
         delete from city
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
-    <insert id="insert" parameterType="com.sun.xiaotian.demo.springboot.transactional.model.City">
+    <insert id="insert" parameterType="com.xiaotian.demo.springboot.transactional.model.City">
     insert into city (id, `name`, `state`, 
       country, date_time)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}, 
       #{country,jdbcType=VARCHAR}, #{dateTime,jdbcType=TIMESTAMP})
   </insert>
-    <insert id="insertSelective" parameterType="com.sun.xiaotian.demo.springboot.transactional.model.City">
+    <insert id="insertSelective" parameterType="com.xiaotian.demo.springboot.transactional.model.City">
         insert into city
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -153,7 +153,7 @@
             </if>
         </trim>
     </insert>
-    <select id="countByExample" parameterType="com.sun.xiaotian.demo.springboot.transactional.model.CityExample"
+    <select id="countByExample" parameterType="com.xiaotian.demo.springboot.transactional.model.CityExample"
             resultType="java.lang.Long">
         select count(*) from city
         <if test="_parameter != null">
@@ -194,7 +194,7 @@
             <include refid="Update_By_Example_Where_Clause"/>
         </if>
     </update>
-    <update id="updateByPrimaryKeySelective" parameterType="com.sun.xiaotian.demo.springboot.transactional.model.City">
+    <update id="updateByPrimaryKeySelective" parameterType="com.xiaotian.demo.springboot.transactional.model.City">
         update city
         <set>
             <if test="name != null">
@@ -212,7 +212,7 @@
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.sun.xiaotian.demo.springboot.transactional.model.City">
+    <update id="updateByPrimaryKey" parameterType="com.xiaotian.demo.springboot.transactional.model.City">
     update city
     set `name` = #{name,jdbcType=VARCHAR},
       `state` = #{state,jdbcType=VARCHAR},
