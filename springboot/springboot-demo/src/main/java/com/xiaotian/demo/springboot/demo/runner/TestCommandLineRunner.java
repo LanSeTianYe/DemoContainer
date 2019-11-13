@@ -1,8 +1,8 @@
-package com.xiaotian.demo.springboot.transactional.runner;
+package com.xiaotian.demo.springboot.demo.runner;
 
-import com.xiaotian.demo.springboot.transactional.async.TestAsyncMethod;
-import com.xiaotian.demo.springboot.transactional.person.Person;
-import com.xiaotian.demo.springboot.transactional.person.PersonService;
+import com.xiaotian.demo.springboot.demo.async.TestAsyncMethod;
+import com.xiaotian.demo.springboot.demo.person.Person;
+import com.xiaotian.demo.springboot.demo.person.PersonService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

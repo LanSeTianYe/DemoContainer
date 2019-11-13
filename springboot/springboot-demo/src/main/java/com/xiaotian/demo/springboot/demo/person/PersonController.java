@@ -1,8 +1,8 @@
-package com.xiaotian.demo.springboot.transactional.person;
+package com.xiaotian.demo.springboot.demo.person;
 
 import com.alibaba.fastjson.JSON;
-import com.xiaotian.demo.springboot.transactional.common.HttpResult;
-import com.xiaotian.demo.springboot.transactional.hystrix.GetAllUserHystrixCommand;
+import com.xiaotian.demo.springboot.demo.common.HttpResult;
+import com.xiaotian.demo.springboot.demo.hystrix.GetAllUserHystrixCommand;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.context.annotation.Scope;

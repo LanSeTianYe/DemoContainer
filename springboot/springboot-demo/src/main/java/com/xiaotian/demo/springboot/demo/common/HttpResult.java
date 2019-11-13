@@ -1,4 +1,4 @@
-package com.xiaotian.demo.springboot.transactional.common;
+package com.xiaotian.demo.springboot.demo.common;
 
 import java.io.Serializable;
 

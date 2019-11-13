@@ -1,4 +1,4 @@
-package com.xiaotian.demo.springboot.transactional.person;
+package com.xiaotian.demo.springboot.demo.person;
 
 import java.util.List;
 import java.util.Optional;

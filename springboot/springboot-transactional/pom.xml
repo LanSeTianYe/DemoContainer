@@ -11,7 +11,8 @@
         <relativePath>../../parent-pom/pom.xml</relativePath>
     </parent>
 
-    <artifactId>springboot.transactional</artifactId>
+    <groupId>com.xiaotain.demo.springboot</groupId>
+    <artifactId>springboot-transactional</artifactId>
 
     <dependencyManagement>
         <dependencies>

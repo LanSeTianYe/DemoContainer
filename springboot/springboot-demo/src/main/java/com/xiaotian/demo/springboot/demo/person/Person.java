@@ -1,4 +1,4 @@
-package com.xiaotian.demo.springboot.transactional.person;
+package com.xiaotian.demo.springboot.demo.person;
 
 import javax.persistence.*;
 import java.io.Serializable;

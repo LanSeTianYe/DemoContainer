@@ -1,7 +1,7 @@
-package com.xiaotian.demo.springboot.transactional.resolver;
+package com.xiaotian.demo.springboot.demo.resolver;
 
-import com.xiaotian.demo.springboot.transactional.person.Person;
-import com.xiaotian.demo.springboot.transactional.person.PersonService;
+import com.xiaotian.demo.springboot.demo.person.Person;
+import com.xiaotian.demo.springboot.demo.person.PersonService;
 import org.springframework.core.MethodParameter;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;

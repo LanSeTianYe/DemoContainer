@@ -1,4 +1,4 @@
-package com.xiaotian.demo.springboot.transactional.person;
+package com.xiaotian.demo.springboot.demo.person;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;

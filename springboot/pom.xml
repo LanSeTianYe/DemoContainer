@@ -10,7 +10,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>springboot-transaction</module>
+        <module>springboot-transactional</module>
         <module>springboot-demo</module>
     </modules>
 
