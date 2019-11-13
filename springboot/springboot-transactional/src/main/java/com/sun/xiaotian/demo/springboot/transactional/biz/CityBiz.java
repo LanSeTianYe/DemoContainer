@@ -1,6 +1,7 @@
 package com.sun.xiaotian.demo.springboot.transactional.biz;
 
 
+import com.sun.xiaotian.demo.springboot.transactional.exception.TransactionBusinessException;
 import com.sun.xiaotian.demo.springboot.transactional.model.City;
 import com.sun.xiaotian.demo.springboot.transactional.service.CityService;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,7 @@ public class CityBiz {
         this.cityService = cityService;
     }
 
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public void addUserAndExceptionBefore() {
         exception();
         addFirstCity();
@@ -31,14 +32,14 @@ public class CityBiz {
         addSecondCity();
     }
 
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public void addUserAndExceptionAfter() {
         addFirstCity();
         addSecondCity();
         exception();
     }
 
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public void addUserAndNoException() {
         addFirstCity();
         addSecondCity();
@@ -54,7 +55,7 @@ public class CityBiz {
     }
 
     private void exception() {
-        throw new IllegalArgumentException("参数非法");
+        throw new TransactionBusinessException("参数非法");
     }
 
     private void addSecondCity() {

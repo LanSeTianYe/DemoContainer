@@ -1,6 +1,5 @@
 package com.sun.xiaotian.demo.springboot.transactional.config;
 
-import com.alibaba.druid.pool.DruidDataSource;
 import com.zaxxer.hikari.HikariDataSource;
 import lombok.extern.slf4j.Slf4j;
 
@@ -14,7 +13,7 @@ import javax.annotation.PostConstruct;
  * @date 2019/9/26 20:35
  */
 @Slf4j
-public class EncryptionPasswordDataSource extends DruidDataSource {
+public class EncryptionPasswordDataSource extends HikariDataSource {
 
     private String realUserName;
     private String realPassword;
@@ -38,5 +37,4 @@ public class EncryptionPasswordDataSource extends DruidDataSource {
     private String decode(String userNameOrPassword) {
         return userNameOrPassword;
     }
-
 }

@@ -12,9 +12,11 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
 @MapperScan(basePackages = "com.sun.xiaotian.demo.springboot.transactional.mapper")
+@EnableTransactionManagement
 public class RunTransactionalServer {
 
     private final static Logger logger = LogManager.getLogger(RunTransactionalServer.class);
