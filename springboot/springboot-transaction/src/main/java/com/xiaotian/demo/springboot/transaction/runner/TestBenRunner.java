@@ -1,7 +1,7 @@
-package com.xiaotian.demo.springboot.transactional.runner;
+package com.xiaotian.demo.springboot.transaction.runner;
 
-import com.xiaotian.demo.springboot.transactional.component.BeanComponent;
-import com.xiaotian.demo.springboot.transactional.mapper.CityMapper;
+import com.xiaotian.demo.springboot.transaction.component.BeanComponent;
+import com.xiaotian.demo.springboot.transaction.mapper.CityMapper;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 

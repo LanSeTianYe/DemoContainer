@@ -1,7 +1,7 @@
-package com.xiaotian.demo.springboot.transactional.mapper;
+package com.xiaotian.demo.springboot.transaction.mapper;
 
-import com.xiaotian.demo.springboot.transactional.model.City;
-import com.xiaotian.demo.springboot.transactional.model.CityExample;
+import com.xiaotian.demo.springboot.transaction.model.City;
+import com.xiaotian.demo.springboot.transaction.model.CityExample;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

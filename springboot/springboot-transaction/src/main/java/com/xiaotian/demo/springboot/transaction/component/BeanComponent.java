@@ -1,4 +1,4 @@
-package com.xiaotian.demo.springboot.transactional.component;
+package com.xiaotian.demo.springboot.transaction.component;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;

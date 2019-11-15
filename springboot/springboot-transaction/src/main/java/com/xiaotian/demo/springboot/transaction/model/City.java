@@ -1,4 +1,4 @@
-package com.xiaotian.demo.springboot.transactional.model;
+package com.xiaotian.demo.springboot.transaction.model;
 
 import lombok.Data;
 

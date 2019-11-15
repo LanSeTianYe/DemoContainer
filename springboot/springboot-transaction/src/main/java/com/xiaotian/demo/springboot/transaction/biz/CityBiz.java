@@ -1,9 +1,9 @@
-package com.xiaotian.demo.springboot.transactional.biz;
+package com.xiaotian.demo.springboot.transaction.biz;
 
 
-import com.xiaotian.demo.springboot.transactional.exception.TransactionBusinessException;
-import com.xiaotian.demo.springboot.transactional.model.City;
-import com.xiaotian.demo.springboot.transactional.service.CityService;
+import com.xiaotian.demo.springboot.transaction.exception.TransactionBusinessException;
+import com.xiaotian.demo.springboot.transaction.model.City;
+import com.xiaotian.demo.springboot.transaction.service.CityService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

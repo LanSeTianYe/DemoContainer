@@ -1,4 +1,4 @@
-package com.xiaotian.demo.springboot.transactional.exception;
+package com.xiaotian.demo.springboot.transaction.exception;
 
 public class TransactionBusinessException extends RuntimeException {
 

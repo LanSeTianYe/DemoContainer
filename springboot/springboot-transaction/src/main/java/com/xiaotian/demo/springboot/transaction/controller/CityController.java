@@ -1,6 +1,6 @@
-package com.xiaotian.demo.springboot.transactional.controller;
+package com.xiaotian.demo.springboot.transaction.controller;
 
-import com.xiaotian.demo.springboot.transactional.biz.CityBiz;
+import com.xiaotian.demo.springboot.transaction.biz.CityBiz;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 

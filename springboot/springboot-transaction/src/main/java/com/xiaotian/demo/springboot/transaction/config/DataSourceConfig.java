@@ -1,4 +1,4 @@
-package com.xiaotian.demo.springboot.transactional.config;
+package com.xiaotian.demo.springboot.transaction.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.ConfigurationProperties;

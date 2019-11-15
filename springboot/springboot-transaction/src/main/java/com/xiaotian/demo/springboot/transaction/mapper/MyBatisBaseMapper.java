@@ -1,4 +1,4 @@
-package com.xiaotian.demo.springboot.transactional.mapper;
+package com.xiaotian.demo.springboot.transaction.mapper;
 
 import org.apache.ibatis.annotations.Param;
 
