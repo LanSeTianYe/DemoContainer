@@ -1,9 +1,9 @@
-package com.xiaotian.demo.springboot.transactional.service.impl;
+package com.xiaotian.demo.springboot.transaction.service.impl;
 
-import com.xiaotian.demo.springboot.transactional.mapper.CityMapper;
-import com.xiaotian.demo.springboot.transactional.model.City;
-import com.xiaotian.demo.springboot.transactional.model.CityExample;
-import com.xiaotian.demo.springboot.transactional.service.CityService;
+import com.xiaotian.demo.springboot.transaction.mapper.CityMapper;
+import com.xiaotian.demo.springboot.transaction.model.City;
+import com.xiaotian.demo.springboot.transaction.model.CityExample;
+import com.xiaotian.demo.springboot.transaction.service.CityService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

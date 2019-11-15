@@ -12,7 +12,7 @@
     </parent>
 
     <groupId>com.xiaotain.demo.springboot</groupId>
-    <artifactId>springboot-transactional</artifactId>
+    <artifactId>springboot-transaction</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
     <dependencyManagement>

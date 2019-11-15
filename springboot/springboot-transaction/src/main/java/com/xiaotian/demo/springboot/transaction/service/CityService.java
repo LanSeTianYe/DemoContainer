@@ -1,6 +1,6 @@
-package com.xiaotian.demo.springboot.transactional.service;
+package com.xiaotian.demo.springboot.transaction.service;
 
-import com.xiaotian.demo.springboot.transactional.model.City;
+import com.xiaotian.demo.springboot.transaction.model.City;
 
 import java.util.List;
 

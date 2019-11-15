@@ -1,4 +1,4 @@
-package com.xiaotian.demo.springboot.transactional;
+package com.xiaotian.demo.springboot.transaction;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
-@MapperScan(basePackages = "com.xiaotian.demo.springboot.transactional.mapper")
+@MapperScan(basePackages = "com.xiaotian.demo.springboot.transaction.mapper")
 @EnableTransactionManagement
 public class RunSpringBootTransactionalServer {
 
