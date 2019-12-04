@@ -1,10 +1,8 @@
 package com.xiaotian.demo.test.refactoring;
 
-import org.junit.Test;
-
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.Assert.*;
+import org.junit.Test;
 
 public class PriceTest {
 

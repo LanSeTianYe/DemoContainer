@@ -4,7 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * <a href="https://leetcode.com/problems/degree-of-an-array/">degree-of-an-array</a>
+ * <a href=
+ * "https://leetcode.com/problems/degree-of-an-array/">degree-of-an-array</a>
  */
 public class A_697_DegreeOfAnArray {
 
@@ -36,23 +37,10 @@ public class A_697_DegreeOfAnArray {
     private static class Node {
         private int times;
         private int start;
-        private int end;
         private int length;
-
-        public int getStart() {
-            return start;
-        }
 
         public void setStart(int start) {
             this.start = start;
-        }
-
-        public int getEnd() {
-            return end;
-        }
-
-        public void setEnd(int end) {
-            this.end = end;
         }
 
         public int getLength() {
@@ -72,7 +60,6 @@ public class A_697_DegreeOfAnArray {
         }
 
         public void fresh(int index) {
-            this.setEnd(index);
             this.setLength(index - start + 1);
             this.setTimes(this.times + 1);
         }
@@ -80,7 +67,6 @@ public class A_697_DegreeOfAnArray {
         public static Node init(int index) {
             Node node = new Node();
             node.setStart(index);
-            node.setEnd(index);
             node.setLength(1);
             node.setTimes(1);
             return node;
@@ -89,6 +75,6 @@ public class A_697_DegreeOfAnArray {
 
     public static void main(String[] args) {
         A_697_DegreeOfAnArray degreeOfAnArray_697 = new A_697_DegreeOfAnArray();
-        System.out.println(degreeOfAnArray_697.findShortestSubArray(new int[]{1, 2, 2, 3, 1, 4, 2}));
+        System.out.println(degreeOfAnArray_697.findShortestSubArray(new int[] { 1, 2, 2, 3, 1, 4, 2 }));
     }
 }

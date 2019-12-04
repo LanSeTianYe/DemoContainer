@@ -8,3 +8,11 @@ target/
 
 
 logs/
+
+# vs code
+.project
+.settings/
+.classpath
+.factorypath
+launch.json
+settings.json
