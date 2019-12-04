@@ -64,7 +64,8 @@ public class A_467_UniqueSubstringsInWraparoundString {
             } else {
                 curLen = 1;
             }
-            count[p.charAt(i) - 'a'] = Math.max(count[p.charAt(i) - 'a'], curLen);
+            int index = p.charAt(i) - 'a';
+            count[index] = Math.max(count[index], curLen);
         }
 
         int result = 0;
