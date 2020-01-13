@@ -19,9 +19,11 @@ public class WikipediaAnalysis {
         SingleOutputStreamOperator<Tuple2<String, Long>> result = keyedStream
                 .timeWindow(Time.seconds(5))
                 .aggregate(new AggregateFunction<WikipediaEditEvent, Tuple2<String, Long>, Tuple2<String, Long>>() {
+                    private static final long serialVersionUID = -184305568733432800L;
+
                     @Override
                     public Tuple2<String, Long> createAccumulator() {
-                        return new Tuple2<>("", 0L);
+                        return new Tuple2<>("", 100000L);
                     }
 
                     @Override
