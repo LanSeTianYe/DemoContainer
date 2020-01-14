@@ -1,11 +1,15 @@
 package com.xiaotian.flink.demo;
 
 import org.apache.flink.api.common.functions.AggregateFunction;
+import org.apache.flink.api.common.serialization.SimpleStringSchema;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.windowing.time.Time;
+import org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer011;
 import org.apache.flink.streaming.connectors.wikiedits.WikipediaEditEvent;
 import org.apache.flink.streaming.connectors.wikiedits.WikipediaEditsSource;
+
+import java.util.concurrent.TimeUnit;
 
 public class WikipediaAnalysis {
 
@@ -15,7 +19,7 @@ public class WikipediaAnalysis {
 
         executionEnvironment.addSource(new WikipediaEditsSource())
                 .keyBy(WikipediaEditEvent::getUser)
-                .timeWindow(Time.seconds(5))
+                .timeWindow(Time.of(50, TimeUnit.MILLISECONDS))
                 .aggregate(new AggregateFunction<WikipediaEditEvent, Tuple2<String, Long>, Tuple2<String, Long>>() {
 
                     private static final long serialVersionUID = -184305568733432800L;
@@ -42,7 +46,8 @@ public class WikipediaAnalysis {
                         return new Tuple2<>(a.f0, a.f1 + b.f1);
                     }
                 })
-                .print();
+                .map(Tuple2::toString)
+                .addSink(new FlinkKafkaProducer011<>("192.168.0.201:9092,192.168.0.201:9093,192.168.0.201:9094", "wiki-result", new SimpleStringSchema()));
         executionEnvironment.execute();
     }
 }
