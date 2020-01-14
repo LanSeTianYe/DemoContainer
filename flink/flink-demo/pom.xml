@@ -10,6 +10,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>flink-demo</artifactId>
+    <version>1.0.1</version>
 
     <properties>
         <flink.version>1.9.1</flink.version>
