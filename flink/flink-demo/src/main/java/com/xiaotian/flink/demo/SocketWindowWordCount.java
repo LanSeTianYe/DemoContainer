@@ -16,6 +16,9 @@ public class SocketWindowWordCount {
         DataStreamSource<String> textStream = executionEnvironment.socketTextStream("192.168.0.201", 6666);
         textStream
                 .flatMap(new FlatMapFunction<String, WordWithCount>() {
+
+                    private static final long serialVersionUID = 4374992970134051653L;
+
                     @Override
                     public void flatMap(String text, Collector<WordWithCount> collector) throws Exception {
                         if (Objects.nonNull(text)) {
