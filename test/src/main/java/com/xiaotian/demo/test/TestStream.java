@@ -1,33 +1,45 @@
 package com.xiaotian.demo.test;
 
-import java.time.Clock;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.Random;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
 public class TestStream {
 
     public static void main(String[] args) {
-        Random random = new Random();
-        List<Integer> numbers = new ArrayList<>();
+        List<String> result = map(Stream.of("a", "b", "c"), String::toUpperCase);
+        System.out.println(result);
 
-        for (int i = 0; i < 10000000; i++) {
-            numbers.add(random.nextInt(10000));
-        }
+        result = filter(Stream.of("apple", "banana", "lemon", "watermelon", "orange", "grape"), v -> v.length() > 5);
+        System.out.println(result);
+    }
 
-        //所有元素的和
-        long start1 = Clock.systemUTC().millis();
-        Optional<Integer> reduce = numbers.stream().reduce(Integer::sum);
-        System.out.println(reduce);
-        long end1 = Clock.systemUTC().millis();
-        System.out.println("cost time: " + (end1 - start1));
+    private static <I, O> List<O> map(Stream<I> stream, Function<I, O> mapper) {
+        return stream.reduce(new ArrayList<>(),
+                (acc, input) -> {
+                    ArrayList<O> temp = new ArrayList<>(acc);
+                    temp.add(mapper.apply(input));
+                    return temp;
+                }, (left, right) -> {
+                    left.addAll(right);
+                    return left;
+                });
+    }
 
-        long start = Clock.systemUTC().millis();
-        Optional<Integer> reduce2 = numbers.parallelStream().reduce(Integer::sum);
-        long end = Clock.systemUTC().millis();
-        System.out.println(reduce2);
-        System.out.println("cost time: " + (end - start));
+    private static <I> List<I> filter(Stream<I> stream, Predicate<I> predicate) {
+        return stream.reduce(new ArrayList<>(),
+                (acc, input) -> {
+                    ArrayList<I> temp = new ArrayList<>(acc);
+                    if (predicate.test(input)) {
+                        temp.add(input);
+                    }
+                    return temp;
+                }, (left, right) -> {
+                    left.addAll(right);
+                    return left;
+                });
     }
 
 }
