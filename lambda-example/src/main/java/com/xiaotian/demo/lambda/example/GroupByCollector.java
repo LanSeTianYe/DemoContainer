@@ -17,7 +17,7 @@ public class GroupByCollector<T, K> implements Collector<T, Map<K, List<T>>, Map
 
     private final Function<? super T, ? extends K> classifier;
 
-    public GroupByCollector(Function<T, ? extends K> classifier) {
+    public GroupByCollector(Function<? super T, ? extends K> classifier) {
         this.classifier = classifier;
     }
 
