@@ -10,7 +10,7 @@ public class TestSPI {
     public static void main(String[] args) throws ClassNotFoundException {
         ServiceLoader<NumberInterface> load = ServiceLoader.load(NumberInterface.class);
         Iterator<NumberInterface> iterator = load.iterator();
-        if (iterator.hasNext()) {
+        while (iterator.hasNext()) {
             NumberInterface numberInterface = iterator.next();
             System.out.println(numberInterface.getName());
         }

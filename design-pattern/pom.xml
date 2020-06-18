@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.xiaotain.design-pattern</groupId>
-    <artifactId>design-pattern-core</artifactId>
+    <artifactId>design-pattern</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <build>
