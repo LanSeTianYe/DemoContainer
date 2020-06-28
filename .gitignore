@@ -16,3 +16,6 @@ logs/
 .factorypath
 launch.json
 settings.json
+
+build/
+.gradle/

@@ -1,0 +1,4 @@
+rootProject.name = 'gradle'
+include 'gradle-core'
+include 'gradle-common'
+
