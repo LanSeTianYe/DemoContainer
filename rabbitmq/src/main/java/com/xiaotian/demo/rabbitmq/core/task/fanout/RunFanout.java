@@ -1,0 +1,44 @@
+package com.xiaotian.demo.rabbitmq.core.task.fanout;
+
+import com.rabbitmq.client.BuiltinExchangeType;
+import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.Connection;
+import com.xiaotian.demo.rabbitmq.core.constant.Const;
+import com.xiaotian.demo.rabbitmq.core.thread.RabbitThreadFactory;
+import com.xiaotian.demo.rabbitmq.core.util.RabbitMqUtil;
+
+public class RunFanout {
+
+    public static void main(String[] args) {
+        Connection connection = RabbitMqUtil.connect();
+        Channel channel = RabbitMqUtil.channel(connection);
+        initExchange(channel);
+        inintQueue(channel);
+        inintBind(channel);
+
+        RabbitThreadFactory rabbitThreadFactory = new RabbitThreadFactory("");
+
+        rabbitThreadFactory.newThread(new SendToFanOutTask(RabbitMqUtil.channel(connection), Const.FRUIT_APPLE_RED_KEY)).start();
+        rabbitThreadFactory.newThread(new SendToFanOutTask(RabbitMqUtil.channel(connection), Const.FRUIT_APPLE_GREEN_KEY)).start();
+        rabbitThreadFactory.newThread(new SendToFanOutTask(RabbitMqUtil.channel(connection), Const.FRUIT_BANANA_RED_KEY)).start();
+        rabbitThreadFactory.newThread(new SendToFanOutTask(RabbitMqUtil.channel(connection), Const.FRUIT_BANANA_YELLOW_KEY)).start();
+        rabbitThreadFactory.newThread(new SendToFanOutTask(RabbitMqUtil.channel(connection), Const.FOOD_APPLE_RED_KEY)).start();
+        rabbitThreadFactory.newThread(new SendToFanOutTask(RabbitMqUtil.channel(connection), Const.FOOD_APPLE_GREEN_KEY)).start();
+        rabbitThreadFactory.newThread(new SendToFanOutTask(RabbitMqUtil.channel(connection), Const.FOOD_BANANA_RED_KEY)).start();
+        rabbitThreadFactory.newThread(new SendToFanOutTask(RabbitMqUtil.channel(connection), Const.FOOD_BANANA_YELLOW_KEY)).start();
+
+        rabbitThreadFactory.newThread(new ReadFromFanOutTask(RabbitMqUtil.channel(connection), Const.ALL_FANOUT)).start();
+    }
+
+    private static void initExchange(Channel channel) {
+        RabbitMqUtil.createExchange(channel, Const.FANOUT_EXCHANG, BuiltinExchangeType.FANOUT);
+    }
+
+    private static void inintQueue(Channel channel) {
+        RabbitMqUtil.createQueue(channel, Const.ALL_FANOUT);
+    }
+
+    private static void inintBind(Channel channel) {
+        RabbitMqUtil.createBind(channel, Const.FANOUT_EXCHANG, Const.ALL_FANOUT, "");
+    }
+}
