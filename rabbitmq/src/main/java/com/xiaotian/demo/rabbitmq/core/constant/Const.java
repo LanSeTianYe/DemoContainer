@@ -29,20 +29,19 @@ public interface Const {
 
 
     String FRUIT_QUEUE = "fruit_queue";
-    String FRUIT_BIND = "fruit.*";
+    String FRUIT_BIND = "fruit.*.*";
 
-    String FOOD_QUEUE = "food";
-    String FOOD_BIND = "food.*";
+    String FRUIT_RED_QUEUE = "fruit_red_queue";
+    String FRUIT_RED_BIND = "fruit.*.red";
 
+    String FRUIT_APPLE_QUEUE = "fruit_apple_queue";
+    String FRUIT_APPLE_BIND = "fruit.apple.*";
 
-    String RED = "red";
-    String RED_BIND = "*.red";
+    String RED_QUEUE = "red_queue";
+    String RED_BIND = "*.*.red";
 
-    String GREEN = "green";
-    String GREEN_BIND = "*.green";
-
-    String TOPIC_ALL = "topic_all";
-    String ALL_TOPIC_BIND = "#";
+    String TOPIC_ALL_QUEUE = "topic_all_queue";
+    String TOPIC_ALL_BIND = "#";
 
     String ALL_FANOUT = "all_fanout";
     String ALL_FANOUT_1 = "all_fanout_1";

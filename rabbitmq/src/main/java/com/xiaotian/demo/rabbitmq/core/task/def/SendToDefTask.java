@@ -28,7 +28,7 @@ public class SendToDefTask implements Runnable {
                 String count = String.valueOf(random.nextInt(20));
                 log.info("SendToDefTask publish message. routingKey:{}, count:{}", routingKey, count);
                 channel.basicPublish("", routingKey, null, count.getBytes());
-                TimeUnit.MILLISECONDS.sleep(1000);
+                TimeUnit.MILLISECONDS.sleep(20);
             }
         } catch (Exception e) {
             LogUtil.logException(log, e);
