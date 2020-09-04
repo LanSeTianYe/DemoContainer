@@ -7,6 +7,15 @@ import com.xiaotian.demo.rabbitmq.core.constant.Const;
 import com.xiaotian.demo.rabbitmq.core.thread.RabbitThreadFactory;
 import com.xiaotian.demo.rabbitmq.core.util.RabbitMqUtil;
 
+
+/**
+ * 声明 direct 类型交换器 direct_exchange
+ * 声名9个队列
+ * 8个生产者向8个队列发送消息，没有生产者向 food_watermelon_green 队列发送消息。
+ * 9个消费者从9个队列读取数据。
+ * 从 food_watermelon_green 队列读取消息的消费者将获取不到消息，
+ * 其余消费者读取到消息的路由键和队列绑定的路由键相同的消息。
+ */
 public class RunDirect {
 
     public static void main(String[] args) {

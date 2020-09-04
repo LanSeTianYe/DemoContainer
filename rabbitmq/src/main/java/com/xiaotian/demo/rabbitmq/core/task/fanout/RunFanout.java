@@ -7,6 +7,12 @@ import com.xiaotian.demo.rabbitmq.core.constant.Const;
 import com.xiaotian.demo.rabbitmq.core.thread.RabbitThreadFactory;
 import com.xiaotian.demo.rabbitmq.core.util.RabbitMqUtil;
 
+/**
+ * 声明 fanout 类型交换器 fanout_exchange
+ * 声明两个队列 all_fanout 和 all_fanout_1,绑定到 fanout_exchange 交换器。
+ * 8个生产者发送数据
+ * 2个消费者分别从 all_fanout 和 all_fanout_1 队列读取数据。都可以读取到发送到 fanout_exchange 交换器的全部数据。
+ */
 public class RunFanout {
 
     public static void main(String[] args) {

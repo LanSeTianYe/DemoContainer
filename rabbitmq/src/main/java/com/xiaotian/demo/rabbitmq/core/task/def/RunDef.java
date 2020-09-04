@@ -16,6 +16,7 @@ import com.xiaotian.demo.rabbitmq.core.util.RabbitMqUtil;
  * 下面列子中，default_queue 队列绑定到 fanout_exchange 交换器。
  * 两个生产者，分别发送消息到 默认交换器和fanout_exchange交换器，路由键都是 `default_queue`。
  * 一个消费者，从 default_queue 队列消费，会读取到两个生产者发送的消息。
+ * 一个队列可以绑定到多个交换器。
  */
 public class RunDef {
 
