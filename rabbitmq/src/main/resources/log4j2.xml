@@ -103,7 +103,7 @@
     </appenders>
 
     <loggers>
-        <root level="ERROR">
+        <root level="INFO">
             <appender-ref ref="Console"/>
             <appender-ref ref="RollingFileDebug"/>
             <appender-ref ref="RollingFileInfo"/>

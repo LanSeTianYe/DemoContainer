@@ -28,6 +28,7 @@ public class RunFanout {
         rabbitThreadFactory.newThread(new SendToFanOutTask(RabbitMqUtil.channel(connection), Const.FOOD_BANANA_YELLOW_KEY)).start();
 
         rabbitThreadFactory.newThread(new ReadFromFanOutTask(RabbitMqUtil.channel(connection), Const.ALL_FANOUT)).start();
+        rabbitThreadFactory.newThread(new ReadFromFanOutTask(RabbitMqUtil.channel(connection), Const.ALL_FANOUT_1)).start();
     }
 
     private static void initExchange(Channel channel) {
@@ -36,9 +37,11 @@ public class RunFanout {
 
     private static void inintQueue(Channel channel) {
         RabbitMqUtil.createQueue(channel, Const.ALL_FANOUT);
+        RabbitMqUtil.createQueue(channel, Const.ALL_FANOUT_1);
     }
 
     private static void inintBind(Channel channel) {
         RabbitMqUtil.createBind(channel, Const.FANOUT_EXCHANG, Const.ALL_FANOUT, "");
+        RabbitMqUtil.createBind(channel, Const.FANOUT_EXCHANG, Const.ALL_FANOUT_1, "");
     }
 }

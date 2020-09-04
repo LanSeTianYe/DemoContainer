@@ -1,4 +1,4 @@
-package com.xiaotian.demo.rabbitmq.core.task.fanout;
+package com.xiaotian.demo.rabbitmq.core.task.def;
 
 import com.rabbitmq.client.*;
 import com.xiaotian.demo.rabbitmq.core.util.LogUtil;
@@ -9,33 +9,36 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-public class ReadFromFanOutTask implements Runnable {
+public class ReadFromDefTask implements Runnable {
 
-    private static Logger log = LoggerFactory.getLogger(ReadFromFanOutTask.class);
+
+    private static Logger log = LoggerFactory.getLogger(ReadFromDefTask.class);
     private static long totalCount = 0;
+    private final String tag;
 
     private final Channel channel;
     private final String queueName;
-    private final String consumerTag;
 
-    public ReadFromFanOutTask(Channel channel, String queueName) {
+    public ReadFromDefTask(Channel channel, String queueName) {
         this.channel = channel;
         this.queueName = queueName;
-        this.consumerTag = ThreadIDUtil.getTag(this.getClass());
+        this.tag = ThreadIDUtil.getTag(this.getClass());
     }
+
 
     @Override
     public void run() {
         try {
-            ReadFromFanOutTaskConsumer consumer = new ReadFromFanOutTaskConsumer();
-            channel.basicConsume(queueName, true, consumerTag, consumer);
+            ReadFromDefTaskConsumer consumer = new ReadFromDefTaskConsumer();
+            channel.basicConsume(queueName, true, tag, consumer);
+            TimeUnit.MILLISECONDS.sleep(100);
         } catch (Exception e) {
             LogUtil.logException(log, e);
         }
     }
 
 
-    private class ReadFromFanOutTaskConsumer implements Consumer {
+    private class ReadFromDefTaskConsumer implements Consumer {
 
         @Override
         public void handleConsumeOk(String consumerTag) {
@@ -66,12 +69,7 @@ public class ReadFromFanOutTask implements Runnable {
         public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) {
             String newCount = new String(body);
             totalCount += Long.valueOf(newCount);
-            log.info("ReadFromFanOutTask, exchange:{}, queue:{}, routingKey:{}, deliveryTag:{}, consumerTag:{}, newCount:{}, totalCount:{}", envelope.getExchange(), queueName, envelope.getRoutingKey(), envelope.getDeliveryTag(), consumerTag, newCount, totalCount);
-            try {
-                TimeUnit.MILLISECONDS.sleep(100);
-            } catch (InterruptedException e) {
-                LogUtil.logException(log, e);
-            }
+            log.info("ReadFromDefTask, exchange:{}, queue:{}, routingKey:{}, deliveryTag:{}, consumerTag:{}, newCount:{}, totalCount:{}", envelope.getExchange(), queueName, envelope.getRoutingKey(), envelope.getDeliveryTag(), consumerTag, newCount, totalCount);
         }
     }
 
