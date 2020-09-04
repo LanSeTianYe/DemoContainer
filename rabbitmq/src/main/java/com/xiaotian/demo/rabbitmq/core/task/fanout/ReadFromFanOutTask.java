@@ -7,7 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
 
 public class ReadFromFanOutTask implements Runnable {
 
@@ -67,11 +66,6 @@ public class ReadFromFanOutTask implements Runnable {
             String newCount = new String(body);
             totalCount += Long.valueOf(newCount);
             log.info("ReadFromFanOutTask, exchange:{}, queue:{}, routingKey:{}, deliveryTag:{}, consumerTag:{}, newCount:{}, totalCount:{}", envelope.getExchange(), queueName, envelope.getRoutingKey(), envelope.getDeliveryTag(), consumerTag, newCount, totalCount);
-            try {
-                TimeUnit.MILLISECONDS.sleep(100);
-            } catch (InterruptedException e) {
-                LogUtil.logException(log, e);
-            }
         }
     }
 

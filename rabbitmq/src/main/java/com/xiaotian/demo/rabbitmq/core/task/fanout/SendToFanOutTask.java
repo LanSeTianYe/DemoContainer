@@ -29,7 +29,7 @@ public class SendToFanOutTask implements Runnable {
                 String count = String.valueOf(random.nextInt(20));
                 log.info("SendToFanOutTask publish message. routingKey:{}, count:{}", routingKey, count);
                 channel.basicPublish(Const.FANOUT_EXCHANG, routingKey, null, count.getBytes());
-                TimeUnit.MILLISECONDS.sleep(1000);
+                TimeUnit.MILLISECONDS.sleep(10);
             }
         } catch (Exception e) {
             LogUtil.logException(log, e);
