@@ -14,6 +14,7 @@ public class RabbitMqUtil {
             ConnectionFactory factory = new ConnectionFactory();
             factory.setHost("10.0.8.36");
             factory.setPort(5672);
+            factory.setVirtualHost("/");
             factory.setUsername("admin");
             factory.setPassword("admin");
             return factory.newConnection();

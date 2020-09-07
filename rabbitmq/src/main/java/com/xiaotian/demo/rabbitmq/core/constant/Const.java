@@ -3,6 +3,7 @@ package com.xiaotian.demo.rabbitmq.core.constant;
 public interface Const {
 
     String FANOUT_EXCHANG = "fanout_exchange";
+    String ACK_FANOUT_EXCHANG = "ack_fanout_exchange";
     String DIRECT_EXCHANG = "direct_exchange";
     String TOPIC_EXCHANGE = "topic_exchange";
 
@@ -47,4 +48,6 @@ public interface Const {
     String ALL_FANOUT_1 = "all_fanout_1";
 
     String DEFAULT_QUEUE = "default_queue";
+
+    String ACK_QUEUE = "ack_queue";
 }
