@@ -7,6 +7,8 @@ public interface Const {
     String DIRECT_EXCHANG = "direct_exchange";
     String TOPIC_EXCHANGE = "topic_exchange";
 
+    String RABBITMQ_LOG_EXCHANGE = "amq.rabbitmq.log";
+
     String FRUIT_APPLE_RED_KEY = "fruit.apple.red";
     String FRUIT_APPLE_RED_KEY_QUEUE = "fruit_apple_red";
     String FRUIT_APPLE_GREEN_KEY = "fruit.apple.green";
@@ -50,4 +52,12 @@ public interface Const {
     String DEFAULT_QUEUE = "default_queue";
 
     String ACK_QUEUE = "ack_queue";
+
+    String RAIBBIT_LOG_ALL_QUEUE = "rabbit_log_all_queue";
+    String RAIBBIT_LOG_ALL_BIND = "#";
+
+    String RAIBBIT_LOG_ERROR_QUEUE = "rabbit_error_log_debug_queue";
+    String RAIBBIT_LOG_ERROR_BIND = "error";
+
+
 }
