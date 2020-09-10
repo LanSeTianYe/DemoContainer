@@ -6,6 +6,8 @@ public interface Const {
     String ACK_FANOUT_EXCHANG = "ack_fanout_exchange";
     String DIRECT_EXCHANG = "direct_exchange";
     String TOPIC_EXCHANGE = "topic_exchange";
+    String RPC_SERVER_EXCHANGE = "rpc_server_exchange";
+    String RPC_RESULT_EXCHANGE = "rpc_exchange";
 
     String RABBITMQ_LOG_EXCHANGE = "amq.rabbitmq.log";
 
@@ -59,5 +61,6 @@ public interface Const {
     String RAIBBIT_LOG_ERROR_QUEUE = "rabbit_error_log_debug_queue";
     String RAIBBIT_LOG_ERROR_BIND = "error";
 
+    String RPC_SERVER_QUEUE = "rpc_server_queue";
 
 }

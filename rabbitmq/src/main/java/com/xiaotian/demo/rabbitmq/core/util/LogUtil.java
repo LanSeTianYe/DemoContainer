@@ -6,5 +6,6 @@ public class LogUtil {
 
     public static void logException(Logger logger, Exception e) {
         logger.error(e.getMessage(), e);
+        Runtime.getRuntime().exit(1);
     }
 }

@@ -49,10 +49,18 @@ public class RabbitMqUtil {
 
     public static String createTempQueue(Channel channel) {
         try {
-            AMQP.Queue.DeclareOk declareOk = channel.queueDeclare(null, true, false, false, null);
+            AMQP.Queue.DeclareOk declareOk = channel.queueDeclare();
             return declareOk.getQueue();
         } catch (IOException e) {
             throw new RuntimeException("创建临时队列出错", e);
+        }
+    }
+
+    public static void deleteQueue(Channel channel, String queueName) {
+        try {
+            AMQP.Queue.DeleteOk ok = channel.queueDelete(queueName);
+        } catch (IOException e) {
+            throw new RuntimeException("删除队列出错", e);
         }
     }
 
