@@ -83,8 +83,8 @@ public class RPCClient implements Runnable {
                 String data = new String(body);
                 log.info("RPCClient handel response, clientName:{}, respnose:{}", clientName, data);
                 channel.basicAck(envelope.getDeliveryTag(), false);
-                log.info("RPCClient delete queue, clientName:{}, queueName:{}", clientName, queueName);
-                RabbitMqUtil.deleteQueue(channel, queueName);
+                //log.info("RPCClient delete queue, clientName:{}, queueName:{}", clientName, queueName);
+                //RabbitMqUtil.deleteQueue(channel, queueName);
                 channel.close();
             } catch (Exception e) {
                 LogUtil.logException(log, e);
