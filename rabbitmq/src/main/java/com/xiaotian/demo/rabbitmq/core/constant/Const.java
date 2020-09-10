@@ -7,7 +7,6 @@ public interface Const {
     String DIRECT_EXCHANG = "direct_exchange";
     String TOPIC_EXCHANGE = "topic_exchange";
     String RPC_SERVER_EXCHANGE = "rpc_server_exchange";
-    String RPC_RESULT_EXCHANGE = "rpc_exchange";
 
     String RABBITMQ_LOG_EXCHANGE = "amq.rabbitmq.log";
 

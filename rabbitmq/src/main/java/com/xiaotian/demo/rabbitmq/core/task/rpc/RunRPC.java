@@ -44,7 +44,6 @@ public class RunRPC {
 
     private static void initExchange(Channel channel) {
         RabbitMqUtil.createExchange(channel, Const.RPC_SERVER_EXCHANGE, BuiltinExchangeType.FANOUT);
-        RabbitMqUtil.createExchange(channel, Const.RPC_RESULT_EXCHANGE, BuiltinExchangeType.DIRECT);
     }
 
     private static void inintQueue(Channel channel) {

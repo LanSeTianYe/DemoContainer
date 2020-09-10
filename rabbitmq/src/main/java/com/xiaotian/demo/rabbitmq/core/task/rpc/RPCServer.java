@@ -67,7 +67,7 @@ public class RPCServer implements Runnable {
                 String responseData = requestData + " pong";
                 String replyTo = properties.getReplyTo();
                 log.info("RPCConsumer response, serverName:{}, exchange:{}, replyTo:{}, responseData:{}", serverName, Const.RPC_SERVER_QUEUE, replyTo, responseData);
-                channel.basicPublish(Const.RPC_RESULT_EXCHANGE, replyTo, null, responseData.getBytes());
+                channel.basicPublish("", replyTo, null, responseData.getBytes());
                 log.info("RPCConsumer ack, serverName:{}, queue:{}, deliveryTag:{}, ", serverName, Const.RPC_SERVER_QUEUE, envelope.getDeliveryTag());
                 channel.basicAck(envelope.getDeliveryTag(), false);
             } catch (IOException e) {

@@ -36,7 +36,6 @@ public class RPCClient implements Runnable {
             AMQP.BasicProperties properties = builder.replyTo(queueName).build();
             channel.basicPublish(Const.RPC_SERVER_EXCHANGE, queueName, properties, requestData.getBytes());
 
-            RabbitMqUtil.createBind(channel, Const.RPC_RESULT_EXCHANGE, queueName, queueName);
             channel.basicConsume(queueName, false, rpcConsumer);
         } catch (Exception e) {
             LogUtil.logException(log, e);
