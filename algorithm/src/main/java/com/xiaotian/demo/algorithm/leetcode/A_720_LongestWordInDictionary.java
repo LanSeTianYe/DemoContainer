@@ -7,34 +7,24 @@ import java.util.Set;
 
 public class A_720_LongestWordInDictionary {
 
-    private Set<String> dictMap;
-
     public String longestWord(String[] words) {
         if (Objects.isNull(words) || words.length == 0) {
             return "";
         }
         sort(words);
-
-        dictMap = new HashSet<>();
+        Set<String> dictSet = new HashSet<>(Arrays.asList(words));
         for (String word : words) {
-            dictMap.add(word);
-        }
-
-        for (String word : words) {
-            if (checkWord(word, dictMap)) {
+            if (checkWordPrefix(word, dictSet)) {
                 return word;
             }
         }
         return "";
     }
 
-    private boolean checkWord(String word, Set<String> wordDict) {
+    private boolean checkWordPrefix(String word, Set<String> dictSet) {
         int length = word.length();
-        char[] chars = word.toCharArray();
-        String subWord = "";
         for (int i = 0; i < length; i++) {
-            subWord += chars[i];
-            if (!wordDict.contains(subWord)) {
+            if (!dictSet.contains(word.substring(0, i + 1))) {
                 return false;
             }
         }
