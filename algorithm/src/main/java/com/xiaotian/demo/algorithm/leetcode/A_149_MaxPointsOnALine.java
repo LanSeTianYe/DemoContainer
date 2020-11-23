@@ -14,17 +14,15 @@ import java.util.List;
 public class A_149_MaxPointsOnALine {
 
     public int maxPoints(int[][] points) {
-        if (null == points || points.length == 0) {
+
+        if (null == points) {
             return 0;
         }
-        if (points.length == 1) {
-            return 1;
+        if (points.length < 3) {
+            return points.length;
         }
-        if (points.length == 2) {
-            return 2;
-        }
-        List<Line> allLine = findAllLine(points);
 
+        List<Line> allLine = findAllLine(points);
         if (allLine.size() == 0) {
             return points.length;
         }
