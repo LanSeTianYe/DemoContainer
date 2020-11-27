@@ -1,0 +1,13 @@
+spring:
+  cloud:
+    consul:
+      host：127.0.0.1
+      port：8500
+  application:
+    name: demo-consul-client
+
+server:
+  port: 9060
+
+
+

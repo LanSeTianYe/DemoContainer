@@ -42,6 +42,8 @@
         <module>springcloud-hystrix</module>
         <module>springcloud-hystrix-dashboard</module>
         <module>springcloud-hystrix-turbine</module>
+        <module>springcloud-consul-server</module>
+        <module>springcloud-consul-client</module>
     </modules>
 
 </project>
