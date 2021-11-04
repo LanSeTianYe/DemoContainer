@@ -3,19 +3,38 @@ package com.xiaotian.demo.test;
 public class Test {
 
     public static void main(String[] args) {
+        System.out.print("Hello Java");
 
-        Task task = new Task();
-        System.out.println(task.getClass().getCanonicalName());
-        System.out.println(task.getClass().getName());
-        System.out.println(task.getClass().getTypeName());
+        Animal animal = new Animal("animal");
+        sayHello(animal);
 
+        Person person = new Person("zhang san");
+        person.Hello();
+        sayHello(person);
     }
 
-    static class Task implements Runnable {
+    static class Animal {
+        String name;
 
-        @Override
-        public void run() {
+        public Animal(String name) {
+            this.name = name;
+        }
 
+        public void Hello() {
+            System.out.println("Hello, I am " + name);
         }
     }
+
+    static class Person extends Animal {
+        public Person(String name) {
+            super(name);
+        }
+    }
+
+    static void sayHello(Animal animal) {
+        animal.Hello();
+    }
 }
+
+
+
