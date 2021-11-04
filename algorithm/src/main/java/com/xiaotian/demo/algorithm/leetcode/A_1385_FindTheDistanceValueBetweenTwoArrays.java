@@ -6,19 +6,20 @@ public class A_1385_FindTheDistanceValueBetweenTwoArrays {
         int distance = 0;
 
         for (int a1 : arr1) {
-            boolean exists = false;
-            for (int a2 : arr2) {
-                if (Math.abs(a1 - a2) <= d) {
-                    exists = true;
-                    break;
-                }
-            }
-
-            if (!exists) {
+            if (!existsSmallerDistance(a1, arr2, d)) {
                 distance = distance + 1;
             }
         }
         return distance;
+    }
+
+    private boolean existsSmallerDistance(int a1, int[] arr2, int d) {
+        for (int a2 : arr2) {
+            if (Math.abs(a1 - a2) <= d) {
+                return true;
+            }
+        }
+        return false;
     }
 }
 
