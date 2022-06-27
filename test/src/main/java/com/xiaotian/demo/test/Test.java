@@ -3,37 +3,47 @@ package com.xiaotian.demo.test;
 public class Test {
 
     public static void main(String[] args) {
-        System.out.print("Hello Java");
+        System.out.println("Hello Java");
 
-        Animal animal = new Animal("animal");
-        sayHello(animal);
+        Animal animal = new Animal("Animal");
+        animal.sayName();
 
-        Person person = new Person("zhang san");
-        person.Hello();
-        sayHello(person);
+        Person person = new Person("Person");
+        person.sayName();
+
+        Test.sayHello(animal);
+        Test.sayHello(person);
     }
 
     static class Animal {
-        String name;
+        private final String name;
 
-        public Animal(String name) {
+        Animal(String name) {
             this.name = name;
         }
 
-        public void Hello() {
-            System.out.println("Hello, I am " + name);
+        public void sayName() {
+            System.out.println("animal name");
         }
     }
+
 
     static class Person extends Animal {
-        public Person(String name) {
+
+        Person(String name) {
             super(name);
+        }
+
+        @Override
+        public void sayName() {
+            System.out.println("person name");
         }
     }
 
-    static void sayHello(Animal animal) {
-        animal.Hello();
+    private static void sayHello(Animal animal) {
+        animal.sayName();
     }
+
 }
 
 
