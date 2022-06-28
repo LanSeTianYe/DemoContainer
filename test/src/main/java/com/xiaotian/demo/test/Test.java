@@ -1,49 +1,26 @@
 package com.xiaotian.demo.test;
 
+import java.util.HashMap;
+import java.util.HashSet;
+
 public class Test {
 
     public static void main(String[] args) {
-        System.out.println("Hello Java");
+        HashMap<Integer, Integer> map = new HashMap<>();
+        HashSet<Integer> integerSet = new HashSet<>();
 
-        Animal animal = new Animal("Animal");
-        animal.sayName();
-
-        Person person = new Person("Person");
-        person.sayName();
-
-        Test.sayHello(animal);
-        Test.sayHello(person);
-    }
-
-    static class Animal {
-        private final String name;
-
-        Animal(String name) {
-            this.name = name;
+        for (int i = 0; i < 100; i++) {
+            map.put(i, i * 2);
+            integerSet.add(i);
+            integerSet.add(i);
         }
 
-        public void sayName() {
-            System.out.println("animal name");
+        map.forEach((k, v) -> System.out.printf("key:%d, value:%d\n", k, v));
+
+        for (Integer value : integerSet) {
+            System.out.println(value);
         }
     }
-
-
-    static class Person extends Animal {
-
-        Person(String name) {
-            super(name);
-        }
-
-        @Override
-        public void sayName() {
-            System.out.println("person name");
-        }
-    }
-
-    private static void sayHello(Animal animal) {
-        animal.sayName();
-    }
-
 }
 
 
