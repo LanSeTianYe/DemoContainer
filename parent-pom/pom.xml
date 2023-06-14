@@ -21,7 +21,7 @@
 
         <fastjson.version>1.2.58</fastjson.version>
 
-        <guava.version>28.0-jre</guava.version>
+        <guava.version>32.0.0-jre</guava.version>
 
         <junit.version>4.12</junit.version>
 
